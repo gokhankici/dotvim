@@ -5,6 +5,7 @@
 " set guifont=-misc-fixed-medium-r-normal--14-130-75-75-c-70-iso8859-1
 
 "pathogen
+filetype off
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
@@ -50,9 +51,9 @@ if version >= 500
 
 endif
 
+syn on
 set number
 set background=dark
-color slate
 set guifont=Inconsolata\ Medium\ 11
 
 "compile with g++
