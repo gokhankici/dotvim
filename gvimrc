@@ -4,6 +4,10 @@
 " set the X11 font to use
 " set guifont=-misc-fixed-medium-r-normal--14-130-75-75-c-70-iso8859-1
 
+"pathogen
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
 set ch=2		" Make command line two lines high
 set mousehide		" Hide the mouse when typing text
 set ff=unix
@@ -48,7 +52,7 @@ endif
 
 set number
 set background=dark
-colorsheme solarized
+color slate
 set guifont=Inconsolata\ Medium\ 11
 
 "compile with g++
@@ -69,3 +73,4 @@ set lines=50 columns=90
 map <C-A> ggVG
 " no sound or flash
 set vb t_vb=
+
