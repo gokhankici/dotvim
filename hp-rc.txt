@@ -1,0 +1,4 @@
+# Configuration of the hp-arch
+
+MODULES=(snd-usb-audio !nv !floppy !fd0 !net-pf-10 !snd_pcsp !pcspkr loop acpi-cpufreq cpufreq-ondemand cpufreq-powersave)
+DAEMONS=(dbus hal syslog-ng laptop-mode !network !dhcdbd !networkmanager @acpid alsa @wicd)
