@@ -46,6 +46,13 @@ if version >= 500
 
 endif
 
+" Cool Indentation
+filetype plugin indent on
+set smartindent
+set autoindent
+set tabstop=4
+set shiftwidth=4
+
 syn on
 set number
 set background=dark
