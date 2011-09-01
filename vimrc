@@ -4,11 +4,12 @@ call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
 syntax on
-set background=dark
-colorscheme solarized
-
+set number
 " for nerd commenter
 filetype plugin on
+
+" set background=dark
+" colorscheme solarized
 
 " auto directory
 set acd
