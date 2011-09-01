@@ -55,8 +55,9 @@ set shiftwidth=4
 
 syn on
 set number
-set background=dark
 set guifont=Inconsolata\ Medium\ 11
+set background=dark
+colorscheme solarized
 
 "compile with g++
 command GPP !g++ %:t -o %:t:r
