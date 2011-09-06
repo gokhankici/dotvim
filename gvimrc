@@ -46,35 +46,10 @@ if version >= 500
 
 endif
 
-" Cool Indentation
-filetype plugin indent on
-set smartindent
-set autoindent
-set tabstop=4
-set shiftwidth=4
-
-syn on
-set number
 set guifont=Inconsolata\ Medium\ 11
 set background=dark
 colorscheme solarized
 
-"compile with g++
-command GPP !g++ %:t -o %:t:r
-command Crun ! %:t:r
-
-" C++ compile and run
-map <F9> :w<CR> :!g++ %:t -o %:t:r<CR> : ! %:t:r<CR>
-" Java compile and run
-map <F8> :w<CR> :!javac %:t<CR> : !java %:t:r<CR>
-
-
-"full screen
-set go-=T go-=b go-=F
-set lines=50 columns=90
-
-" select all
-map <C-A> ggVG
 " no sound or flash
 set vb t_vb=
 

@@ -1,6 +1,5 @@
-set nocompatible                  " Must come first because it changes other options.
+set nocompatible		" Must come first because it changes other options.
 
-"pathogen
 filetype off
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
@@ -9,35 +8,31 @@ call pathogen#helptags()
 syntax on
 filetype plugin indent on
 set number
-" for nerd commenter
-filetype plugin on
+filetype plugin on		" for nerd commenter
 set smartindent
 set autoindent
 " set tabstop=4
 " set shiftwidth=4
 
-" auto directory
-set acd
-" side scroll off
-set siso=0
-" lines
-set lines=44
-" scroll bars
-set guioptions+=LlRrb
+set acd				" auto directory
+set siso=0			" side scroll off
+" set lines=44
+
+set guioptions+=LlRrb 		" scroll bars
 set guioptions-=LlRrb
 
 "compile with g++
 command GPP !g++ %:t -o %:t:r
-command Crun ! %:t:r
+command Crun !%:t:r
 
 " C++ compile and run
-map <F9> :w<CR> :!g++ %:t -o %:t:r<CR> : ! %:t:r<CR>
+map <F9> :w<CR> :!g++ %:t -o %:t:r<CR> : !%:t:r<CR>
 " Java compile and run
 map <F8> :w<CR> :!javac %:t<CR> : !java %:t:r<CR>
 
 "full screen
-set go-=T go-=b go-=F
-set lines=50 columns=90
+"set go-=T go-=b go-=F
+"set lines=50 columns=90
 
 " select all
 map <C-A> ggVG
@@ -47,23 +42,25 @@ set vb t_vb=
 
 " PEEPCODE ADDITIONS ------------------------------------------------
 
-set showcmd                       " Display incomplete commands.
-set showmode                      " Display the mode you're in.
+set showcmd      		" Display incomplete commands.
+set showmode                    " Display the mode you're in.
 
-set backspace=indent,eol,start    " Intuitive backspacing.
+set hlsearch			" highlight search (very useful!)
+set incsearch			" search incremently (search while typing)
 
-set hidden                        " Handle multiple buffers better.
+set backspace=indent,eol,start  " Intuitive backspacing.
 
-set wildmenu                      " Enhanced command line completion.
-set wildmode=list:longest         " Complete files like a shell.
+set hidden                      " Handle multiple buffers better.
 
-set ignorecase                    " Case-insensitive searching.
-set smartcase                     " But case-sensitive if expression contains a capital letter.
+set wildmenu                    " Enhanced command line completion.
+" set wildmode=list:longest     " Complete files like a shell.
 
-set laststatus=2                  " Show the status line all the time
+set ignorecase                  " Case-insensitive searching.
+set smartcase                   " But case-sensitive if expression contains a capital letter.
+
+set laststatus=2                " Show the status line all the time
 " Useful status information at bottom of screen
- set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
-" before exists %{fugitive#statusline()}
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 
 " Tab mappings.
 map <leader>tt :tabnew<cr>
@@ -75,6 +72,9 @@ map <leader>tp :tabprevious<cr>
 map <leader>tf :tabfirst<cr>
 map <leader>tl :tablast<cr>
 map <leader>tm :tabmove
+
+vmap > >gv			" Shift text right and re-select
+vmap < <gv			" Shift text left and re-select
 
 " PEEPCODE ADDITIONS ------------------------------------------------
 
