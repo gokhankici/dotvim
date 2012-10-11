@@ -1,24 +1,22 @@
 set nocompatible		" Must come first because it changes other options.
 
-filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-
 " Coding
 syntax on
 filetype plugin indent on
 set number
-filetype plugin on		" for nerd commenter
+filetype plugin on											" for nerd commenter
 set smartindent
 set autoindent
 " set tabstop=4
 " set shiftwidth=4
 
-set acd				" auto directory
-set siso=0			" side scroll off
+" auto directory
+set acd					
+" side scroll off
+set siso=0
 " set lines=44
 
-set guioptions+=LlRrb 		" scroll bars
+set guioptions+=LlRrb 									" scroll bars
 set guioptions-=LlRrb
 
 "compile with g++
@@ -60,7 +58,7 @@ set smartcase                   " But case-sensitive if expression contains a ca
 
 set laststatus=2                " Show the status line all the time
 " Useful status information at bottom of screen
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
+" set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 
 " Tab mappings.
 map <leader>tt :tabnew<cr>

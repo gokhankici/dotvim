@@ -37,18 +37,18 @@ if version >= 500
   " Text below the last line is darker grey
   " Cursor is green, Cyan when ":lmap" mappings are active
   " Constants are not underlined but have a slightly lighter background
-  highlight Normal guibg=grey90
-  highlight Cursor guibg=Green guifg=NONE
-  highlight lCursor guibg=Cyan guifg=NONE
-  highlight NonText guibg=grey80
-  highlight Constant gui=NONE guibg=grey95
-  highlight Special gui=NONE guibg=grey95
+  " highlight Normal guibg=grey90
+  " highlight Cursor guibg=Green guifg=NONE
+  " highlight lCursor guibg=Cyan guifg=NONE
+  " highlight NonText guibg=grey80
+  " highlight Constant gui=NONE guibg=grey95
+  " highlight Special gui=NONE guibg=grey95
 
 endif
 
 set guifont=Inconsolata\ Medium\ 11
-set background=dark
-colorscheme solarized
+" set background=dark
+" colorscheme solarized
 
 " no sound or flash
 set vb t_vb=
