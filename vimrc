@@ -1,10 +1,29 @@
-set nocompatible		" Must come first because it changes other options.
+" Must come first because it changes other options.
+set nocompatible
+filetype off
+
+" Vundle setup
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Bundles
+Bundle 'gmarik/vundle'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'tpope/vim-fugitive' 
+Bundle 'tpope/vim-surround' 
+Bundle 'scrooloose/nerdtree' 
+Bundle 'scrooloose/nerdcommenter' 
+Bundle 'kien/ctrlp.vim'
+
+" Set CtrlP command
+let g:ctrlp_map='<c-p>'
+let g:ctrlp_cmd='CtrlP'
 
 " Coding
 syntax on
 filetype plugin indent on
 set number
-filetype plugin on											" for nerd commenter
+filetype plugin on
 set smartindent
 set autoindent
 " set tabstop=4
@@ -16,8 +35,11 @@ set acd
 set siso=0
 " set lines=44
 
-set guioptions+=LlRrb 									" scroll bars
+" scroll bars
+set guioptions+=LlRrb	
 set guioptions-=LlRrb
+" hide toolbar
+set guioptions-=T
 
 "compile with g++
 command GPP !g++ %:t -o %:t:r
@@ -28,37 +50,21 @@ map <F9> :w<CR> :!g++ %:t -o %:t:r<CR> : !%:t:r<CR>
 " Java compile and run
 map <F8> :w<CR> :!javac %:t<CR> : !java %:t:r<CR>
 
-"full screen
-"set go-=T go-=b go-=F
-"set lines=50 columns=90
-
 " select all
 map <C-A> ggVG
 " no sound or flash
 set vb t_vb=
 
-
 " PEEPCODE ADDITIONS ------------------------------------------------
 
 set showcmd      		" Display incomplete commands.
 set showmode                    " Display the mode you're in.
-
-set hlsearch			" highlight search (very useful!)
-set incsearch			" search incremently (search while typing)
-
-set backspace=indent,eol,start  " Intuitive backspacing.
-
 set hidden                      " Handle multiple buffers better.
-
-set wildmenu                    " Enhanced command line completion.
-" set wildmode=list:longest     " Complete files like a shell.
-
-set ignorecase                  " Case-insensitive searching.
 set smartcase                   " But case-sensitive if expression contains a capital letter.
-
 set laststatus=2                " Show the status line all the time
+
 " Useful status information at bottom of screen
-" set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 
 " Tab mappings.
 map <leader>tt :tabnew<cr>
@@ -73,6 +79,36 @@ map <leader>tm :tabmove
 
 vmap > >gv			" Shift text right and re-select
 vmap < <gv			" Shift text left and re-select
-
 " PEEPCODE ADDITIONS ------------------------------------------------
 
+"  SPF-13 ADDITIONS ------------------------------------------------
+
+" VIM UI 
+    set backspace=indent,eol,start  " backspace for dummies
+    set showmatch                   " show matching brackets/parenthesis
+    set incsearch                   " find as you type search
+    set hlsearch                    " highlight search terms
+    set winminheight=0              " windows can be 0 line high
+    set ignorecase                  " case insensitive search
+    set smartcase                   " case sensitive when uc present
+    set wildmenu                    " show list instead of just completing
+    set wildmode=list:longest,full  " command <Tab> completion, list matches, then longest common part, then all.
+    set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap to
+    set scrolljump=5                " lines to scroll when cursor leaves screen
+    set scrolloff=3                 " minimum lines to keep above and below cursor
+
+" Key (re)Mappings
+    
+    let mapleader=','    
+
+    " Easier moving in tabs and windows
+    map <C-J> <C-W>j<C-W>_
+    map <C-K> <C-W>k<C-W>_
+    map <C-L> <C-W>l<C-W>_
+    map <C-H> <C-W>h<C-W>_
+
+" Plugins
+
+    map <leader>e :NERDTreeToggle<CR>:NERDTreeMirror<CR> 
+
+"  SPF-13 ADDITIONS ------------------------------------------------

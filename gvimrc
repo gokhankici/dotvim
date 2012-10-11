@@ -46,9 +46,9 @@ if version >= 500
 
 endif
 
-set guifont=Inconsolata\ Medium\ 11
-" set background=dark
-" colorscheme solarized
+set guifont=DejaVu\ Sans\ Mono\ 10
+set background=dark
+colorscheme solarized
 
 " no sound or flash
 set vb t_vb=
