@@ -1,7 +1,6 @@
 # Welcome to my VIM configuration
 
-    I tried to maintain a simple vim environment with some plugins like NerdTree, Fugitive, 
-CtrlP etc. and the beautiful solarized theme using vundle.
+I tried to maintain a simple vim environment with some plugins like NerdTree, Fugitive, CtrlP etc. and the beautiful solarized theme using vundle.
 
 # Installation:
 
