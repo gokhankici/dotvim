@@ -59,7 +59,7 @@ set vb t_vb=
 
 " set background
 set background=dark
-se t_Co=16
+se t_Co=256
 "let g:solarized_termcolors=16
 colorscheme skittles_berry
 
