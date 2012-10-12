@@ -14,6 +14,8 @@ Bundle 'tpope/vim-surround'
 Bundle 'scrooloose/nerdtree' 
 Bundle 'scrooloose/nerdcommenter' 
 Bundle 'kien/ctrlp.vim'
+Bundle 'AutoClose'
+Bundle "shawncplus/skittles_berry"
 
 " Set CtrlP command
 let g:ctrlp_map='<c-p>'
@@ -26,8 +28,8 @@ set number
 filetype plugin on
 set smartindent
 set autoindent
-" set tabstop=4
-" set shiftwidth=4
+set tabstop=4
+set shiftwidth=4
 
 " auto directory
 set acd					
@@ -46,7 +48,7 @@ command GPP !g++ %:t -o %:t:r
 command Crun !%:t:r
 
 " C++ compile and run
-map <F9> :w<CR> :!g++ %:t -o %:t:r<CR> : !%:t:r<CR>
+map <F9> :w<CR> :!g++ %:t -o %:t:r<CR> : !./%:t:r<CR>
 " Java compile and run
 map <F8> :w<CR> :!javac %:t<CR> : !java %:t:r<CR>
 
@@ -54,6 +56,12 @@ map <F8> :w<CR> :!javac %:t<CR> : !java %:t:r<CR>
 map <C-A> ggVG
 " no sound or flash
 set vb t_vb=
+
+" set background
+set background=dark
+se t_Co=16
+"let g:solarized_termcolors=16
+colorscheme skittles_berry
 
 " PEEPCODE ADDITIONS ------------------------------------------------
 
@@ -112,3 +120,24 @@ vmap < <gv			" Shift text left and re-select
     map <leader>e :NERDTreeToggle<CR>:NERDTreeMirror<CR> 
 
 "  SPF-13 ADDITIONS ------------------------------------------------
+
+" Code compelete in Eclim mode -----------------------------------------------
+
+	" Do not select the first completion item, insert longest match
+	set completeopt=longest,menuone
+	" Enter key selects the highlighted menu item, like C-y
+	inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+	" The following two are for narrowing the matches while I continue typing
+	inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+	  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+	inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+	  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+	" open omni completion menu closing previous if open and opening new menu without changing the text
+	inoremap <expr> <C-Space> (pumvisible() ? (col('.') > 1 ? '<Esc>i<Right>' : '<Esc>i') : '') .
+		\ '<C-x><C-o><C-r>=pumvisible() ? "\<lt>C-n>\<lt>C-p>\<lt>Down>" : ""<CR>'
+	" open user completion menu closing previous if open and opening new menu without changing the text
+	inoremap <expr> <S-Space> (pumvisible() ? (col('.') > 1 ? '<Esc>i<Right>' : '<Esc>i') : '') .
+		\ '<C-x><C-u><C-r>=pumvisible() ? "\<lt>C-n>\<lt>C-p>\<lt>Down>" : ""<CR>'
+
+" Code compelete in Eclim mode -----------------------------------------------
