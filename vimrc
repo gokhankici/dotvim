@@ -19,7 +19,7 @@ Bundle "shawncplus/skittles_berry"
 
 " Set CtrlP command
 let g:ctrlp_map='<c-p>'
-let g:ctrlp_cmd='CtrlP'
+let g:ctrlp_cmd='CtrlPBuffer'
 
 " Coding
 syntax on
@@ -62,6 +62,10 @@ set background=dark
 se t_Co=256
 "let g:solarized_termcolors=16
 colorscheme skittles_berry
+
+" add scrolling for html,tex and txt types
+au FileType html,tex,text noremap <buffer> j gj
+au FileType html,tex,text noremap <buffer> k gk
 
 " PEEPCODE ADDITIONS ------------------------------------------------
 

@@ -1,4 +1,4 @@
-xterm*faceName: terminus:bold:pixelsize=14
+xterm*faceName: terminus:pixelsize=16
 xterm*loginShell: true
 xterm*vt100*geometry: 80x40
 xterm*saveLines: 2000
