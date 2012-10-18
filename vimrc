@@ -73,7 +73,18 @@ au FileType html,tex,text noremap <buffer> $ g$
 " do not split words at the end of the screen
 set linebreak
 
+" Map <C-s><C-s> or <C-g>S in surround to <C-k>
 imap <C-k> <C-g>S
+
+" For vim - tmux incompatibility for arrow keys
+nnoremap <Esc>A <up>
+nnoremap <Esc>B <down>
+nnoremap <Esc>C <right>
+nnoremap <Esc>D <left>
+inoremap <Esc>A <up>
+inoremap <Esc>B <down>
+inoremap <Esc>C <right>
+inoremap <Esc>D <left>
 
 " PEEPCODE ADDITIONS ------------------------------------------------
 
