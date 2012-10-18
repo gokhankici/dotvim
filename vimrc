@@ -16,6 +16,7 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'kien/ctrlp.vim'
 Bundle 'AutoClose'
 Bundle "shawncplus/skittles_berry"
+Bundle "edsono/vim-matchit"
 
 " Set CtrlP command
 let g:ctrlp_map='<c-p>'
@@ -71,6 +72,8 @@ au FileType html,tex,text noremap <buffer> $ g$
 
 " do not split words at the end of the screen
 set linebreak
+
+imap <C-k> <C-g>S
 
 " PEEPCODE ADDITIONS ------------------------------------------------
 
