@@ -52,3 +52,14 @@ endif
 
 " no sound or flash
 set vb t_vb=
+" remove menubar
+set guioptions-=m	
+
+" Try to remember gvim size and position
+set sessionoptions+=resize,winpos
+autocmd VIMEnter * :source C:/Users/Gokhan/session.vim
+autocmd VIMLeave * :mksession! C:/Users/Gokhan/session.vim
+
+
+set guifont=Consolas:h10
+:command -nargs=? SH !C:\Users\Gokhan\Downloads\Console2\Console.exe

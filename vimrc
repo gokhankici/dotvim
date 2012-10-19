@@ -2,6 +2,10 @@
 set nocompatible
 filetype off
 
+if has('win32') || has('win64')
+  set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+endif
+
 " Vundle setup
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -85,6 +89,19 @@ inoremap <Esc>A <up>
 inoremap <Esc>B <down>
 inoremap <Esc>C <right>
 inoremap <Esc>D <left>
+
+" My function to delete all buffers and close vim
+:function DeleteAllAndClose(ignore)
+:	if(a:ignore)
+:		bufdo bd!
+:	else
+:		bufdo bd
+:	endif
+:	qa
+:endfunction
+
+:command -nargs=? QA call DeleteAllAndClose(0)
+:command -nargs=? QAI call DeleteAllAndClose(1)
 
 " PEEPCODE ADDITIONS ------------------------------------------------
 
