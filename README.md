@@ -4,7 +4,7 @@ I tried to maintain a simple vim environment with some plugins like NerdTree, Fu
 
 # Installation:
 
-    git clone git://github.com/gokhankici/dotvim.git ~/.vim
+    git clone https://github.com/gokhankici/dotvim.git ~/.vim
 
 # Create symlinks:
 
