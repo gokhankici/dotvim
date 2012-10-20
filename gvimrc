@@ -56,9 +56,9 @@ set vb t_vb=
 set guioptions-=m	
 
 " Try to remember gvim size and position
-set sessionoptions+=resize,winpos
-autocmd VIMEnter * :source C:/Users/Gokhan/session.vim
-autocmd VIMLeave * :mksession! C:/Users/Gokhan/session.vim
+"set sessionoptions+=resize,winpos
+"autocmd VIMEnter * :source C:/Users/Gokhan/session.vim
+"autocmd VIMLeave * :mksession! C:/Users/Gokhan/session.vim
 
 
 set guifont=Consolas:h10

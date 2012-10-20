@@ -103,6 +103,10 @@ inoremap <Esc>D <left>
 :command -nargs=? QA call DeleteAllAndClose(0)
 :command -nargs=? QAI call DeleteAllAndClose(1)
 
+" Change directory to home at startup
+" NerdTREE sees C:\ as initial directory
+autocmd VimEnter * cd ~
+
 " PEEPCODE ADDITIONS ------------------------------------------------
 
 set showcmd      		" Display incomplete commands.
