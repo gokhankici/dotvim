@@ -107,6 +107,9 @@ inoremap <Esc>D <left>
 " NerdTREE sees C:\ as initial directory
 autocmd VimEnter * cd ~
 
+" Curly brackets convenience for writing functions
+imap {<CR> <C-g>S{
+
 " PEEPCODE ADDITIONS ------------------------------------------------
 
 set showcmd      		" Display incomplete commands.
