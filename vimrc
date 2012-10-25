@@ -21,6 +21,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'AutoClose'
 Bundle "shawncplus/skittles_berry"
 Bundle "edsono/vim-matchit"
+Bundle "msanders/snipmate.vim"
 
 " Set CtrlP command
 let g:ctrlp_map='<c-p>'
@@ -108,7 +109,8 @@ inoremap <Esc>D <left>
 autocmd VimEnter * cd ~
 
 " Curly brackets convenience for writing functions
-imap {<CR> <C-g>S{
+" No longer needed because of snipmate
+"imap {<CR> <C-g>S{
 
 " PEEPCODE ADDITIONS ------------------------------------------------
 
