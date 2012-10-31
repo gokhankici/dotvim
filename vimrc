@@ -21,6 +21,9 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'AutoClose'
 Bundle "shawncplus/skittles_berry"
 Bundle "edsono/vim-matchit"
+Bundle "msanders/snipmate.vim"
+Bundle 'L9'
+Bundle 'FuzzyFinder'
 
 " Set CtrlP command
 let g:ctrlp_map='<c-p>'
@@ -106,6 +109,9 @@ inoremap <Esc>D <left>
 " Change directory to home at startup
 " NerdTREE sees C:\ as initial directory
 autocmd VimEnter * cd ~
+
+"Map this function at runtime since other way didn't worked
+autocmd VimEnter * nmap <leader>f :FufFile<CR>
 
 " Curly brackets convenience for writing functions
 imap {<CR> <C-g>S{
