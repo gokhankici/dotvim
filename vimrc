@@ -3,7 +3,9 @@ set nocompatible
 filetype off
 
 if has('win32') || has('win64')
-  set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+	set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+	"Open the current directory with Console2
+	:command -nargs=? CMD call xolox#shell#execute("C:/Users/Gokhan/Downloads/Console2/Console.exe -d \"".expand("%:p:h")."\"",0)
 endif
 
 " Vundle setup
@@ -114,7 +116,8 @@ autocmd VimEnter * cd ~
 autocmd VimEnter * nmap <leader>f :FufFile<CR>
 
 " Curly brackets convenience for writing functions
-imap {<CR> <C-g>S{
+" No longer needed because of snipmate
+"imap {<CR> <C-g>S{
 
 " PEEPCODE ADDITIONS ------------------------------------------------
 
@@ -145,52 +148,52 @@ vmap < <gv			" Shift text left and re-select
 "  SPF-13 ADDITIONS ------------------------------------------------
 
 " VIM UI 
-    set backspace=indent,eol,start  " backspace for dummies
-    set showmatch                   " show matching brackets/parenthesis
-    set incsearch                   " find as you type search
-    set hlsearch                    " highlight search terms
-    set winminheight=0              " windows can be 0 line high
-    set ignorecase                  " case insensitive search
-    set smartcase                   " case sensitive when uc present
-    set wildmenu                    " show list instead of just completing
-    set wildmode=list:longest,full  " command <Tab> completion, list matches, then longest common part, then all.
-    set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap to
-    set scrolljump=5                " lines to scroll when cursor leaves screen
-    set scrolloff=3                 " minimum lines to keep above and below cursor
+set backspace=indent,eol,start  " backspace for dummies
+set showmatch                   " show matching brackets/parenthesis
+set incsearch                   " find as you type search
+set hlsearch                    " highlight search terms
+set winminheight=0              " windows can be 0 line high
+set ignorecase                  " case insensitive search
+set smartcase                   " case sensitive when uc present
+set wildmenu                    " show list instead of just completing
+set wildmode=list:longest,full  " command <Tab> completion, list matches, then longest common part, then all.
+set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap to
+set scrolljump=5                " lines to scroll when cursor leaves screen
+set scrolloff=3                 " minimum lines to keep above and below cursor
 
 " Key (re)Mappings
-    
-    let mapleader=','    
 
-    " Easier moving in tabs and windows
-    map <C-J> <C-W>j<C-W>_
-    map <C-K> <C-W>k<C-W>_
-    map <C-L> <C-W>l<C-W>_
-    map <C-H> <C-W>h<C-W>_
+let mapleader=','    
+
+" Easier moving in tabs and windows
+map <C-J> <C-W>j<C-W>_
+map <C-K> <C-W>k<C-W>_
+map <C-L> <C-W>l<C-W>_
+map <C-H> <C-W>h<C-W>_
 
 " Plugins
 
-    map <leader>e :NERDTreeToggle<CR>:NERDTreeMirror<CR> 
+map <leader>e :NERDTreeToggle<CR>:NERDTreeMirror<CR> 
 
 "  SPF-13 ADDITIONS ------------------------------------------------
 
 " Code compelete in Eclim mode -----------------------------------------------
 
-	" Do not select the first completion item, insert longest match
-	set completeopt=longest,menuone
-	" Enter key selects the highlighted menu item, like C-y
-	inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-	" The following two are for narrowing the matches while I continue typing
-	inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
-	  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-	inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
-	  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+" Do not select the first completion item, insert longest match
+set completeopt=longest,menuone
+" Enter key selects the highlighted menu item, like C-y
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" The following two are for narrowing the matches while I continue typing
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+			\ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+			\ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
-	" open omni completion menu closing previous if open and opening new menu without changing the text
-	inoremap <expr> <C-Space> (pumvisible() ? (col('.') > 1 ? '<Esc>i<Right>' : '<Esc>i') : '') .
-		\ '<C-x><C-o><C-r>=pumvisible() ? "\<lt>C-n>\<lt>C-p>\<lt>Down>" : ""<CR>'
-	" open user completion menu closing previous if open and opening new menu without changing the text
-	inoremap <expr> <S-Space> (pumvisible() ? (col('.') > 1 ? '<Esc>i<Right>' : '<Esc>i') : '') .
-		\ '<C-x><C-u><C-r>=pumvisible() ? "\<lt>C-n>\<lt>C-p>\<lt>Down>" : ""<CR>'
+" open omni completion menu closing previous if open and opening new menu without changing the text
+inoremap <expr> <C-Space> (pumvisible() ? (col('.') > 1 ? '<Esc>i<Right>' : '<Esc>i') : '') .
+			\ '<C-x><C-o><C-r>=pumvisible() ? "\<lt>C-n>\<lt>C-p>\<lt>Down>" : ""<CR>'
+" open user completion menu closing previous if open and opening new menu without changing the text
+inoremap <expr> <S-Space> (pumvisible() ? (col('.') > 1 ? '<Esc>i<Right>' : '<Esc>i') : '') .
+			\ '<C-x><C-u><C-r>=pumvisible() ? "\<lt>C-n>\<lt>C-p>\<lt>Down>" : ""<CR>'
 
 " Code compelete in Eclim mode -----------------------------------------------
