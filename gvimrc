@@ -61,5 +61,5 @@ set guioptions-=m
 "autocmd VIMLeave * :mksession! C:/Users/Gokhan/session.vim
 
 
-set guifont=Consolas:h10
+set guifont=Consolas\ 11
 :command -nargs=? SH !C:\Users\Gokhan\Downloads\Console2\Console.exe

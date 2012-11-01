@@ -68,10 +68,11 @@ map <C-A> ggVG
 set vb t_vb=
 
 " set background
-set background=dark
 se t_Co=256
-"let g:solarized_termcolors=16
-colorscheme skittles_berry
+"set background=dark
+"colorscheme skittles_berry
+set background=dark
+colorscheme solarized
 
 " add scrolling for html,tex and txt types
 au FileType html,tex,text noremap <buffer> j gj
@@ -115,9 +116,11 @@ autocmd VimEnter * cd ~
 "Map this function at runtime since other way didn't worked
 autocmd VimEnter * nmap <leader>f :FufFile<CR>
 
-" Curly brackets convenience for writing functions
-" No longer needed because of snipmate
-"imap {<CR> <C-g>S{
+"Resize the windows with Alt key
+map <silent><A-Left> <C-w><
+map <silent><A-Right> <C-w>>
+map <silent><A-Up> <C-w>+
+map <silent><A-Down> <C-w>-
 
 " PEEPCODE ADDITIONS ------------------------------------------------
 
@@ -176,24 +179,3 @@ map <C-H> <C-W>h<C-W>_
 map <leader>e :NERDTreeToggle<CR>:NERDTreeMirror<CR> 
 
 "  SPF-13 ADDITIONS ------------------------------------------------
-
-" Code compelete in Eclim mode -----------------------------------------------
-
-" Do not select the first completion item, insert longest match
-set completeopt=longest,menuone
-" Enter key selects the highlighted menu item, like C-y
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" The following two are for narrowing the matches while I continue typing
-inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
-			\ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
-			\ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-
-" open omni completion menu closing previous if open and opening new menu without changing the text
-inoremap <expr> <C-Space> (pumvisible() ? (col('.') > 1 ? '<Esc>i<Right>' : '<Esc>i') : '') .
-			\ '<C-x><C-o><C-r>=pumvisible() ? "\<lt>C-n>\<lt>C-p>\<lt>Down>" : ""<CR>'
-" open user completion menu closing previous if open and opening new menu without changing the text
-inoremap <expr> <S-Space> (pumvisible() ? (col('.') > 1 ? '<Esc>i<Right>' : '<Esc>i') : '') .
-			\ '<C-x><C-u><C-r>=pumvisible() ? "\<lt>C-n>\<lt>C-p>\<lt>Down>" : ""<CR>'
-
-" Code compelete in Eclim mode -----------------------------------------------
