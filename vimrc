@@ -42,7 +42,7 @@ set tabstop=4
 set shiftwidth=4
 
 " auto directory
-set acd					
+"set acd					
 " side scroll off
 set siso=0
 " set lines=44
