@@ -42,7 +42,7 @@ set tabstop=4
 set shiftwidth=4
 
 " auto directory
-"set acd					
+set acd					
 " side scroll off
 set siso=0
 " set lines=44
@@ -70,9 +70,9 @@ set vb t_vb=
 " set background
 se t_Co=256
 "set background=dark
-"colorscheme skittles_berry
-set background=dark
-colorscheme solarized
+colorscheme skittles_berry
+"set background=dark
+"colorscheme solarized
 
 " add scrolling for html,tex and txt types
 au FileType html,tex,text noremap <buffer> j gj

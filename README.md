@@ -4,11 +4,22 @@ I tried to maintain a simple vim environment with some plugins like NerdTree, Fu
 
 # Installation:
 
-    git clone https://github.com/gokhankici/dotvim.git ~/.vim
+## Fetch the repositories
 
-# Create symlinks:
+    git clone https://github.com/gokhankici/dotvim.git ~/.vim
+    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+
+## Create symlinks:
 
     ln -s ~/.vim/vimrc ~/.vimrc
     ln -s ~/.vim/gvimrc ~/.gvimrc
+    ln -s ~/.vim/tmux.conf ~/.tmux.conf
     ln -s ~/.vim/Xresources ~/.Xresources
     ln -s ~/.vim/screenrc ~/.screenrc
+
+## Load Configurations
+
+	tmux source-file ~/.tmux.conf
+	xrdb ~/.Xresources
+
+	At last, start vim and run the command ":BundleInstall". When installation is complete, restart vim.
