@@ -1,0 +1,9 @@
+! Convert Caps-Lock into Control
+remove Lock = Caps_Lock
+keysym Caps_Lock = Control_L
+add Control = Control_L
+
+! Use Right-Ctrl as Caps-Lock
+remove Control = Control_R
+keysym Control_R = Caps_Lock
+add Lock = Caps_Lock
