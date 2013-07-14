@@ -46,20 +46,16 @@ if version >= 500
 
 endif
 
-" set guifont=DejaVu\ Sans\ Mono\ 10
-" set background=dark
-" colorscheme solarized
-
 " no sound or flash
 set vb t_vb=
-" remove menubar
-set guioptions-=m	
+
+" set guifont=DejaVu\ Sans\ Mono\ 10
 
 " Try to remember gvim size and position
 "set sessionoptions+=resize,winpos
 "autocmd VIMEnter * :source C:/Users/Gokhan/session.vim
 "autocmd VIMLeave * :mksession! C:/Users/Gokhan/session.vim
 
-
-set guifont=Consolas\ 11
-:command -nargs=? SH !C:\Users\Gokhan\Downloads\Console2\Console.exe
+if has('win32') || has('win64')
+	set guifont=Consolas:h11
+endif

@@ -4,8 +4,15 @@ filetype off
 
 if has('win32') || has('win64')
 	set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+	
 	"Open the current directory with Console2
-	:command -nargs=? CMD call xolox#shell#execute("C:/Users/Gokhan/Downloads/Console2/Console.exe -d \"".expand("%:p:h")."\"",0)
+	:function OpenConsole2InPWD(path)
+	:	let new_path = substitute(a:path, "Rami[^\\]*", "RamiGökhan", "")
+	:	call xolox#misc#os#exec({'command' : "\"C:\\Program Files\\Console2\\Console.exe\"\ -d\ \"".new_path."\"", 'async' : 1})
+	:endfunction
+	
+	":command -nargs=? CMD call OpenConsole2InPWD(expand("%:p:h"))
+	:command -nargs=? CMD call xolox#misc#os#exec({'command' : '"C:\\Program Files\\Console2\\Console.exe" -d "C:\\Users\\RamiGökhan"', 'async' : 1})
 endif
 
 " Vundle setup
@@ -21,11 +28,22 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter' 
 Bundle 'kien/ctrlp.vim'
 Bundle 'AutoClose'
-Bundle "shawncplus/skittles_berry"
-Bundle "edsono/vim-matchit"
-Bundle "msanders/snipmate.vim"
+Bundle 'shawncplus/skittles_berry'
+Bundle 'edsono/vim-matchit'
+"Bundle 'msanders/snipmate.vim'
+Bundle 'garbas/vim-snipmate'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tlib'
 Bundle 'L9'
 Bundle 'FuzzyFinder'
+"Bundle 'Lokaltog/powerline'
+"Bundle 'mileszs/ack.vim'
+Bundle 'a.vim'
+Bundle 'ervandew/supertab'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'tpope/vim-repeat'
+Bundle 'xolox/vim-shell'
+Bundle 'xolox/vim-misc'
 
 " Set CtrlP command
 let g:ctrlp_map='<c-p>'
@@ -69,10 +87,11 @@ set vb t_vb=
 
 " set background
 se t_Co=256
-"set background=dark
-colorscheme skittles_berry
+set background=dark
+colorscheme desert
 "set background=dark
 "colorscheme solarized
+"colorscheme skittles_berry
 
 " add scrolling for html,tex and txt types
 au FileType html,tex,text noremap <buffer> j gj
@@ -149,7 +168,6 @@ vmap < <gv			" Shift text left and re-select
 " PEEPCODE ADDITIONS ------------------------------------------------
 
 "  SPF-13 ADDITIONS ------------------------------------------------
-
 " VIM UI 
 set backspace=indent,eol,start  " backspace for dummies
 set showmatch                   " show matching brackets/parenthesis
@@ -177,5 +195,7 @@ map <C-H> <C-W>h<C-W>_
 " Plugins
 
 map <leader>e :NERDTreeToggle<CR>:NERDTreeMirror<CR> 
-
 "  SPF-13 ADDITIONS ------------------------------------------------
+
+set encoding=utf-8
+set fileencoding=utf-8
