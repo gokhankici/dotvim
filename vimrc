@@ -44,6 +44,7 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'tpope/vim-repeat'
 Bundle 'xolox/vim-shell'
 Bundle 'xolox/vim-misc'
+Bundle 'vimwiki/vimwiki'
 
 " Set CtrlP command
 let g:ctrlp_map='<c-p>'
@@ -199,3 +200,7 @@ map <leader>e :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 
 set encoding=utf-8
 set fileencoding=utf-8
+
+" Swap lines
+nnoremap <C-S-down> ddp
+nnoremap <C-S-up> ddkP
