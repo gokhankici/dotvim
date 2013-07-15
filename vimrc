@@ -47,6 +47,7 @@ Bundle 'xolox/vim-shell'
 Bundle 'xolox/vim-misc'
 Bundle 'vimwiki/vimwiki'
 Bundle 'CSApprox'
+Bundle 'flazz/vim-colorschemes'
 
 let g:Powerline_symbols = 'fancy'
 
@@ -94,8 +95,6 @@ set vb t_vb=
 se t_Co=256
 set background=dark
 colorscheme desert
-"set background=dark
-"colorscheme solarized
 "colorscheme skittles_berry
 
 " add scrolling for html,tex and txt types
@@ -213,3 +212,7 @@ nnoremap <C-S-up> ddkP
 map! jk <ESC>
 
 "command -nargs=? CMD !gnome-terminal expand("%:p:h") &
+command TERM !gnome-terminal . &
+
+" Open nautilus in the current folder
+command NAUTILUS !nautilus . &

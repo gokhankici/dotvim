@@ -49,6 +49,9 @@ endif
 " no sound or flash
 set vb t_vb=
 
+set background=dark
+colorscheme solarized
+
 " set guifont=DejaVu\ Sans\ Mono\ 10
 
 " Try to remember gvim size and position
