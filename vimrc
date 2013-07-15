@@ -32,12 +32,13 @@ Bundle 'shawncplus/skittles_berry'
 Bundle 'edsono/vim-matchit'
 "Bundle 'msanders/snipmate.vim'
 Bundle 'garbas/vim-snipmate'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tlib'
+Bundle 'honza/vim-snippets'
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
 Bundle 'L9'
 Bundle 'FuzzyFinder'
-"Bundle 'Lokaltog/powerline'
-"Bundle 'mileszs/ack.vim'
+Bundle 'Lokaltog/powerline', {'rtp':  'powerline/bindings/vim'}
+Bundle 'mileszs/ack.vim'
 Bundle 'a.vim'
 Bundle 'ervandew/supertab'
 Bundle 'Lokaltog/vim-easymotion'
@@ -45,6 +46,9 @@ Bundle 'tpope/vim-repeat'
 Bundle 'xolox/vim-shell'
 Bundle 'xolox/vim-misc'
 Bundle 'vimwiki/vimwiki'
+Bundle 'CSApprox'
+
+let g:Powerline_symbols = 'fancy'
 
 " Set CtrlP command
 let g:ctrlp_map='<c-p>'
@@ -151,7 +155,7 @@ set smartcase                   " But case-sensitive if expression contains a ca
 set laststatus=2                " Show the status line all the time
 
 " Useful status information at bottom of screen
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
+"set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 
 " Tab mappings.
 map <leader>tt :tabnew<cr>
@@ -204,3 +208,8 @@ set fileencoding=utf-8
 " Swap lines
 nnoremap <C-S-down> ddp
 nnoremap <C-S-up> ddkP
+
+"Easy ESC
+map! jk <ESC>
+
+"command -nargs=? CMD !gnome-terminal expand("%:p:h") &

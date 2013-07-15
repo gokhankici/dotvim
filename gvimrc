@@ -57,6 +57,7 @@ set vb t_vb=
 "autocmd VIMLeave * :mksession! C:/Users/Gokhan/session.vim
 
 if has('win32') || has('win64')
-	"set guifont=Consolas:h11
 	set guifont=DejaVu_Sans_Mono:h11:cANSI
+else
+	set guifont=DejaVu\ Sans\ Mono\ 11
 endif
