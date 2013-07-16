@@ -48,6 +48,7 @@ Bundle 'xolox/vim-misc'
 Bundle 'vimwiki/vimwiki'
 Bundle 'CSApprox'
 Bundle 'flazz/vim-colorschemes'
+Bundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
 
 let g:Powerline_symbols = 'fancy'
 
@@ -216,3 +217,13 @@ command TERM !gnome-terminal . &
 
 " Open nautilus in the current folder
 command NAUTILUS !nautilus . &
+
+" === vim-latex package settings ===
+
+" Change gvim's path for LaTeX support
+let $PATH='/usr/local/pgsql/bin:/usr/local/texlive/2013/bin/x86_64-linux:/home/gokhan/perl5/bin' . $PATH 
+
+" Compile to pdf by default
+let g:Tex_DefaultTargetFormat = 'pdf'
+
+" === vim-latex package settings ===
