@@ -50,7 +50,7 @@ endif
 set vb t_vb=
 
 set background=dark
-colorscheme solarized
+colorscheme louver
 
 " set guifont=DejaVu\ Sans\ Mono\ 10
 
@@ -58,6 +58,17 @@ colorscheme solarized
 "set sessionoptions+=resize,winpos
 "autocmd VIMEnter * :source C:/Users/Gokhan/session.vim
 "autocmd VIMLeave * :mksession! C:/Users/Gokhan/session.vim
+
+" Colorscheme suggestions
+" 	Light color schemes:
+" 		louver: 	like basic windows theme, good colors
+" 		mayansmoke: good but comments are very muted
+" 		pyte: 		like mayansmoke but more muted
+" 		solarized: 	always a choice
+" 	Dark color schemes:
+" 		solarized: 	dark one is better
+" 		wombat: 	good colors
+" 		desert: 	very good one
 
 if has('win32') || has('win64')
 	set guifont=DejaVu_Sans_Mono:h11:cANSI
