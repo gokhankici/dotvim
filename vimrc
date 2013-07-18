@@ -20,35 +20,36 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " Bundles
-Bundle 'gmarik/vundle'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'tpope/vim-fugitive' 
-Bundle 'tpope/vim-surround' 
-Bundle 'scrooloose/nerdtree' 
-Bundle 'scrooloose/nerdcommenter' 
-Bundle 'kien/ctrlp.vim'
-Bundle 'AutoClose'
-Bundle 'shawncplus/skittles_berry'
-Bundle 'edsono/vim-matchit'
-"Bundle 'msanders/snipmate.vim'
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/vim-snippets'
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-Bundle 'Lokaltog/powerline', {'rtp':  'powerline/bindings/vim'}
-Bundle 'mileszs/ack.vim'
 Bundle 'a.vim'
-Bundle 'ervandew/supertab'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'tpope/vim-repeat'
-Bundle 'xolox/vim-shell'
-Bundle 'xolox/vim-misc'
-Bundle 'vimwiki/vimwiki'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'AutoClose'
 Bundle 'CSApprox'
+Bundle 'edsono/vim-matchit'
+Bundle 'ervandew/supertab'
 Bundle 'flazz/vim-colorschemes'
+Bundle 'FuzzyFinder'
+Bundle 'garbas/vim-snipmate'
 Bundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
+Bundle 'gmarik/vundle'
+Bundle 'honza/vim-snippets'
+Bundle 'kien/ctrlp.vim'
+Bundle 'L9'
+Bundle 'Lokaltog/powerline', {'rtp':  'powerline/bindings/vim'}
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'mileszs/ack.vim'
+Bundle 'scrooloose/nerdcommenter' 
+Bundle 'scrooloose/nerdtree' 
+Bundle 'shawncplus/skittles_berry'
+Bundle 'tomtom/tlib_vim'
+Bundle 'tpope/vim-abolish'
+Bundle 'tpope/vim-fugitive' 
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround' 
+Bundle 'tpope/vim-unimpaired'
+Bundle 'vimwiki/vimwiki'
+Bundle 'xolox/vim-misc'
+Bundle 'xolox/vim-shell'
 
 let g:Powerline_symbols = 'fancy'
 
@@ -205,12 +206,16 @@ map <leader>e :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 set encoding=utf-8
 set fileencoding=utf-8
 
-" Swap lines
-nnoremap <C-S-down> ddp
-nnoremap <C-S-up> ddkP
+" Bubble single line
+nmap <C-S-up> [e
+nmap <C-S-down> ]e
+
+" Bubble multiple lines
+vmap <C-S-up> [egv
+vmap <C-S-down> ]egv
 
 "Easy ESC
-map! jk <ESC>
+inoremap kj <ESC>
 
 "command -nargs=? CMD !gnome-terminal expand("%:p:h") &
 command TERM !gnome-terminal . &
@@ -218,7 +223,7 @@ command TERM !gnome-terminal . &
 " Open nautilus in the current folder
 command NAUTILUS !nautilus . &
 
-" === vim-latex package settings ===
+" === VIM-LATEX PACKAGE SETTINGS ===
 
 " Change gvim's path for LaTeX support
 let $PATH='/usr/local/pgsql/bin:/usr/local/texlive/2013/bin/x86_64-linux:/home/gokhan/perl5/bin' . $PATH 
@@ -226,4 +231,4 @@ let $PATH='/usr/local/pgsql/bin:/usr/local/texlive/2013/bin/x86_64-linux:/home/g
 " Compile to pdf by default
 let g:Tex_DefaultTargetFormat = 'pdf'
 
-" === vim-latex package settings ===
+" === VIM-LATEX PACKAGE SETTINGS ===
