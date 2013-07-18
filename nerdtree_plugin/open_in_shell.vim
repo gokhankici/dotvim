@@ -27,8 +27,9 @@ function! NERDTreeStartShell()
 		":lcd to to the selected dir and :shell out
 		exec 'lcd ' . n.path.str({'format': 'Cd'})
 		redraw!
-		shell
-
+		"shell
+		exec '!gnome-terminal ' . n.path.str({'format': 'Cd'})
+ 
 	"make sure we restore the cwd to its original state
 	finally
 		exec 'lcd ' . oldCWD

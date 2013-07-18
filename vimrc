@@ -38,6 +38,7 @@ Bundle 'Lokaltog/powerline', {'rtp':  'powerline/bindings/vim'}
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'mileszs/ack.vim'
+Bundle 'nelstrom/vim-visual-star-search'
 Bundle 'scrooloose/nerdcommenter' 
 Bundle 'scrooloose/nerdtree' 
 Bundle 'shawncplus/skittles_berry'
