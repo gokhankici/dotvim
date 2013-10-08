@@ -23,9 +23,10 @@ call vundle#rc()
 Bundle 'a.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'AutoClose'
-Bundle 'CSApprox'
+"Bundle 'CSApprox'
+Bundle 'acx0/Conque-Shell'
 Bundle 'edsono/vim-matchit'
-Bundle 'ervandew/supertab'
+"Bundle 'ervandew/supertab'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'FuzzyFinder'
 Bundle 'garbas/vim-snipmate'
@@ -34,11 +35,14 @@ Bundle 'gmarik/vundle'
 Bundle 'honza/vim-snippets'
 Bundle 'kien/ctrlp.vim'
 Bundle 'L9'
+"Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'Lokaltog/powerline', {'rtp':  'powerline/bindings/vim'}
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'Liquid-Carbon'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'mileszs/ack.vim'
 Bundle 'nelstrom/vim-visual-star-search'
+Bundle 'noahfrederick/vim-hemisu'
 Bundle 'scrooloose/nerdcommenter' 
 Bundle 'scrooloose/nerdtree' 
 Bundle 'shawncplus/skittles_berry'
@@ -51,6 +55,7 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'vimwiki/vimwiki'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-shell'
+
 
 let g:Powerline_symbols = 'fancy'
 
@@ -159,19 +164,22 @@ set laststatus=2                " Show the status line all the time
 " Useful status information at bottom of screen
 "set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 
-" Tab mappings.
-map <leader>tt :tabnew<cr>
-map <leader>te :tabedit
-map <leader>tc :tabclose<cr>
-map <leader>to :tabonly<cr>
-map <leader>tn :tabnext<cr>
-map <leader>tp :tabprevious<cr>
-map <leader>tf :tabfirst<cr>
-map <leader>tl :tablast<cr>
-map <leader>tm :tabmove
+"" Tab mappings.
+"map <leader>tt :tabnew<cr>
+"map <leader>te :tabedit
+"map <leader>tc :tabclose<cr>
+"map <leader>to :tabonly<cr>
+"map <leader>tn :tabnext<cr>
+"map <leader>tp :tabprevious<cr>
+"map <leader>tf :tabfirst<cr>
+"map <leader>tl :tablast<cr>
+"map <leader>tm :tabmove
 
-vmap > >gv			" Shift text right and re-select
-vmap < <gv			" Shift text left and re-select
+" Shift text right and re-select
+vmap > >gv
+" Shift text left and re-select
+vmap < <gv
+
 " PEEPCODE ADDITIONS ------------------------------------------------
 
 "  SPF-13 ADDITIONS ------------------------------------------------
@@ -233,3 +241,5 @@ let $PATH='/usr/local/pgsql/bin:/usr/local/texlive/2013/bin/x86_64-linux:/home/g
 let g:Tex_DefaultTargetFormat = 'pdf'
 
 " === VIM-LATEX PACKAGE SETTINGS ===
+
+map <leader>t :ConqueTerm bash<cr>

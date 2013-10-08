@@ -50,7 +50,9 @@ endif
 set vb t_vb=
 
 set background=dark
-colorscheme louver
+"colorscheme louver
+colorscheme default
+colorscheme desert
 
 " set guifont=DejaVu\ Sans\ Mono\ 10
 
@@ -73,5 +75,6 @@ colorscheme louver
 if has('win32') || has('win64')
 	set guifont=DejaVu_Sans_Mono:h11:cANSI
 else
-	set guifont=DejaVu\ Sans\ Mono\ 11
+	"set guifont=DejaVu\ Sans\ Mono\ 14
+	set guifont=Bitstream\ Vera\ Sans\ Mono\ 14
 endif
