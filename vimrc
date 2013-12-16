@@ -43,6 +43,7 @@ Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'mileszs/ack.vim'
 Bundle 'nelstrom/vim-visual-star-search'
 Bundle 'noahfrederick/vim-hemisu'
+Bundle 'recover.vim'
 Bundle 'scrooloose/nerdcommenter' 
 Bundle 'scrooloose/nerdtree' 
 Bundle 'shawncplus/skittles_berry'
@@ -102,7 +103,7 @@ set vb t_vb=
 " set background
 se t_Co=256
 set background=dark
-colorscheme desert
+"colorscheme desert
 "colorscheme skittles_berry
 
 " add scrolling for html,tex and txt types
