@@ -21,43 +21,44 @@ call vundle#rc()
 
 " Bundles
 Bundle 'a.vim'
-Bundle 'altercation/vim-colors-solarized'
+"Bundle 'altercation/vim-colors-solarized'
 Bundle 'AutoClose'
 "Bundle 'CSApprox'
-Bundle 'acx0/Conque-Shell'
+"Bundle 'acx0/Conque-Shell'
 Bundle 'edsono/vim-matchit'
 "Bundle 'ervandew/supertab'
-Bundle 'flazz/vim-colorschemes'
-Bundle 'FuzzyFinder'
+"Bundle 'flazz/vim-colorschemes'
+"Bundle 'FuzzyFinder'
 Bundle 'garbas/vim-snipmate'
-Bundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
+"Bundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
 Bundle 'gmarik/vundle'
 Bundle 'honza/vim-snippets'
 Bundle 'kien/ctrlp.vim'
 Bundle 'L9'
 "Bundle 'LaTeX-Box-Team/LaTeX-Box'
-Bundle 'Lokaltog/powerline', {'rtp':  'powerline/bindings/vim'}
+"Bundle 'Lokaltog/powerline', {'rtp':  'powerline/bindings/vim'}
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'Liquid-Carbon'
+"Bundle 'Liquid-Carbon'
 Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'mileszs/ack.vim'
+"Bundle 'mileszs/ack.vim'
 Bundle 'nelstrom/vim-visual-star-search'
 Bundle 'noahfrederick/vim-hemisu'
+Bundle 'recover.vim'
 Bundle 'scrooloose/nerdcommenter' 
 Bundle 'scrooloose/nerdtree' 
-Bundle 'shawncplus/skittles_berry'
+"Bundle 'shawncplus/skittles_berry'
 Bundle 'tomtom/tlib_vim'
-Bundle 'tpope/vim-abolish'
+"Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-fugitive' 
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround' 
-Bundle 'tpope/vim-unimpaired'
-Bundle 'vimwiki/vimwiki'
-Bundle 'xolox/vim-misc'
-Bundle 'xolox/vim-shell'
+"Bundle 'tpope/vim-unimpaired'
+"Bundle 'vimwiki/vimwiki'
+"Bundle 'xolox/vim-misc'
+"Bundle 'xolox/vim-shell'
 
 
-let g:Powerline_symbols = 'fancy'
+"let g:Powerline_symbols = 'fancy'
 
 " Set CtrlP command
 let g:ctrlp_map='<c-p>'
@@ -88,6 +89,7 @@ set guioptions-=T
 "compile with g++
 command GPP !g++ %:t -o %:t:r
 command Crun !%:t:r
+command ALLMAN %s/\(^.*\a.*\){/\1\r{/gc
 
 " C++ compile and run
 map <F9> :w<CR> :!g++ %:t -o %:t:r<CR> : !./%:t:r<CR>
@@ -101,8 +103,8 @@ set vb t_vb=
 
 " set background
 se t_Co=256
-set background=dark
-colorscheme desert
+"set background=dark
+"colorscheme desert
 "colorscheme skittles_berry
 
 " add scrolling for html,tex and txt types
@@ -162,7 +164,7 @@ set smartcase                   " But case-sensitive if expression contains a ca
 set laststatus=2                " Show the status line all the time
 
 " Useful status information at bottom of screen
-"set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 
 "" Tab mappings.
 "map <leader>tt :tabnew<cr>
@@ -232,14 +234,14 @@ command TERM !gnome-terminal . &
 " Open nautilus in the current folder
 command NAUTILUS !nautilus . &
 
-" === VIM-LATEX PACKAGE SETTINGS ===
+"" === VIM-LATEX PACKAGE SETTINGS ===
 
-" Change gvim's path for LaTeX support
-let $PATH='/usr/local/pgsql/bin:/usr/local/texlive/2013/bin/x86_64-linux:/home/gokhan/perl5/bin' . $PATH 
+"" Change gvim's path for LaTeX support
+"let $PATH='/usr/local/pgsql/bin:/usr/local/texlive/2013/bin/x86_64-linux:/home/gokhan/perl5/bin' . $PATH 
 
-" Compile to pdf by default
-let g:Tex_DefaultTargetFormat = 'pdf'
+"" Compile to pdf by default
+"let g:Tex_DefaultTargetFormat = 'pdf'
 
-" === VIM-LATEX PACKAGE SETTINGS ===
+"" === VIM-LATEX PACKAGE SETTINGS ===
 
 map <leader>t :ConqueTerm bash<cr>
