@@ -23,6 +23,7 @@ call vundle#rc()
 Bundle 'a.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'AutoClose'
+Bundle 'bufexplorer.zip'
 "Bundle 'CSApprox'
 Bundle 'acx0/Conque-Shell'
 Bundle 'edsono/vim-matchit'
@@ -244,3 +245,6 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 " === VIM-LATEX PACKAGE SETTINGS ===
 
 map <leader>t :ConqueTerm bash<cr>
+
+" Make it so that a curly brace automatically inserts an indented line
+inoremap {<CR> {<CR>}<Esc>O<BS><Tab>}
