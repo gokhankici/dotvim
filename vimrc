@@ -76,6 +76,7 @@ set smartindent
 set autoindent
 set tabstop=4
 set shiftwidth=4
+set cursorline " highlight current line
 
 " auto directory
 set acd
@@ -106,6 +107,9 @@ set vb t_vb=
 " set background
 se t_Co=256
 set background=dark
+" Access colors present in 256 colorspace"
+let base16colorspace=256
+colorscheme base16-default
 "colorscheme desert
 "colorscheme skittles_berry
 
