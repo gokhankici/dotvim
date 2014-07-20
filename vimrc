@@ -58,6 +58,7 @@ Bundle 'vimwiki/vimwiki'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-shell'
 Plugin 'bling/vim-airline'
+Plugin 'chriskempson/base16-vim'
 
 
 let g:Powerline_symbols = 'fancy'
