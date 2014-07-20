@@ -4,13 +4,13 @@ filetype off
 
 if has('win32') || has('win64')
 	set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
-	
+
 	"Open the current directory with Console2
 	:function OpenConsole2InPWD(path)
 	:	let new_path = substitute(a:path, "Rami[^\\]*", "RamiGökhan", "")
 	:	call xolox#misc#os#exec({'command' : "\"C:\\Program Files\\Console2\\Console.exe\"\ -d\ \"".new_path."\"", 'async' : 1})
 	:endfunction
-	
+
 	":command -nargs=? CMD call OpenConsole2InPWD(expand("%:p:h"))
 	:command -nargs=? CMD call xolox#misc#os#exec({'command' : '"C:\\Program Files\\Console2\\Console.exe" -d "C:\\Users\\RamiGökhan"', 'async' : 1})
 endif
@@ -20,43 +20,44 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " Bundles
-Bundle 'a.vim'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'AutoClose'
-Bundle 'bufexplorer.zip'
 "Bundle 'CSApprox'
-Bundle 'acx0/Conque-Shell'
-Bundle 'edsono/vim-matchit'
+"Bundle 'LaTeX-Box-Team/LaTeX-Box'
+"Bundle 'Lokaltog/powerline', {'rtp':  'powerline/bindings/vim'}
 "Bundle 'ervandew/supertab'
-Bundle 'flazz/vim-colorschemes'
+Bundle 'AutoClose'
 Bundle 'FuzzyFinder'
+Bundle 'L9'
+Bundle 'Liquid-Carbon'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'a.vim'
+Bundle 'acx0/Conque-Shell'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'bufexplorer.zip'
+Bundle 'edsono/vim-matchit'
+Bundle 'flazz/vim-colorschemes'
 Bundle 'garbas/vim-snipmate'
 Bundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
 Bundle 'gmarik/vundle'
 Bundle 'honza/vim-snippets'
 Bundle 'kien/ctrlp.vim'
-Bundle 'L9'
-"Bundle 'LaTeX-Box-Team/LaTeX-Box'
-Bundle 'Lokaltog/powerline', {'rtp':  'powerline/bindings/vim'}
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'Liquid-Carbon'
-Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'mileszs/ack.vim'
 Bundle 'nelstrom/vim-visual-star-search'
 Bundle 'noahfrederick/vim-hemisu'
 Bundle 'recover.vim'
-Bundle 'scrooloose/nerdcommenter' 
-Bundle 'scrooloose/nerdtree' 
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
 Bundle 'shawncplus/skittles_berry'
 Bundle 'tomtom/tlib_vim'
 Bundle 'tpope/vim-abolish'
-Bundle 'tpope/vim-fugitive' 
+Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround' 
+Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'vimwiki/vimwiki'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-shell'
+Plugin 'bling/vim-airline'
 
 
 let g:Powerline_symbols = 'fancy'
@@ -76,13 +77,13 @@ set tabstop=4
 set shiftwidth=4
 
 " auto directory
-set acd					
+set acd
 " side scroll off
 set siso=0
 " set lines=44
 
 " scroll bars
-set guioptions+=LlRrb	
+set guioptions+=LlRrb
 set guioptions-=LlRrb
 " hide toolbar
 set guioptions-=T
@@ -157,7 +158,7 @@ map <silent><A-Down> <C-w>-
 
 " PEEPCODE ADDITIONS ------------------------------------------------
 
-set showcmd      		" Display incomplete commands.
+set showcmd                     " Display incomplete commands.
 set showmode                    " Display the mode you're in.
 set hidden                      " Handle multiple buffers better.
 set smartcase                   " But case-sensitive if expression contains a capital letter.
@@ -185,7 +186,7 @@ vmap < <gv
 " PEEPCODE ADDITIONS ------------------------------------------------
 
 "  SPF-13 ADDITIONS ------------------------------------------------
-" VIM UI 
+" VIM UI
 set backspace=indent,eol,start  " backspace for dummies
 set showmatch                   " show matching brackets/parenthesis
 set incsearch                   " find as you type search
@@ -201,7 +202,7 @@ set scrolloff=3                 " minimum lines to keep above and below cursor
 
 " Key (re)Mappings
 
-let mapleader=','    
+let mapleader=','
 
 " Easier moving in tabs and windows
 map <C-J> <C-W>j<C-W>_
@@ -211,7 +212,7 @@ map <C-H> <C-W>h<C-W>_
 
 " Plugins
 
-map <leader>e :NERDTreeToggle<CR>:NERDTreeMirror<CR> 
+map <leader>e :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 "  SPF-13 ADDITIONS ------------------------------------------------
 
 set encoding=utf-8
@@ -237,7 +238,7 @@ command NAUTILUS !nautilus . &
 " === VIM-LATEX PACKAGE SETTINGS ===
 
 " Change gvim's path for LaTeX support
-let $PATH='/usr/local/pgsql/bin:/usr/local/texlive/2013/bin/x86_64-linux:/home/gokhan/perl5/bin' . $PATH 
+let $PATH='/usr/local/pgsql/bin:/usr/local/texlive/2013/bin/x86_64-linux:/home/gokhan/perl5/bin' . $PATH
 
 " Compile to pdf by default
 let g:Tex_DefaultTargetFormat = 'pdf'
