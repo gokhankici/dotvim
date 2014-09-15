@@ -79,7 +79,30 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# ...............................................................................
+# ... MY ADDITIONS ..............................................................
+# ...............................................................................
+
+kill_emacs ()
+{
+	# finds the pid of the emacs daemon process and kills it
+	# kill the first one since the second one is the `grep` process
+	ps aux | grep "emacs --daemon" | grep -v 'grep' | awk '{print $2}' | xargs kill
+}
+
+alias e='emacsclient --nw'
+
+export PIN_HOME="/home/gokhan/Library/pin-2.13-62141-gcc.4.4.7-linux"
+export PIN_ROOT="/home/gokhan/Library/pin-2.13-62141-gcc.4.4.7-linux"
+export PATH="$PATH:~/bin:/usr/local/texlive/2013/bin/x86_64-linux:$PIN_HOME"
+export INFOPATH="$INFOPATH:/usr/local/texlive/2013/texmf-dist/doc/info"
+export MANPATH="$MANPATH:/usr/local/texlive/2013/texmf-dist/doc/man"
+
+alias cd..="cd .."
+
 # Base16 Shell
 BASE16_SCHEME="default"
 BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
 [[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
+
+
