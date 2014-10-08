@@ -133,6 +133,7 @@ alias e='emacsclient --nw'
 export PATH="$PATH:~/bin:/usr/local/texlive/2014/bin/x86_64-linux"
 export INFOPATH="$INFOPATH:/usr/local/texlive/2014/texmf-dist/doc/info"
 export MANPATH="$MANPATH:/usr/local/texlive/2014/texmf-dist/doc/man"
+TLMGR_DIR=$(dirname $(which tlmgr))
 
 alias cd..="cd .."
 
