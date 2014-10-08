@@ -145,3 +145,4 @@ BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
 alias tmux='TERM=screen-256color tmux'
 alias tmuxa='TERM=screen-256color tmux attach'
 
+alias tlmgr="cd $TLMGR_DIR && sudo ./tlmgr -gui"
