@@ -135,4 +135,12 @@ export INFOPATH="$INFOPATH:/usr/local/texlive/2013/texmf-dist/doc/info"
 export MANPATH="$MANPATH:/usr/local/texlive/2013/texmf-dist/doc/man"
 
 alias cd..="cd .."
+ 
+# Base16 Shell
+BASE16_SCHEME="default"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
+[[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
+
+alias tmux='TERM=screen-256color tmux'
+alias tmuxa='TERM=screen-256color tmux attach'
 
