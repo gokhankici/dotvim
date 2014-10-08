@@ -128,14 +128,14 @@ kill_emacs ()
 
 alias e='emacsclient --nw'
 
-export PIN_HOME="/home/gokhan/Library/pin-2.13-62141-gcc.4.4.7-linux"
-export PIN_ROOT="/home/gokhan/Library/pin-2.13-62141-gcc.4.4.7-linux"
-export PATH="$PATH:~/bin:/usr/local/texlive/2013/bin/x86_64-linux:$PIN_HOME"
-export INFOPATH="$INFOPATH:/usr/local/texlive/2013/texmf-dist/doc/info"
-export MANPATH="$MANPATH:/usr/local/texlive/2013/texmf-dist/doc/man"
+#export PIN_HOME="/home/gokhan/Library/pin-2.13-62141-gcc.4.4.7-linux"
+#export PIN_ROOT="/home/gokhan/Library/pin-2.13-62141-gcc.4.4.7-linux"
+export PATH="$PATH:~/bin:/usr/local/texlive/2014/bin/x86_64-linux"
+export INFOPATH="$INFOPATH:/usr/local/texlive/2014/texmf-dist/doc/info"
+export MANPATH="$MANPATH:/usr/local/texlive/2014/texmf-dist/doc/man"
 
 alias cd..="cd .."
- 
+
 # Base16 Shell
 BASE16_SCHEME="default"
 BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"

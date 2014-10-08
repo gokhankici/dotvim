@@ -255,3 +255,6 @@ map <leader>t :ConqueTerm bash<cr>
 
 " Make it so that a curly brace automatically inserts an indented line
 inoremap {<CR> {<CR>}<Esc>O<BS><Tab>}
+
+" Switches on spell checking
+setlocal spell spelllang=en_us
