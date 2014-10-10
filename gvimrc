@@ -73,5 +73,8 @@ if has('win32') || has('win64')
 	set guifont=DejaVu_Sans_Mono:h11:cANSI
 else
 	"set guifont=DejaVu\ Sans\ Mono\ 14
-	set guifont=Bitstream\ Vera\ Sans\ Mono\ 11
+	"set guifont=Bitstream\ Vera\ Sans\ Mono\ 11
 endif
+
+" Change gvim's path for LaTeX support
+let $PATH='/usr/local/texlive/2014/bin/x86_64-linux:' . $PATH

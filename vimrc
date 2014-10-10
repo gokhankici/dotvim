@@ -69,6 +69,30 @@ let g:Powerline_symbols = 'fancy'
 let g:ctrlp_map='<c-p>'
 let g:ctrlp_cmd='CtrlPBuffer'
 
+if executable('ag')
+	" Use Ag over Grep
+	set grepprg=ag\ --nogroup\ --nocolor
+
+	" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+	" ag is fast enough that CtrlP doesn't need to cache
+	let g:ctrlp_use_caching = 0
+
+	autocmd VimEnter * nmap <leader>f :CtrlP<CR>
+
+	" bind \ (backward slash) to grep shortcut
+	command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+
+	nnoremap \ :Ag<SPACE>
+
+	" bind K to grep word under cursor
+	nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+else
+	"Map this function at runtime since other way didn't worked
+	autocmd VimEnter * nmap <leader>f :FufFile<CR>
+endif
+
 " Coding
 syntax on
 filetype plugin indent on
@@ -81,7 +105,7 @@ set shiftwidth=4
 set cursorline " highlight current line
 
 " auto directory
-set acd
+"set acd
 " side scroll off
 set siso=0
 " set lines=44
@@ -153,9 +177,6 @@ inoremap <Esc>D <left>
 " Change directory to home at startup
 " NerdTREE sees C:\ as initial directory
 autocmd VimEnter * cd ~
-
-"Map this function at runtime since other way didn't worked
-autocmd VimEnter * nmap <leader>f :FufFile<CR>
 
 "Resize the windows with Alt key
 map <silent><A-Left> <C-w><
@@ -244,11 +265,12 @@ command NAUTILUS !nautilus . &
 
 " === VIM-LATEX PACKAGE SETTINGS ===
 
-" Change gvim's path for LaTeX support
-let $PATH='/usr/local/pgsql/bin:/usr/local/texlive/2013/bin/x86_64-linux:/home/gokhan/perl5/bin' . $PATH
-
 " Compile to pdf by default
 let g:Tex_DefaultTargetFormat = 'pdf'
+
+" these settings are for making vim run faster on .tex files
+autocmd FileType tex :NoMatchParen
+au FileType tex setlocal nocursorline
 
 " === VIM-LATEX PACKAGE SETTINGS ===
 
@@ -259,3 +281,6 @@ inoremap {<CR> {<CR>}<Esc>O<BS><Tab>}
 
 " Switches on spell checking
 setlocal spell spelllang=en_us
+
+" Empty space at the bottom of gVim windows
+set guiheadroom=0
