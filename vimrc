@@ -284,3 +284,14 @@ setlocal spell spelllang=en_us
 
 " Empty space at the bottom of gVim windows
 set guiheadroom=0
+
+" Press Space to turn off highlighting and clear any message already displayed.
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
+" User defined function to remove trailing whitespace
+:function RemoveTrailingWhitespace()
+:%s/\s\s*$//g
+:noh
+:endfunction
+
+command RT call RemoveTrailingWhitespace()
