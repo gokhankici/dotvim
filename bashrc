@@ -142,16 +142,22 @@ BASE16_SCHEME="default"
 BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
 [[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
 
-alias tmux='TERM=screen-256color tmux'
-alias tmuxa='TERM=screen-256color tmux attach'
+alias t='TERM=screen-256color tmux'
+alias ta='TERM=screen-256color tmux attach -t'
+alias tl='tmux list-sessions'
 
 alias tlmgr="cd $TLMGR_DIR && sudo ./tlmgr -gui"
 
 wee ()
 {
 	if [[ $(tmux list-sessions | grep weechat) ]]; then
-		tmux attach -t weechat
+		TERM=screen256-color tmux attach -t weechat
 	else
-		tmux new -s weechat weechat
+		TERM=screen256-color tmux new -s weechat weechat
 	fi
+}
+
+tn ()
+{
+	TERM=screen256-color tmux new -s $1 $1
 }
