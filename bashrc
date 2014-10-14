@@ -146,3 +146,12 @@ alias tmux='TERM=screen-256color tmux'
 alias tmuxa='TERM=screen-256color tmux attach'
 
 alias tlmgr="cd $TLMGR_DIR && sudo ./tlmgr -gui"
+
+wee ()
+{
+	if [[ $(tmux list-sessions | grep weechat) ]]; then
+		tmux attach -t weechat
+	else
+		tmux new -s weechat weechat
+	fi
+}
