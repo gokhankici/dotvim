@@ -56,9 +56,12 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
+Bundle 'tpope/vim-vinegar'
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'vimwiki/vimwiki'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-shell'
+
 Plugin 'bling/vim-airline'
 Plugin 'chriskempson/base16-vim'
 
@@ -295,3 +298,5 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 :endfunction
 
 command RT call RemoveTrailingWhitespace()
+
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
