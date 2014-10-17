@@ -62,11 +62,15 @@ Bundle 'vimwiki/vimwiki'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-shell'
 
+Bundle 'rhysd/vim-clang-format'
+Bundle 'operator-user'
+
 Plugin 'bling/vim-airline'
 Plugin 'chriskempson/base16-vim'
 
 
 let g:Powerline_symbols = 'fancy'
+let g:airline#extensions#whitespace#mixed_indent_algo = 1
 
 " Set CtrlP command
 let g:ctrlp_map='<c-p>'
@@ -300,3 +304,24 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 command RT call RemoveTrailingWhitespace()
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+" c,c++ formatting
+let g:clang_format#style_options = {
+			\ "AccessModifierOffset" : -4,
+			\ "AllowShortIfStatementsOnASingleLine" : "true",
+			\ "AlwaysBreakTemplateDeclarations" : "true",
+			\ "BreakBeforeBraces" : "Allman",
+			\ "TabWidth" : 4,
+			\ "UseTab" : "Always",
+			\ "Standard" : "C++11"}
+
+augroup ClangFormatSettings
+	autocmd!
+	" map to <Leader>cf in C++ code
+	autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+	autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+	" if you install vim-operator-user
+	autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
+augroup END
+
+autocmd FileType c,cpp,objc map gd :YcmCompleter GoToDeclaration

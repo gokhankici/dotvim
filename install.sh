@@ -7,3 +7,4 @@ ln -s ~/.vim/tmux.conf ~/.tmux.conf
 ln -s ~/.vim/Xresources ~/.Xresources
 ln -s ~/.vim/Xmodmap ~/.Xmodmap
 ln -s ~/.vim/screenrc ~/.screenrc
+ln -s ~/.vim/clang-format ~/.clang-format
