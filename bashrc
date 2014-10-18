@@ -166,4 +166,5 @@ alias tl='tmux list-sessions'
 
 alias wee='start_in_tmux weechat'
 alias m='start_in_tmux mps'
+alias my='mpsyt'
 
