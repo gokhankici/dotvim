@@ -20,10 +20,6 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " Bundles
-"Bundle 'CSApprox'
-"Bundle 'LaTeX-Box-Team/LaTeX-Box'
-"Bundle 'Lokaltog/powerline', {'rtp':  'powerline/bindings/vim'}
-"Bundle 'ervandew/supertab'
 Bundle 'AutoClose'
 Bundle 'FuzzyFinder'
 Bundle 'L9'
@@ -36,20 +32,22 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'bufexplorer.zip'
 Bundle 'edsono/vim-matchit'
 Bundle 'flazz/vim-colorschemes'
-Bundle 'garbas/vim-snipmate'
 Bundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
 Bundle 'gmarik/vundle'
-Bundle 'honza/vim-snippets'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'nelstrom/vim-visual-star-search'
 Bundle 'noahfrederick/vim-hemisu'
 Bundle 'ntpeters/vim-better-whitespace'
+Bundle 'operator-user'
 Bundle 'recover.vim'
+Bundle 'rhysd/vim-clang-format'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'shawncplus/skittles_berry'
+"Bundle 'ShowFunc.vim'
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'taglist.vim'
 Bundle 'tomtom/tlib_vim'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-fugitive'
@@ -57,13 +55,9 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-vinegar'
-Bundle 'Valloric/YouCompleteMe'
 Bundle 'vimwiki/vimwiki'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-shell'
-
-Bundle 'rhysd/vim-clang-format'
-Bundle 'operator-user'
 
 Plugin 'bling/vim-airline'
 Plugin 'chriskempson/base16-vim'
@@ -324,4 +318,19 @@ augroup ClangFormatSettings
 	autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
 augroup END
 
-autocmd FileType c,cpp,objc map gd :YcmCompleter GoToDeclaration
+" === YOUCOMPLETEME PACKAGE SETTINGS ===
+Plugin 'Valloric/YouCompleteMe'
+autocmd FileType c,cpp,objc map gd :YcmCompleter GoTo<CR>
+
+" === ULTISNIPS PACKAGE SETTINGS ===
+" Track the engine.
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsSnippetDirectories=["bundle/vim-snippets/UltiSnips","UltiSnips"]
+
+"" If you want :UltiSnipsEdit to split your window.
+"let g:UltiSnipsEditSplit="vertical"
