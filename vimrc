@@ -136,7 +136,8 @@ se t_Co=256
 set background=dark
 " Access colors present in 256 colorspace"
 let base16colorspace=256
-colorscheme base16-default
+colorscheme wombat256mod
+"colorscheme base16-default
 "colorscheme desert
 "colorscheme skittles_berry
 
@@ -330,7 +331,3 @@ Plugin 'honza/vim-snippets'
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:UltiSnipsSnippetDirectories=["bundle/vim-snippets/UltiSnips","UltiSnips"]
-
-"" If you want :UltiSnipsEdit to split your window.
-"let g:UltiSnipsEditSplit="vertical"
