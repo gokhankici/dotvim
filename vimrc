@@ -282,7 +282,8 @@ map <leader>t :ConqueTerm bash<cr>
 "inoremap {<CR> {<CR>}<Esc>O<BS><Tab>}
 
 " Switches on spell checking
-setlocal spell spelllang=en_us
+"setlocal spell spelllang=en_us
+autocmd FileType txt,tex setlocal spell spelllang=en_us
 
 " Empty space at the bottom of gVim windows
 set guiheadroom=0
@@ -330,14 +331,14 @@ let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 autocmd FileType c,cpp,objc map gd :YcmCompleter GoTo<CR>
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 "Do not ask when starting vim
-let g:ycm_confirm_extra_conf = 1
+let g:ycm_confirm_extra_conf = 0
 
+" === relative line numbers ===
 function! DisableRelative()
 	set norelativenumber
 	set number
 endfunc
 
-" relative line numbers
 function! NumberToggle()
 	if(&relativenumber == 1)
 		call DisableRelative()
