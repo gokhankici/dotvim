@@ -137,10 +137,10 @@ TLMGR_DIR=$(dirname $(which tlmgr))
 
 alias cd..="cd .."
 
-## Base16 Shell
-#BASE16_SCHEME="default"
-#BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
-#[[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
+# Base16 Shell
+BASE16_SCHEME="default"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
+[[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
 
 alias tlmgr="cd $TLMGR_DIR && sudo ./tlmgr -gui"
 
@@ -149,6 +149,11 @@ alias tlmgr="cd $TLMGR_DIR && sudo ./tlmgr -gui"
 tn ()
 {
 	TERM=screen-256color tmux new -s $1 $1
+}
+
+re ()
+{
+	readelf -a $1 | less
 }
 
 start_in_tmux ()

@@ -20,12 +20,13 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " Bundles
+filetype off
 Bundle 'AutoClose'
 Bundle 'FuzzyFinder'
 Bundle 'L9'
 Bundle 'Liquid-Carbon'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'MarcWeber/vim-addon-mw-utils'
+"Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'a.vim'
 Bundle 'acx0/Conque-Shell'
 Bundle 'altercation/vim-colors-solarized'
@@ -48,7 +49,7 @@ Bundle 'shawncplus/skittles_berry'
 "Bundle 'ShowFunc.vim'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'taglist.vim'
-Bundle 'tomtom/tlib_vim'
+"Bundle 'tomtom/tlib_vim'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-repeat'
@@ -58,10 +59,12 @@ Bundle 'tpope/vim-vinegar'
 Bundle 'vimwiki/vimwiki'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-shell'
-
 Plugin 'bling/vim-airline'
 Plugin 'chriskempson/base16-vim'
-
+Plugin 'honza/vim-snippets'
+Plugin 'SirVer/ultisnips'
+Plugin 'Valloric/YouCompleteMe'
+filetype plugin indent on
 
 let g:Powerline_symbols = 'fancy'
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
@@ -96,9 +99,7 @@ endif
 
 " Coding
 syntax on
-filetype plugin indent on
-set number
-filetype plugin on
+set relativenumber
 set smartindent
 set autoindent
 set tabstop=4
@@ -106,7 +107,7 @@ set shiftwidth=4
 set cursorline " highlight current line
 
 " auto directory
-"set acd
+set acd
 " side scroll off
 set siso=0
 " set lines=44
@@ -136,8 +137,7 @@ se t_Co=256
 set background=dark
 " Access colors present in 256 colorspace"
 let base16colorspace=256
-colorscheme wombat256mod
-"colorscheme base16-default
+colorscheme base16-default
 "colorscheme desert
 "colorscheme skittles_berry
 
@@ -279,7 +279,7 @@ au FileType tex setlocal nocursorline
 map <leader>t :ConqueTerm bash<cr>
 
 " Make it so that a curly brace automatically inserts an indented line
-inoremap {<CR> {<CR>}<Esc>O<BS><Tab>}
+"inoremap {<CR> {<CR>}<Esc>O<BS><Tab>}
 
 " Switches on spell checking
 setlocal spell spelllang=en_us
@@ -319,15 +319,35 @@ augroup ClangFormatSettings
 	autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
 augroup END
 
-" === YOUCOMPLETEME PACKAGE SETTINGS ===
-Plugin 'Valloric/YouCompleteMe'
-autocmd FileType c,cpp,objc map gd :YcmCompleter GoTo<CR>
-
 " === ULTISNIPS PACKAGE SETTINGS ===
 " Track the engine.
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+let g:UltiSnipsSnippetDirectories=["bundle/vim-snippets/UltiSnips","UltiSnips"]
+let g:UltiSnipsExpandTrigger="<C-j>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+" === YOUCOMPLETEME PACKAGE SETTINGS ===
+autocmd FileType c,cpp,objc map gd :YcmCompleter GoTo<CR>
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+"Do not ask when starting vim
+let g:ycm_confirm_extra_conf = 1
+
+function! DisableRelative()
+	set norelativenumber
+	set number
+endfunc
+
+" relative line numbers
+function! NumberToggle()
+	if(&relativenumber == 1)
+		call DisableRelative()
+	else
+		set relativenumber
+	endif
+endfunc
+
+nnoremap <C-l> :call NumberToggle()<CR>
+:au FocusLost * :call DisableRelative()
+:au FocusGained * :set relativenumber
+autocmd InsertEnter * :call DisableRelative()
+autocmd InsertLeave * :set relativenumber
