@@ -291,10 +291,10 @@ set guiheadroom=0
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 " User defined function to remove trailing whitespace
-:function RemoveTrailingWhitespace()
-:%s/\s\s*$//g
-:noh
-:endfunction
+function! RemoveTrailingWhitespace()
+	%s/\s\+$//e
+	noh
+endfunction
 
 command RT call RemoveTrailingWhitespace()
 
@@ -357,3 +357,4 @@ autocmd BufWinEnter * silent! :%foldopen!
 
 " === clear whitespace when saving
 autocmd BufWritePre * :call RemoveTrailingWhitespace()
+
