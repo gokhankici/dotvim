@@ -331,6 +331,8 @@ autocmd FileType c,cpp,objc map gd :YcmCompleter GoTo<CR>
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 "Do not ask when starting vim
 let g:ycm_confirm_extra_conf = 0
+nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>
+nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>
 
 " === relative line numbers ===
 function! DisableRelative()
