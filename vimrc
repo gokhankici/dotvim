@@ -26,7 +26,6 @@ Bundle 'FuzzyFinder'
 Bundle 'L9'
 Bundle 'Liquid-Carbon'
 Bundle 'Lokaltog/vim-easymotion'
-"Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'a.vim'
 Bundle 'acx0/Conque-Shell'
 Bundle 'altercation/vim-colors-solarized'
@@ -46,10 +45,8 @@ Bundle 'rhysd/vim-clang-format'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'shawncplus/skittles_berry'
-"Bundle 'ShowFunc.vim'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'taglist.vim'
-"Bundle 'tomtom/tlib_vim'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-repeat'
@@ -64,6 +61,8 @@ Plugin 'chriskempson/base16-vim'
 Plugin 'honza/vim-snippets'
 Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'Raimondi/delimitMate'
+Plugin 'noerrmsg.vim' " disable error messages that YCM generates
 filetype plugin indent on
 
 let g:Powerline_symbols = 'fancy'
@@ -352,3 +351,9 @@ nnoremap <C-l> :call NumberToggle()<CR>
 :au FocusGained * :set relativenumber
 autocmd InsertEnter * :call DisableRelative()
 autocmd InsertLeave * :set relativenumber
+
+" === disable fold at startup
+autocmd BufWinEnter * silent! :%foldopen!
+
+" === clear whitespace when saving
+autocmd BufWritePre * :call RemoveTrailingWhitespace()
