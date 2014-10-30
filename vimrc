@@ -21,20 +21,22 @@ call vundle#rc()
 
 " Bundles
 filetype off
-Bundle 'AutoClose'
-Bundle 'FuzzyFinder'
-Bundle 'L9'
-Bundle 'Liquid-Carbon'
-Bundle 'Lokaltog/vim-easymotion'
 Bundle 'a.vim'
 Bundle 'acx0/Conque-Shell'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'AutoClose'
 Bundle 'bufexplorer.zip'
 Bundle 'edsono/vim-matchit'
 Bundle 'flazz/vim-colorschemes'
+Bundle 'FuzzyFinder'
 Bundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
 Bundle 'gmarik/vundle'
 Bundle 'kien/ctrlp.vim'
+Bundle 'kana/vim-textobj-user'
+Bundle 'rbonvall/vim-textobj-latex'
+Bundle 'L9'
+Bundle 'Liquid-Carbon'
+Bundle 'Lokaltog/vim-easymotion'
 Bundle 'mileszs/ack.vim'
 Bundle 'nelstrom/vim-visual-star-search'
 Bundle 'noahfrederick/vim-hemisu'
@@ -45,8 +47,8 @@ Bundle 'rhysd/vim-clang-format'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'shawncplus/skittles_berry'
-Bundle 'terryma/vim-multiple-cursors'
 Bundle 'taglist.vim'
+Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-repeat'
@@ -59,10 +61,12 @@ Bundle 'xolox/vim-shell'
 Plugin 'bling/vim-airline'
 Plugin 'chriskempson/base16-vim'
 Plugin 'honza/vim-snippets'
+Plugin 'neco-ghc'
+Plugin 'Shougo/neocomplcache.vim' " haskell plugins
+Plugin 'noerrmsg.vim' " disable error messages that YCM generates
+Plugin 'Raimondi/delimitMate'
 Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'Raimondi/delimitMate'
-Plugin 'noerrmsg.vim' " disable error messages that YCM generates
 filetype plugin indent on
 
 let g:Powerline_symbols = 'fancy'
@@ -359,4 +363,3 @@ autocmd BufWinEnter * silent! :%foldopen!
 
 " === clear whitespace when saving
 autocmd BufWritePre * :call RemoveTrailingWhitespace()
-
