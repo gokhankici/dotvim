@@ -58,15 +58,24 @@ Bundle 'tpope/vim-vinegar'
 Bundle 'vimwiki/vimwiki'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-shell'
+Bundle 'wlangstroth/vim-haskell'
 Plugin 'bling/vim-airline'
 Plugin 'chriskempson/base16-vim'
 Plugin 'honza/vim-snippets'
-Plugin 'neco-ghc'
-Plugin 'Shougo/neocomplcache.vim' " haskell plugins
 Plugin 'noerrmsg.vim' " disable error messages that YCM generates
 Plugin 'Raimondi/delimitMate'
+Plugin 'Shougo/neocomplcache.vim' " haskell plugins
+Plugin 'Shougo/vimfiler.vim'
+Plugin 'Shougo/unite.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
+" haskell
+Plugin 'neco-ghc'
+Bundle 'scrooloose/syntastic'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'eagletmt/ghcmod-vim'
+Plugin 'dag/vim2hs'
+Plugin 'kana/vim-textobj-indent'
 filetype plugin indent on
 
 let g:Powerline_symbols = 'fancy'
@@ -110,7 +119,7 @@ set shiftwidth=4
 set cursorline " highlight current line
 
 " auto directory
-set acd
+"set acd
 " side scroll off
 set siso=0
 " set lines=44
@@ -277,6 +286,9 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 autocmd FileType tex :NoMatchParen
 au FileType tex setlocal nocursorline
 
+" change this setting since it conflicts with ultisnips
+imap <C-space> <Plug>IMAP_JumpForward
+
 " === VIM-LATEX PACKAGE SETTINGS ===
 
 map <leader>t :ConqueTerm bash<cr>
@@ -329,6 +341,7 @@ let g:UltiSnipsSnippetDirectories=["bundle/vim-snippets/UltiSnips","UltiSnips"]
 let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+":UltiSnipsAddFiletypes hs.haskell
 
 " === YOUCOMPLETEME PACKAGE SETTINGS ===
 autocmd FileType c,cpp,objc map gd :YcmCompleter GoTo<CR>
@@ -363,3 +376,10 @@ autocmd BufWinEnter * silent! :%foldopen!
 
 " === clear whitespace when saving
 autocmd BufWritePre * :call RemoveTrailingWhitespace()
+
+" === vimfiler options ===
+let g:vimfiler_as_default_explorer = 1
+
+" === Haskell options
+let g:haddock_browser = 'chromium'
+"au BufEnter *.hs compiler ghc
