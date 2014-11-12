@@ -1,0 +1,13 @@
+snippet geldim "Debugla beni"
+printf("GELDIM\n");$0
+endsnippet
+
+snippet idb "Wraps in a #ifdef region"
+#ifdef ${1:DEBUG}
+${0:${VISUAL}}
+#endif
+endsnippet
+
+snippet todo "TODO for C++ files" b
+// `whoami` TODO: ${1:fix this} `date`
+endsnippet
