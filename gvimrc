@@ -72,8 +72,8 @@ set background=dark
 if has('win32') || has('win64')
 	set guifont=DejaVu_Sans_Mono:h11:cANSI
 else
-	set guifont=Source\ Code\ Pro\ Medium\ 10
-	"set guifont=DejaVu\ Sans\ Mono\ 14
+	"set guifont=Source\ Code\ Pro\ Medium\ 10
+	set guifont=DejaVu\ Sans\ Mono\ 10
 	"set guifont=Bitstream\ Vera\ Sans\ Mono\ 11
 endif
 
