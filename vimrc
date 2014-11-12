@@ -69,6 +69,7 @@ Plugin 'Shougo/vimfiler.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'jceb/vim-orgmode'
 " haskell
 Plugin 'neco-ghc'
 Bundle 'scrooloose/syntastic'
@@ -154,10 +155,10 @@ colorscheme base16-default
 "colorscheme skittles_berry
 
 " add scrolling for html,tex and txt types
-au FileType html,tex,text noremap <buffer> j gj
-au FileType html,tex,text noremap <buffer> k gk
-au FileType html,tex,text noremap <buffer> 0 g0
-au FileType html,tex,text noremap <buffer> $ g$
+au FileType html,tex,text,org noremap <buffer> j gj
+au FileType html,tex,text,org noremap <buffer> k gk
+au FileType html,tex,text,org noremap <buffer> 0 g0
+au FileType html,tex,text,org noremap <buffer> $ g$
 
 " do not split words at the end of the screen
 set linebreak
