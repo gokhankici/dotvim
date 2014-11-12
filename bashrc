@@ -130,7 +130,7 @@ alias e='emacsclient --nw'
 
 #export PIN_HOME="/home/gokhan/Library/pin-2.13-62141-gcc.4.4.7-linux"
 #export PIN_ROOT="/home/gokhan/Library/pin-2.13-62141-gcc.4.4.7-linux"
-export PATH="$PATH:~/bin:/usr/local/texlive/2014/bin/x86_64-linux"
+export PATH="$PATH:~/bin:/usr/local/texlive/2014/bin/x86_64-linux:$HOME/.cabal/bin"
 export INFOPATH="$INFOPATH:/usr/local/texlive/2014/texmf-dist/doc/info"
 export MANPATH="$MANPATH:/usr/local/texlive/2014/texmf-dist/doc/man"
 TLMGR_DIR=$(dirname $(which tlmgr))
@@ -172,4 +172,3 @@ alias tl='tmux list-sessions'
 alias wee='start_in_tmux weechat'
 alias m='start_in_tmux mps'
 alias my='mpsyt'
-
