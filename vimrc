@@ -70,6 +70,7 @@ Plugin 'Shougo/unite.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'jceb/vim-orgmode'
+Plugin 'nixon/vim-vmath'
 " haskell
 Plugin 'neco-ghc'
 Bundle 'scrooloose/syntastic'
@@ -384,3 +385,25 @@ let g:vimfiler_as_default_explorer = 1
 " === Haskell options
 let g:haddock_browser = 'chromium'
 "au BufEnter *.hs compiler ghc
+
+noremap <silent> <F4> :let @*=expand("%:p")<CR>
+
+" vim-vmath key maps
+vmap <expr>  ++  VMATH_YankAndAnalyse()
+nmap         ++  vip++
+
+" Use python to create a calculator
+command! -nargs=+ Calc :py print <args>
+py from math import *
+
+" Paste the output of the function to a new tab
+function! PasteMessage(cmd)
+	redir => message
+	silent execute a:cmd
+	redir END
+	"tabnew
+	silent put=message
+	set nomodified
+endfunction
+command! -nargs=+ -complete=command PasteMessage call PasteMessage(<q-args>)
+
