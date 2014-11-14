@@ -178,15 +178,18 @@ nnoremap <Esc>A <up>
 nnoremap <Esc>B <down>
 nnoremap <Esc>C <right>
 nnoremap <Esc>D <left>
-nnoremap <Esc>F <end>
-nnoremap <Esc>H <home>
 
 inoremap <Esc>A <up>
 inoremap <Esc>B <down>
 inoremap <Esc>C <right>
 inoremap <Esc>D <left>
-inoremap <Esc>F <end>
-inoremap <Esc>H <home>
+
+if $TERM =~ '^screen-256color'
+	map <Esc>OH <Home>
+	map! <Esc>OH <Home>
+	map <Esc>OF <End>
+	map! <Esc>OF <End>
+endif
 
 " My function to delete all buffers and close vim
 function DeleteAllAndClose(ignore)
