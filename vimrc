@@ -2,6 +2,7 @@
 set nocompatible
 filetype off
 
+" fix some weird windows bug
 if has('win32') || has('win64')
 	set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
 
@@ -19,15 +20,13 @@ endif
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" Bundles
+" Plugins
 filetype off
 Bundle 'a.vim'
 Bundle 'acx0/Conque-Shell'
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'AutoClose'
 Bundle 'bufexplorer.zip'
 Bundle 'edsono/vim-matchit'
-Bundle 'flazz/vim-colorschemes'
 Bundle 'FuzzyFinder'
 Bundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
 Bundle 'gmarik/vundle'
@@ -46,7 +45,6 @@ Bundle 'recover.vim'
 Bundle 'rhysd/vim-clang-format'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
-Bundle 'shawncplus/skittles_berry'
 Bundle 'taglist.vim'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-abolish'
@@ -60,7 +58,6 @@ Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-shell'
 Bundle 'wlangstroth/vim-haskell'
 Plugin 'bling/vim-airline'
-Plugin 'chriskempson/base16-vim'
 Plugin 'honza/vim-snippets'
 Plugin 'noerrmsg.vim' " disable error messages that YCM generates
 Plugin 'Raimondi/delimitMate'
@@ -78,6 +75,12 @@ Plugin 'Shougo/vimproc.vim'
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'dag/vim2hs'
 Plugin 'kana/vim-textobj-indent'
+" Colorschemes
+Plugin 'chriskempson/base16-vim'
+Bundle 'shawncplus/skittles_berry'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'flazz/vim-colorschemes'
+Plugin 'sjl/badwolf'
 filetype plugin indent on
 
 let g:Powerline_symbols = 'fancy'
@@ -87,6 +90,7 @@ let g:airline#extensions#whitespace#mixed_indent_algo = 1
 let g:ctrlp_map='<c-p>'
 let g:ctrlp_cmd='CtrlPBuffer'
 
+" use silver-searcher for file system search
 if executable('ag')
 	" Use Ag over Grep
 	set grepprg=ag\ --nogroup\ --nocolor
@@ -120,6 +124,9 @@ set tabstop=4
 set shiftwidth=4
 set cursorline " highlight current line
 
+set lazyredraw
+set ttyfast
+
 " auto directory
 "set acd
 " side scroll off
@@ -136,10 +143,10 @@ set guioptions-=T
 command GPP !g++ %:t -o %:t:r
 command Crun !%:t:r
 
-" C++ compile and run
-map <F9> :w<CR> :!g++ %:t -o %:t:r<CR> : !./%:t:r<CR>
-" Java compile and run
-map <F8> :w<CR> :!javac %:t<CR> : !java %:t:r<CR>
+"" C++ compile and run
+"map <F9> :w<CR> :!g++ %:t -o %:t:r<CR> : !./%:t:r<CR>
+"" Java compile and run
+"map <F8> :w<CR> :!javac %:t<CR> : !java %:t:r<CR>
 
 " select all
 map <C-A> ggVG
@@ -149,11 +156,10 @@ set vb t_vb=
 " set background
 se t_Co=256
 set background=dark
+
 " Access colors present in 256 colorspace"
 let base16colorspace=256
 colorscheme base16-default
-"colorscheme desert
-"colorscheme skittles_berry
 
 " add scrolling for html,tex and txt types
 au FileType html,tex,text,org noremap <buffer> j gj
@@ -172,61 +178,61 @@ nnoremap <Esc>A <up>
 nnoremap <Esc>B <down>
 nnoremap <Esc>C <right>
 nnoremap <Esc>D <left>
+nnoremap <Esc>F <end>
+nnoremap <Esc>H <home>
+
 inoremap <Esc>A <up>
 inoremap <Esc>B <down>
 inoremap <Esc>C <right>
 inoremap <Esc>D <left>
+inoremap <Esc>F <end>
+inoremap <Esc>H <home>
 
 " My function to delete all buffers and close vim
-:function DeleteAllAndClose(ignore)
-:	if(a:ignore)
-:		bufdo bd!
-:	else
-:		bufdo bd
-:	endif
-:	qa
-:endfunction
+function DeleteAllAndClose(ignore)
+	if(a:ignore)
+		bufdo bd!
+	else
+		bufdo bd
+	endif
+	qa
+endfunction
 
-:command -nargs=? QA call DeleteAllAndClose(0)
-:command -nargs=? QAI call DeleteAllAndClose(1)
+command -nargs=? QA call DeleteAllAndClose(0)
+command -nargs=? QAI call DeleteAllAndClose(1)
 
-" Change directory to home at startup
-" NerdTREE sees C:\ as initial directory
-autocmd VimEnter * cd ~
+"" Change directory to home at startup
+"" NerdTREE sees C:\ as initial directory
+"autocmd VimEnter * cd ~
 
 "Resize the windows with Alt key
-map <silent><A-Left> <C-w><
+map <silent><A-Left>  <C-w><
 map <silent><A-Right> <C-w>>
-map <silent><A-Up> <C-w>+
-map <silent><A-Down> <C-w>-
+map <silent><A-Up>    <C-w>+
+map <silent><A-Down>  <C-w>-
 
 " PEEPCODE ADDITIONS ------------------------------------------------
-
 set showcmd                     " Display incomplete commands.
 set showmode                    " Display the mode you're in.
 set hidden                      " Handle multiple buffers better.
 set smartcase                   " But case-sensitive if expression contains a capital letter.
 set laststatus=2                " Show the status line all the time
 
-" Useful status information at bottom of screen
-"set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
-
-"" Tab mappings.
-"map <leader>tt :tabnew<cr>
-"map <leader>te :tabedit
-"map <leader>tc :tabclose<cr>
-"map <leader>to :tabonly<cr>
-"map <leader>tn :tabnext<cr>
-"map <leader>tp :tabprevious<cr>
-"map <leader>tf :tabfirst<cr>
-"map <leader>tl :tablast<cr>
-"map <leader>tm :tabmove
+" Tab mappings.
+map <leader>tt :tabnew<cr>
+map <leader>te :tabedit
+map <leader>tc :tabclose<cr>
+map <leader>to :tabonly<cr>
+map <leader>tn :tabnext<cr>
+map <leader>tp :tabprevious<cr>
+map <leader>tf :tabfirst<cr>
+map <leader>tl :tablast<cr>
+map <leader>tm :tabmove
 
 " Shift text right and re-select
 vmap > >gv
 " Shift text left and re-select
 vmap < <gv
-
 " PEEPCODE ADDITIONS ------------------------------------------------
 
 "  SPF-13 ADDITIONS ------------------------------------------------
@@ -245,7 +251,6 @@ set scrolljump=5                " lines to scroll when cursor leaves screen
 set scrolloff=3                 " minimum lines to keep above and below cursor
 
 " Key (re)Mappings
-
 let mapleader=','
 
 " Easier moving in tabs and windows
@@ -255,8 +260,7 @@ map <C-L> <C-W>l<C-W>_
 map <C-H> <C-W>h<C-W>_
 
 " Plugins
-
-map <leader>e :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+map <leader>e :NERDTreeFind<CR>:NERDTreeMirror<CR>
 "  SPF-13 ADDITIONS ------------------------------------------------
 
 set encoding=utf-8
@@ -280,7 +284,6 @@ command TERM !gnome-terminal . &
 command NAUTILUS !nautilus . &
 
 " === VIM-LATEX PACKAGE SETTINGS ===
-
 " Compile to pdf by default
 let g:Tex_DefaultTargetFormat = 'pdf'
 
@@ -291,9 +294,8 @@ au FileType tex setlocal nocursorline
 " change this setting since it conflicts with ultisnips
 imap <C-space> <Plug>IMAP_JumpForward
 
-" === VIM-LATEX PACKAGE SETTINGS ===
-
-map <leader>t :ConqueTerm bash<cr>
+""Open command line
+"map <leader>t :ConqueTerm bash<cr>
 
 " Make it so that a curly brace automatically inserts an indented line
 "inoremap {<CR> {<CR>}<Esc>O<BS><Tab>}
@@ -343,7 +345,6 @@ let g:UltiSnipsSnippetDirectories=["bundle/vim-snippets/UltiSnips","UltiSnips"]
 let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
-":UltiSnipsAddFiletypes hs.haskell
 
 " === YOUCOMPLETEME PACKAGE SETTINGS ===
 autocmd FileType c,cpp,objc map gd :YcmCompleter GoTo<CR>
@@ -396,7 +397,7 @@ nmap         ++  vip++
 command! -nargs=+ Calc :py print <args>
 py from math import *
 
-" Paste the output of the function to a new tab
+" Paste the output of the function to the buffer
 function! PasteMessage(cmd)
 	redir => message
 	silent execute a:cmd
@@ -406,4 +407,3 @@ function! PasteMessage(cmd)
 	set nomodified
 endfunction
 command! -nargs=+ -complete=command PasteMessage call PasteMessage(<q-args>)
-
