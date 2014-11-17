@@ -260,7 +260,10 @@ map <C-L> <C-W>l<C-W>_
 map <C-H> <C-W>h<C-W>_
 
 " Plugins
-map <leader>e :NERDTreeFind<CR>:NERDTreeMirror<CR>
+"map <leader>e :NERDTreeFind<CR>:NERDTreeMirror<CR>
+"map <leader>e :NERDTreeFind<CR>:NERDTreeToggle<CR>
+map <leader>e :NERDTreeFind<CR>
+
 "  SPF-13 ADDITIONS ------------------------------------------------
 
 set encoding=utf-8
@@ -293,6 +296,10 @@ au FileType tex setlocal nocursorline
 
 " change this setting since it conflicts with ultisnips
 imap <C-space> <Plug>IMAP_JumpForward
+
+" save buffer before compiling
+autocmd FileType tex call Tex_MakeMap('<leader>ll', ':update!<CR>:call Tex_RunLaTeX()<CR>', 'n', '<buffer>')
+autocmd FileType tex call Tex_MakeMap('<leader>ll', '<ESC>:update!<CR>:call Tex_RunLaTeX()<CR>', 'v', '<buffer>')
 
 ""Open command line
 "map <leader>t :ConqueTerm bash<cr>
@@ -368,7 +375,7 @@ function! NumberToggle()
 	endif
 endfunc
 
-nnoremap <C-l> :call NumberToggle()<CR>
+"nnoremap <C-l> :call NumberToggle()<CR>
 :au FocusLost * :call DisableRelative()
 :au FocusGained * :set relativenumber
 autocmd InsertEnter * :call DisableRelative()
@@ -387,6 +394,10 @@ let g:vimfiler_as_default_explorer = 1
 let g:haddock_browser = 'chromium'
 "au BufEnter *.hs compiler ghc
 
+" Use space instead of tabs
+autocmd BufRead,BufNewFile *.hs,*.lhs setlocal expandtab
+
+" === copy file name
 noremap <silent> <F4> :let @*=expand("%:p")<CR>
 
 " vim-vmath key maps
