@@ -184,6 +184,12 @@ inoremap <Esc>B <down>
 inoremap <Esc>C <right>
 inoremap <Esc>D <left>
 
+" fix ctrl+left & ctrl+right problems in tmux
+map <ESC>[5D <C-Left>
+map <ESC>[5C <C-Right>
+map! <ESC>[5D <C-Left>
+map! <ESC>[5C <C-Right>
+
 if $TERM =~ '^screen-256color'
 	map <Esc>OH <Home>
 	map! <Esc>OH <Home>
@@ -401,7 +407,11 @@ let g:haddock_browser = 'chromium'
 autocmd BufRead,BufNewFile *.hs,*.lhs setlocal expandtab
 
 " === copy file name
-noremap <silent> <F4> :let @*=expand("%:p")<CR>
+function! CopyFileName()
+	let @+=expand("%:p")
+endfunction
+noremap <silent> <F4> :let @+=expand("%:p")<CR>
+command CopyFileName :call CopyFileName()
 
 " vim-vmath key maps
 vmap <expr>  ++  VMATH_YankAndAnalyse()
