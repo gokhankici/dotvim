@@ -172,3 +172,23 @@ alias tl='tmux list-sessions'
 alias wee='start_in_tmux weechat'
 alias m='start_in_tmux mps'
 alias my='mpsyt'
+
+mount_goto ()
+{
+	sudo sshfs -o allow_other -o IdentityFile=~/.ssh/id_rsa rkici@goto.ucsd.edu:/home/rkici /mnt/goto
+}
+
+umount_goto ()
+{
+	sudo umount /mnt/droplet
+}
+
+receive_goto ()
+{
+	rsync -azP --exclude=cscope.* goto:/home/rkici/llvm/ ~/llvm
+}
+
+send_goto ()
+{
+	rsync -azP --exclude=cscope.* ~/llvm/ goto:/home/rkici/llvm
+}
