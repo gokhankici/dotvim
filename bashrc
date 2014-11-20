@@ -173,22 +173,22 @@ alias wee='start_in_tmux weechat'
 alias m='start_in_tmux mps'
 alias my='mpsyt'
 
-mount_goto ()
-{
-	sudo sshfs -o allow_other -o IdentityFile=~/.ssh/id_rsa rkici@goto.ucsd.edu:/home/rkici /mnt/goto
-}
+#mount_goto ()
+#{
+	#sudo sshfs -o allow_other -o IdentityFile=~/.ssh/id_rsa rkici@goto.ucsd.edu:/home/rkici /mnt/goto
+#}
 
-umount_goto ()
-{
-	sudo umount /mnt/droplet
-}
+#umount_goto ()
+#{
+	#sudo umount /mnt/droplet
+#}
 
 receive_goto ()
 {
-	rsync -azP --exclude=cscope.* goto:/home/rkici/llvm/ ~/llvm
+	rsync -azP --exclude=cscope.* --exclude '.git'  goto:/home/rkici/llvm/ ~/llvm
 }
 
 send_goto ()
 {
-	rsync -azP --exclude=cscope.* ~/llvm/ goto:/home/rkici/llvm
+	rsync -azP --exclude=cscope.* --exclude '.git' ~/llvm/ goto:/home/rkici/llvm
 }
