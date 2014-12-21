@@ -185,10 +185,22 @@ alias my='mpsyt'
 
 receive_goto ()
 {
-	rsync -azP --exclude=cscope.* --exclude '.git'  goto:/home/rkici/llvm/ ~/llvm
+	rsync -azP \
+		--exclude-from '/home/gokhan/.vim/goto-exclude.txt' \
+		--exclude 'tools/clang' \
+		goto:/home/rkici/llvm/ ~/llvm
 }
 
 send_goto ()
 {
-	rsync -azP --exclude=cscope.* --exclude '.git' ~/llvm/ goto:/home/rkici/llvm
+	# get SafeDispatch from goto, but do alter it when sending
+	rsync -azP \
+		--exclude-from '/home/gokhan/.vim/goto-exclude.txt' \
+		--exclude 'tools/clang' \
+		~/llvm/ goto:/home/rkici/llvm
+}
+
+wd ()
+{
+	watch -n 3 "dropbox status"
 }
