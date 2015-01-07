@@ -56,12 +56,10 @@ Bundle 'tpope/vim-vinegar'
 Bundle 'vimwiki/vimwiki'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-shell'
-Bundle 'wlangstroth/vim-haskell'
 Plugin 'bling/vim-airline'
 Plugin 'honza/vim-snippets'
 Plugin 'noerrmsg.vim' " disable error messages that YCM generates
 Plugin 'Raimondi/delimitMate'
-Plugin 'Shougo/neocomplcache.vim' " haskell plugins
 Plugin 'Shougo/vimfiler.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'SirVer/ultisnips'
@@ -69,12 +67,16 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'jceb/vim-orgmode'
 Plugin 'nixon/vim-vmath'
 " haskell
+Bundle 'wlangstroth/vim-haskell'
+Plugin 'Shougo/neocomplcache.vim'
+Plugin 'eagletmt/ghcmod-vim'
 Plugin 'neco-ghc'
 Bundle 'scrooloose/syntastic'
 Plugin 'Shougo/vimproc.vim'
-Plugin 'eagletmt/ghcmod-vim'
 Plugin 'dag/vim2hs'
 Plugin 'kana/vim-textobj-indent'
+Plugin 'bitc/vim-hdevtools'
+Plugin 'Twinside/vim-hoogle'
 " Colorschemes
 Plugin 'chriskempson/base16-vim'
 Bundle 'shawncplus/skittles_berry'
@@ -370,6 +372,8 @@ let g:ycm_confirm_extra_conf = 0
 nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>
 nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>
 
+"let g:ycm_semantic_triggers = {'haskell' : ['.']}
+
 " === relative line numbers ===
 function! DisableRelative()
 	set norelativenumber
@@ -398,13 +402,6 @@ autocmd BufWritePre * :call RemoveTrailingWhitespace()
 
 " === vimfiler options ===
 let g:vimfiler_as_default_explorer = 1
-
-" === Haskell options
-let g:haddock_browser = 'chromium'
-"au BufEnter *.hs compiler ghc
-
-" Use space instead of tabs
-autocmd BufRead,BufNewFile *.hs,*.lhs setlocal expandtab
 
 " === copy file name
 function! CopyFileName()
