@@ -66,6 +66,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'jceb/vim-orgmode'
 Plugin 'nixon/vim-vmath'
+Plugin 'godlygeek/tabular'
 " haskell
 Bundle 'wlangstroth/vim-haskell'
 Plugin 'Shougo/neocomplcache.vim'
@@ -428,3 +429,20 @@ function! PasteMessage(cmd)
 	set nomodified
 endfunction
 command! -nargs=+ -complete=command PasteMessage call PasteMessage(<q-args>)
+
+" Tabular plugin mapppings
+if exists(":Tabularize")
+	nmap <Leader>a= :Tabularize /=<CR>
+	vmap <Leader>a= :Tabularize /=<CR>
+	nmap <Leader>a: :Tabularize /:\zs<CR>
+	vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
+
+" Copies the search matches to the given register
+function! CopyMatches(reg)
+	let hits = []
+	%s//\=len(add(hits, submatch(0))) ? submatch(0) : ''/ge
+	let reg = empty(a:reg) ? '+' : a:reg
+	execute 'let @'.reg.' = join(hits, "\n") . "\n"'
+endfunction
+command! -register CopyMatches call CopyMatches(<q-reg>)
