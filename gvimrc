@@ -81,3 +81,5 @@ endif
 
 " Change gvim's path for LaTeX support
 let $PATH='/usr/local/texlive/2014/bin/x86_64-linux:' . $PATH
+
+command! TerminalHere :! xfce4-terminal --working-directory="%:h" &

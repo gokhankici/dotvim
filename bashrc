@@ -204,3 +204,7 @@ wd ()
 {
 	watch -n 3 "dropbox status"
 }
+
+alias sem='cd /home/gokhan/Dropbox/UCSD\ Academic/Quarter\ 2\ -\ Winter\ 2015'
+
+alias topdf='pandoc -V geometry:margin=1in --variable fontsize=12pt'

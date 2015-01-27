@@ -67,6 +67,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'jceb/vim-orgmode'
 Plugin 'nixon/vim-vmath'
 Plugin 'godlygeek/tabular'
+Plugin 'airblade/vim-gitgutter'
 " haskell
 Bundle 'wlangstroth/vim-haskell'
 Plugin 'Shougo/neocomplcache.vim'
@@ -74,7 +75,8 @@ Plugin 'eagletmt/ghcmod-vim'
 Plugin 'neco-ghc'
 Bundle 'scrooloose/syntastic'
 Plugin 'Shougo/vimproc.vim'
-Plugin 'dag/vim2hs'
+"Plugin 'dag/vim2hs'
+Plugin 'travitch/hasksyn'
 Plugin 'kana/vim-textobj-indent'
 Plugin 'bitc/vim-hdevtools'
 Plugin 'Twinside/vim-hoogle'
@@ -300,7 +302,8 @@ command NAUTILUS !nautilus . &
 
 " === VIM-LATEX PACKAGE SETTINGS ===
 " Compile to pdf by default
-let g:Tex_DefaultTargetFormat = 'pdf'
+let g:Tex_DefaultTargetFormat    = 'pdf'
+let g:Tex_MultipleCompileFormats = 'dvi,pdf'
 
 " these settings are for making vim run faster on .tex files
 autocmd FileType tex :NoMatchParen
@@ -446,3 +449,28 @@ function! CopyMatches(reg)
 	execute 'let @'.reg.' = join(hits, "\n") . "\n"'
 endfunction
 command! -register CopyMatches call CopyMatches(<q-reg>)
+
+" remove the trailing whitespace
+function! Chomp(input_string)
+	return substitute(a:input_string, '^\(.\{-}\)[ \t\n\r]*$', '\1', '')
+endfunction
+
+" replace each space with an escaped one
+function! ReplaceSpace(input_string)
+	return substitute(a:input_string, ' ', '\\ ', 'g')
+endfunction
+
+" run make command with F2 in a 'smart' way
+function! MyMake()
+	let l:mf = system("find_up '" . expand("%:p:h") ."' makefile | xargs -I {} dirname '{}'")
+	echo '###' . l:mf . '###'
+	let l:mf = Chomp(ReplaceSpace(l:mf))
+	echo '###' . l:mf . '###'
+	if len(l:mf)
+		exec "make -C " . l:mf
+	else
+		echo "No makefile found"
+	endif
+endfunction
+command! MyMake call MyMake()
+map <F2> :MyMake<CR>
