@@ -461,16 +461,16 @@ function! ReplaceSpace(input_string)
 endfunction
 
 " run make command with F2 in a 'smart' way
-function! MyMake()
-	let l:mf = system("find_up '" . expand("%:p:h") ."' makefile | xargs -I {} dirname '{}'")
-	echo '###' . l:mf . '###'
+function! MyMake(file)
+	let l:mf = system("find_up '" . a:file ."' makefile | xargs -I {} dirname '{}'")
 	let l:mf = Chomp(ReplaceSpace(l:mf))
-	echo '###' . l:mf . '###'
 	if len(l:mf)
-		exec "make -C " . l:mf
+		exec "make --no-print-directory -C " . l:mf
+		redraw
 	else
 		echo "No makefile found"
 	endif
 endfunction
-command! MyMake call MyMake()
+command! MyMake call MyMake(expand("%:p"))
+
 map <F2> :MyMake<CR>
