@@ -68,6 +68,7 @@ Plugin 'jceb/vim-orgmode'
 Plugin 'nixon/vim-vmath'
 Plugin 'godlygeek/tabular'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'moll/vim-bbye'
 " haskell
 Bundle 'wlangstroth/vim-haskell'
 Plugin 'Shougo/neocomplcache.vim'
