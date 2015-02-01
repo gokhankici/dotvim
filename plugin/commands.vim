@@ -83,5 +83,5 @@ command! MyMake call MyMake(expand("%:p"))
 map <F2> :MyMake<CR>
 
 
-
+command! Terminal :! xfce4-terminal --working-directory="%:h" &
 

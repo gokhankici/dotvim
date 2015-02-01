@@ -5,6 +5,5 @@ if exists(":Tabularize")
 	nmap <Leader>a: :Tabularize /:\zs<CR>
 	vmap <Leader>a: :Tabularize /:\zs<CR>
 
-	AddTabularPattern hs /\(::\|=\)/r1l
+	AddTabularPattern! hs /^.\{-}\zs\(::\|=\||\)/l1r1
 endif
-
