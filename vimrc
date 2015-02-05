@@ -5,15 +5,6 @@ filetype off
 " fix some weird windows bug
 if has('win32') || has('win64')
 	set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
-
-	"Open the current directory with Console2
-	:function OpenConsole2InPWD(path)
-	:	let new_path = substitute(a:path, "Rami[^\\]*", "RamiGökhan", "")
-	:	call xolox#misc#os#exec({'command' : "\"C:\\Program Files\\Console2\\Console.exe\"\ -d\ \"".new_path."\"", 'async' : 1})
-	:endfunction
-
-	":command -nargs=? CMD call OpenConsole2InPWD(expand("%:p:h"))
-	:command -nargs=? CMD call xolox#misc#os#exec({'command' : '"C:\\Program Files\\Console2\\Console.exe" -d "C:\\Users\\RamiGökhan"', 'async' : 1})
 endif
 
 " Vundle setup
@@ -104,6 +95,7 @@ let g:ctrlp_cmd='CtrlPBuffer'
 if executable('ag')
 	" Use Ag over Grep
 	set grepprg=ag\ --nogroup\ --nocolor
+	let g:ackprg = 'ag --nogroup --nocolor --column'
 
 	" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
 	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
@@ -141,22 +133,12 @@ set ttyfast
 "set acd
 " side scroll off
 set siso=0
-" set lines=44
 
 " scroll bars
 set guioptions+=LlRrb
 set guioptions-=LlRrb
 " hide toolbar
 set guioptions-=T
-
-"compile with g++
-command GPP !g++ %:t -o %:t:r
-command Crun !%:t:r
-
-"" C++ compile and run
-"map <F9> :w<CR> :!g++ %:t -o %:t:r<CR> : !./%:t:r<CR>
-"" Java compile and run
-"map <F8> :w<CR> :!javac %:t<CR> : !java %:t:r<CR>
 
 " select all
 map <C-A> ggVG
@@ -182,43 +164,6 @@ set linebreak
 
 " Map <C-s><C-s> or <C-g>S in surround to <C-k>
 imap <C-k> <C-g>S
-
-" For vim - tmux incompatibility for arrow keys
-nnoremap <Esc>A <up>
-nnoremap <Esc>B <down>
-nnoremap <Esc>C <right>
-nnoremap <Esc>D <left>
-
-inoremap <Esc>A <up>
-inoremap <Esc>B <down>
-inoremap <Esc>C <right>
-inoremap <Esc>D <left>
-
-" fix ctrl+left & ctrl+right problems in tmux
-map <ESC>[5D <C-Left>
-map <ESC>[5C <C-Right>
-map! <ESC>[5D <C-Left>
-map! <ESC>[5C <C-Right>
-
-if $TERM =~ '^screen-256color'
-	map <Esc>OH <Home>
-	map! <Esc>OH <Home>
-	map <Esc>OF <End>
-	map! <Esc>OF <End>
-endif
-
-" My function to delete all buffers and close vim
-function DeleteAllAndClose(ignore)
-	if(a:ignore)
-		bufdo bd!
-	else
-		bufdo bd
-	endif
-	qa
-endfunction
-
-command -nargs=? QA call DeleteAllAndClose(0)
-command -nargs=? QAI call DeleteAllAndClose(1)
 
 "" Change directory to home at startup
 "" NerdTREE sees C:\ as initial directory
@@ -282,7 +227,6 @@ map <C-H> <C-W>h<C-W>_
 "map <leader>e :NERDTreeFind<CR>:NERDTreeMirror<CR>
 "map <leader>e :NERDTreeFind<CR>:NERDTreeToggle<CR>
 map <leader>e :NERDTreeFind<CR>
-
 "  SPF-13 ADDITIONS ------------------------------------------------
 
 set encoding=utf-8
@@ -299,36 +243,10 @@ vmap <C-S-down> ]egv
 "Easy ESC
 inoremap kj <ESC>
 
-"command -nargs=? CMD !gnome-terminal expand("%:p:h") &
-command TERM !gnome-terminal . &
-
-" Open nautilus in the current folder
-command NAUTILUS !nautilus . &
-
-" === VIM-LATEX PACKAGE SETTINGS ===
-" Compile to pdf by default
-let g:Tex_DefaultTargetFormat    = 'pdf'
-let g:Tex_MultipleCompileFormats = 'dvi,pdf'
-
-" these settings are for making vim run faster on .tex files
-autocmd FileType tex :NoMatchParen
-au FileType tex setlocal nocursorline
-
-" change this setting since it conflicts with ultisnips
-imap <C-space> <Plug>IMAP_JumpForward
-
-" save buffer before compiling
-autocmd FileType tex call Tex_MakeMap('<leader>ll', ':update!<CR>:call Tex_RunLaTeX()<CR>', 'n', '<buffer>')
-autocmd FileType tex call Tex_MakeMap('<leader>ll', '<ESC>:update!<CR>:call Tex_RunLaTeX()<CR>', 'v', '<buffer>')
-
-""Open command line
-"map <leader>t :ConqueTerm bash<cr>
-
 " Make it so that a curly brace automatically inserts an indented line
 "inoremap {<CR> {<CR>}<Esc>O<BS><Tab>}
 
 " Switches on spell checking
-"setlocal spell spelllang=en_us
 autocmd FileType txt,tex setlocal spell spelllang=en_us
 
 " Empty space at the bottom of gVim windows
@@ -337,17 +255,9 @@ set guiheadroom=0
 " Press Space to turn off highlighting and clear any message already displayed.
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
-" User defined function to remove trailing whitespace
-function! RemoveTrailingWhitespace()
-	%s/\s\+$//e
-	noh
-endfunction
-
-command RT call RemoveTrailingWhitespace()
-
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-" c,c++ formatting
+" === C, C++ FORMATTING ===
 let g:clang_format#style_options = {
 			\ "AccessModifierOffset" : -4,
 			\ "AllowShortIfStatementsOnASingleLine" : "true",
@@ -383,12 +293,11 @@ nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>
 
 "let g:ycm_semantic_triggers = {'haskell' : ['.']}
 
-" === relative line numbers ===
+" Relative line numbers
 function! DisableRelative()
 	set norelativenumber
 	set number
 endfunc
-
 function! NumberToggle()
 	if(&relativenumber == 1)
 		call DisableRelative()
@@ -396,7 +305,6 @@ function! NumberToggle()
 		set relativenumber
 	endif
 endfunc
-
 "nnoremap <C-l> :call NumberToggle()<CR>
 :au FocusLost * :call DisableRelative()
 :au FocusGained * :set relativenumber
@@ -412,70 +320,7 @@ autocmd BufWritePre * :call RemoveTrailingWhitespace()
 " === vimfiler options ===
 let g:vimfiler_as_default_explorer = 1
 
-" === copy file name
-function! CopyFileName()
-	let @+=expand("%:p")
-endfunction
-noremap <silent> <F4> :let @+=expand("%:p")<CR>
-command CopyFileName :call CopyFileName()
-
 " vim-vmath key maps
 vmap <expr>  ++  VMATH_YankAndAnalyse()
 nmap         ++  vip++
 
-" Use python to create a calculator
-command! -nargs=+ Calc :py print <args>
-py from math import *
-
-" Paste the output of the function to the buffer
-function! PasteMessage(cmd)
-	redir => message
-	silent execute a:cmd
-	redir END
-	"tabnew
-	silent put=message
-	set nomodified
-endfunction
-command! -nargs=+ -complete=command PasteMessage call PasteMessage(<q-args>)
-
-" Tabular plugin mapppings
-if exists(":Tabularize")
-	nmap <Leader>a= :Tabularize /=<CR>
-	vmap <Leader>a= :Tabularize /=<CR>
-	nmap <Leader>a: :Tabularize /:\zs<CR>
-	vmap <Leader>a: :Tabularize /:\zs<CR>
-endif
-
-" Copies the search matches to the given register
-function! CopyMatches(reg)
-	let hits = []
-	%s//\=len(add(hits, submatch(0))) ? submatch(0) : ''/ge
-	let reg = empty(a:reg) ? '+' : a:reg
-	execute 'let @'.reg.' = join(hits, "\n") . "\n"'
-endfunction
-command! -register CopyMatches call CopyMatches(<q-reg>)
-
-" remove the trailing whitespace
-function! Chomp(input_string)
-	return substitute(a:input_string, '^\(.\{-}\)[ \t\n\r]*$', '\1', '')
-endfunction
-
-" replace each space with an escaped one
-function! ReplaceSpace(input_string)
-	return substitute(a:input_string, ' ', '\\ ', 'g')
-endfunction
-
-" run make command with F2 in a 'smart' way
-function! MyMake(file)
-	let l:mf = system("find_up '" . a:file ."' makefile | xargs -I {} dirname '{}'")
-	let l:mf = Chomp(ReplaceSpace(l:mf))
-	if len(l:mf)
-		exec "make --no-print-directory -C " . l:mf
-		redraw
-	else
-		echo "No makefile found"
-	endif
-endfunction
-command! MyMake call MyMake(expand("%:p"))
-
-map <F2> :MyMake<CR>
