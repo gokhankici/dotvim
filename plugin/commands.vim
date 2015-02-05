@@ -89,3 +89,6 @@ command! Terminal :! xfce4-terminal --working-directory="%:h" &
 
 " Open the current file's directory
 map <F9> :e %:p:h<CR>
+
+" Search the word under in the current directory
+map <F8> :Ack <cword><CR>
