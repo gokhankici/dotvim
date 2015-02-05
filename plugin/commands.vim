@@ -80,8 +80,12 @@ function! MyMake(file)
 	endif
 endfunction
 command! MyMake call MyMake(expand("%:p"))
-map <F2> :MyMake<CR>
+map <F2> :w <CR> :MyMake<CR>
 
 
+" Open terminal here
 command! Terminal :! xfce4-terminal --working-directory="%:h" &
 
+
+" Open the current file's directory
+map <F9> :e %:p:h<CR>
