@@ -84,8 +84,8 @@ Bundle 'flazz/vim-colorschemes'
 Plugin 'sjl/badwolf'
 filetype plugin indent on
 
-let g:Powerline_symbols = 'fancy'
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
+let g:airline_powerline_fonts = 1
 
 " Set CtrlP command
 let g:ctrlp_map='<c-p>'
@@ -324,3 +324,4 @@ let g:vimfiler_as_default_explorer = 1
 vmap <expr>  ++  VMATH_YankAndAnalyse()
 nmap         ++  vip++
 
+set modeline

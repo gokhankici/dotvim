@@ -49,8 +49,6 @@ endif
 " no sound or flash
 set vb t_vb=
 
-set background=dark
-
 " set guifont=DejaVu\ Sans\ Mono\ 10
 
 " Try to remember gvim size and position
@@ -69,15 +67,17 @@ set background=dark
 " 		wombat: 	good colors
 " 		desert: 	very good one
 
-colorscheme gotham
+set background=dark
+"colorscheme gotham
+colorscheme base16-default
 
 if has('win32') || has('win64')
 	set guifont=DejaVu_Sans_Mono:h11:cANSI
 else
 	"set guifont=Source\ Code\ Pro\ Medium\ 10
-	set guifont=DejaVu\ Sans\ Mono\ 10
+	set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
 	"set guifont=Bitstream\ Vera\ Sans\ Mono\ 11
 endif
 
 " Change gvim's path for LaTeX support
-let $PATH='/usr/local/texlive/2014/bin/x86_64-linux:' . $PATH
+let $PATH='/usr/local/texlive/2014/bin/x86_64-linux:/home/gokhan/.cabal/bin:' . $PATH
