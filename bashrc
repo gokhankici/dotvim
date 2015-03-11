@@ -130,9 +130,11 @@ alias e='emacsclient --nw'
 
 #export PIN_HOME="/home/gokhan/Library/pin-2.13-62141-gcc.4.4.7-linux"
 #export PIN_ROOT="/home/gokhan/Library/pin-2.13-62141-gcc.4.4.7-linux"
-export PATH="$PATH:~/bin:/usr/local/texlive/2014/bin/x86_64-linux:$HOME/.cabal/bin"
+export PATH="~/bin:/usr/local/texlive/2014/bin/x86_64-linux:$HOME/.cabal/bin:$PATH"
 export INFOPATH="$INFOPATH:/usr/local/texlive/2014/texmf-dist/doc/info"
 export MANPATH="$MANPATH:/usr/local/texlive/2014/texmf-dist/doc/man"
+export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+
 TLMGR_DIR=$(dirname $(which tlmgr))
 
 alias cd..="cd .."

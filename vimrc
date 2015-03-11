@@ -13,75 +13,69 @@ call vundle#rc()
 
 " Plugins
 filetype off
-Bundle 'a.vim'
-Bundle 'acx0/Conque-Shell'
-Bundle 'AutoClose'
-Bundle 'bufexplorer.zip'
-Bundle 'edsono/vim-matchit'
-Bundle 'FuzzyFinder'
-Bundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
-Bundle 'gmarik/vundle'
-Bundle 'kien/ctrlp.vim'
-Bundle 'kana/vim-textobj-user'
-Bundle 'rbonvall/vim-textobj-latex'
-Bundle 'L9'
-Bundle 'Liquid-Carbon'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'mileszs/ack.vim'
-Bundle 'nelstrom/vim-visual-star-search'
-Bundle 'noahfrederick/vim-hemisu'
-Bundle 'ntpeters/vim-better-whitespace'
-Bundle 'operator-user'
-Bundle 'recover.vim'
-Bundle 'rhysd/vim-clang-format'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'tpope/vim-abolish'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'tpope/vim-vinegar'
-Bundle 'vimwiki/vimwiki'
-Bundle 'xolox/vim-misc'
-Bundle 'xolox/vim-shell'
-Plugin 'bling/vim-airline'
-Plugin 'honza/vim-snippets'
-Plugin 'noerrmsg.vim' " disable error messages that YCM generates
-Plugin 'Raimondi/delimitMate'
-Plugin 'Shougo/vimfiler.vim'
-Plugin 'Shougo/unite.vim'
-Plugin 'SirVer/ultisnips'
-Plugin 'jceb/vim-orgmode'
-Plugin 'nixon/vim-vmath'
-Plugin 'godlygeek/tabular'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'moll/vim-bbye'
+Plugin 'gmarik/vundle'
+Plugin 'a.vim'                                       | "alternate files quickly .c -> .h
+Plugin 'AutoClose'                                   | "autoclose chars
+Plugin 'edsono/vim-matchit'                          | "extended % matching for HTML, LaTeX, etc.
+Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex' | "latex mode
+Plugin 'kien/ctrlp.vim'                              | "Fuzzy file, buffer, mru, tag, etc finder
+Plugin 'kana/vim-textobj-user'                       | "user defined text objects
+Plugin 'rbonvall/vim-textobj-latex'                  | "text objects for latex
+"Plugin 'Lokaltog/vim-easymotion'                    | "Vim motions on speed!
+Plugin 'mileszs/ack.vim'                             | "Vim plugin for the Perl module / CLI script 'ack'
+Plugin 'nelstrom/vim-visual-star-search'             | "Start a * or # search from a visual block
+Plugin 'ntpeters/vim-better-whitespace'              | "Better whitespace highlighting for Vim
+Plugin 'operator-user'                               | "Define your own operator easily
+Plugin 'recover.vim'                                 | "diff between the recovered and opened file
+Plugin 'rhysd/vim-clang-format'                      | "vim plugin for clang-format
+Plugin 'scrooloose/nerdcommenter'                    | "comment easily !
+Plugin 'scrooloose/nerdtree'                         | "awesome, extensible tree explorer plugin
+Plugin 'terryma/vim-multiple-cursors'                | "sublime like multiple cursors
+Plugin 'tpope/vim-abolish'                           | "easily search for, substitute, and abbreviate multiple variants of a word
+Plugin 'tpope/vim-fugitive'                          | "git wrapper so awesome, it should be illegal
+Plugin 'tpope/vim-repeat'                            | "enable repeating supported plugin maps with '.'
+Plugin 'tpope/vim-surround'                          | "quoting/parenthesizing made simple
+Plugin 'tpope/vim-unimpaired'                        | "pairs of handy bracket mappings
+Plugin 'tpope/vim-vinegar'                           | "combine with netrw to create a delicious salad dressing
+Plugin 'xolox/vim-misc'                              | "Miscellaneous auto-load Vim scripts
+Plugin 'xolox/vim-shell'                             | "fullscreen, open URL, background command execution
+Plugin 'bling/vim-airline'                           | "lean & mean status/tabline for vim that's light as air
+Plugin 'honza/vim-snippets'                          | "snipMate & UltiSnip Snippets
+Plugin 'noerrmsg.vim'                                | "disable error messages that YCM generates
+Plugin 'Shougo/vimfiler.vim'                         | "Powerful file explorer implemented by Vim script
+Plugin 'Shougo/unite.vim'                            | "Unite and create user interfaces
+Plugin 'SirVer/ultisnips'                            | "ultimate snippet solution for vim !
+Plugin 'jceb/vim-orgmode'                            | "org-mode clone
+Plugin 'nixon/vim-vmath'                             | "Calculates the sum, average, min, and max inside visual
+Plugin 'godlygeek/tabular'                           | "insanely useful text alignment
+Plugin 'airblade/vim-gitgutter'                      | "shows a git diff in the gutter
+Plugin 'moll/vim-bbye'                               | "adds the Bdelete comment
+Plugin 'justinmk/vim-sneak'                          | "the missing motion for vim
 
-if expand("$USER") != 'safedispatch'
-	Bundle 'taglist.vim'
-	Plugin 'Valloric/YouCompleteMe'
+if expand('$USER') != 'safedispatch'
+		Plugin 'taglist.vim'                         | "source code browser
+		Plugin 'Valloric/YouCompleteMe'              | "auto-completion plugin for C & Python
 endif
 
-" haskell
-Bundle 'wlangstroth/vim-haskell'
-Plugin 'Shougo/neocomplcache.vim'
-Plugin 'eagletmt/ghcmod-vim'
-Plugin 'neco-ghc'
-Bundle 'scrooloose/syntastic'
-Plugin 'Shougo/vimproc.vim'
-"Plugin 'dag/vim2hs'
-Plugin 'travitch/hasksyn'
-Plugin 'kana/vim-textobj-indent'
-Plugin 'bitc/vim-hdevtools'
-Plugin 'Twinside/vim-hoogle'
-" Colorschemes
+"haskell
+Plugin 'wlangstroth/vim-haskell'                     | "vim configuration for haskell
+Plugin 'Shougo/neocomplcache.vim'                    | "Ultimate auto-completion system for Vim
+Plugin 'eagletmt/ghcmod-vim'                         | "type, check & lint, and expanding
+Plugin 'neco-ghc'                                    | "completion plugin for Haskell, using ghc-mod
+Plugin 'scrooloose/syntastic'                        | "syntax checking plugin
+Plugin 'Shougo/vimproc.vim'                          | "Interactive command execution in Vim.
+Plugin 'travitch/hasksyn'                            | "highlight and indent Haskell source code
+Plugin 'kana/vim-textobj-indent'                     | "select similarly indented lines
+Plugin 'bitc/vim-hdevtools'                          | "persistent bg server for Haskell devtools
+Plugin 'Twinside/vim-hoogle'                         | "Vim plugin used to query hoogle, the haskell search engine
+
+"Colorschemes
 Plugin 'chriskempson/base16-vim'
-Bundle 'shawncplus/skittles_berry'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'flazz/vim-colorschemes'
+Plugin 'shawncplus/skittles_berry'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'flazz/vim-colorschemes'
 Plugin 'sjl/badwolf'
+
 filetype plugin indent on
 
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
