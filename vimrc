@@ -21,7 +21,7 @@ Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex' | "latex mode
 Plugin 'kien/ctrlp.vim'                              | "Fuzzy file, buffer, mru, tag, etc finder
 Plugin 'kana/vim-textobj-user'                       | "user defined text objects
 Plugin 'rbonvall/vim-textobj-latex'                  | "text objects for latex
-"Plugin 'Lokaltog/vim-easymotion'                    | "Vim motions on speed!
+Plugin 'Lokaltog/vim-easymotion'                     | "Vim motions on speed!
 Plugin 'mileszs/ack.vim'                             | "Vim plugin for the Perl module / CLI script 'ack'
 Plugin 'nelstrom/vim-visual-star-search'             | "Start a * or # search from a visual block
 Plugin 'ntpeters/vim-better-whitespace'              | "Better whitespace highlighting for Vim
