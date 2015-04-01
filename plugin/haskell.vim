@@ -30,4 +30,5 @@ let g:haddock_browser = 'chromium'
 autocmd BufRead,BufNewFile *.hs,*.lhs setlocal expandtab
 
 let g:syntastic_aggregate_errors = 1
-let g:syntastic_haskell_checkers = ['ghc_mod', 'hdevtools', 'liquid', 'hlint']
+"let g:syntastic_haskell_checkers = ['ghc_mod', 'hdevtools', 'liquid', 'hlint']
+let g:syntastic_haskell_checkers = ['ghc_mod', 'hdevtools', 'hlint']

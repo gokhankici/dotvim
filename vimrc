@@ -1,4 +1,4 @@
-" Must come first because it changes other options.
+" This must come first because it changes other options.
 set nocompatible
 filetype off
 
@@ -78,14 +78,139 @@ Plugin 'sjl/badwolf'
 
 filetype plugin indent on
 
+"================================================================================
+" general settings
+"================================================================================
+syntax on
+
+set autoindent
+set background=dark
+set backspace=indent,eol,start | " backspace for dummies
+set cursorline                 | " highlight current line
+set encoding=utf-8
+set fileencoding=utf-8
+set guiheadroom=0              | " Empty space at the bottom of gVim windows
+set guioptions+=LlRrb          | " scroll bars
+set guioptions-=LlRrb
+set guioptions-=T              | " hide toolbar
+set hidden                     | " Handle multiple buffers better.
+set hlsearch                   | " highlight search terms
+set ignorecase                 | " case insensitive search
+set incsearch                  | " find as you type search
+set laststatus=2               | " Show the status line all the time
+set lazyredraw                 | " faster drawings
+set linebreak                  | " do not split words at the end of the screen
+set modeline
+set relativenumber             | " line numbers become relative to the current line
+set scrolljump=5               | " lines to scroll when cursor leaves screen
+set scrolloff=3                | " minimum lines to keep above and below cursor
+set shiftwidth=4
+set showcmd                    | " Display incomplete commands.
+set showmatch                  | " show matching brackets/parenthesis
+set showmode                   | " Display the mode you're in.
+set siso=0                     | " side scroll off
+set smartcase                  | " But case-sensitive if expression contains a capital letter.
+set smartcase                  | " case sensitive when uc present
+set smartindent
+set t_Co=256
+set tabstop=4
+set ttyfast
+set vb t_vb=                   | " no sound or flash
+set whichwrap=b,s,h,l,<,>,[,]  | " backspace and cursor keys wrap to
+set wildmenu                   | " show list instead of just completing
+set wildmode=list:longest,full | " command <Tab> completion, list matches, then longest common part, then all.
+set winminheight=0             | " windows can be 0 line high
+
+let base16colorspace=256       | " Access colors present in 256 colorspace
+colorscheme base16-default
+
+au FileType html,tex,text,org noremap <buffer> j gj
+au FileType html,tex,text,org noremap <buffer> k gk
+au FileType html,tex,text,org noremap <buffer> 0 g0
+au FileType html,tex,text,org noremap <buffer> $ g$
+
+" Switches on spell checking
+autocmd FileType txt,tex setlocal spell spelllang=en_us
+
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+" disable fold at startup
+autocmd BufWinEnter * silent! :%foldopen!
+
+" clear whitespace when saving
+autocmd BufWritePre * :call RemoveTrailingWhitespace()
+
+"================================================================================
+" key mappings
+"================================================================================
+" remap leader key
+let mapleader=','
+
+" Tab shortcuts
+nnoremap <leader>tt :tabnew<cr>
+nnoremap <leader>te :tabedit
+nnoremap <leader>tc :tabclose<cr>
+nnoremap <leader>to :tabonly<cr>
+nnoremap <leader>tn :tabnext<cr>
+nnoremap <leader>tp :tabprevious<cr>
+nnoremap <leader>tf :tabfirst<cr>
+nnoremap <leader>tl :tablast<cr>
+nnoremap <leader>tm :tabmove
+
+nnoremap <C-A> ggVG
+
+"Resize the windows with Alt key
+nnoremap <silent><A-Left>  <C-w><
+nnoremap <silent><A-Right> <C-w>>
+nnoremap <silent><A-Up>    <C-w>+
+nnoremap <silent><A-Down>  <C-w>-
+
+" Shift text and re-select
+vnoremap > >gv
+vnoremap < <gv
+
+" Easier moving in tabs and windows
+nnoremap <C-J> <C-W>j<C-W>_
+nnoremap <C-K> <C-W>k<C-W>_
+nnoremap <C-L> <C-W>l<C-W>_
+nnoremap <C-H> <C-W>h<C-W>_
+
+" Bubble single line
+nnoremap <C-S-up> [e
+nnoremap <C-S-down> ]e
+
+" Bubble multiple lines
+vnoremap <C-S-up> [egv
+vnoremap <C-S-down> ]egv
+
+"Easy ESC
+inoremap kj <ESC>
+
+" Press Space to turn off highlighting and clear any message already displayed.
+nnoremap <silent> <Space><Space> :nohlsearch<Bar>:echo<CR>
+
+" start NERDTree
+nnoremap <leader>e :NERDTreeFind<CR>
+
+" vim-vmath key maps
+vnoremap <expr>  ++  VMATH_YankAndAnalyse()
+nnoremap         ++  vip++
+
+"================================================================================
+" airline
+"================================================================================
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 let g:airline_powerline_fonts = 1
 
-" Set CtrlP command
+"================================================================================
+" ctrlp
+"================================================================================
 let g:ctrlp_map='<c-p>'
 let g:ctrlp_cmd='CtrlPBuffer'
 
-" use silver-searcher for file system search
+"================================================================================
+" ag
+"================================================================================
 if executable('ag')
 	" Use Ag over Grep
 	set grepprg=ag\ --nogroup\ --nocolor
@@ -111,147 +236,9 @@ else
 	autocmd VimEnter * nmap <leader>f :FufFile<CR>
 endif
 
-" Coding
-syntax on
-set relativenumber
-set smartindent
-set autoindent
-set tabstop=4
-set shiftwidth=4
-set cursorline " highlight current line
-
-set lazyredraw
-set ttyfast
-
-" auto directory
-"set acd
-" side scroll off
-set siso=0
-
-" scroll bars
-set guioptions+=LlRrb
-set guioptions-=LlRrb
-" hide toolbar
-set guioptions-=T
-
-" select all
-map <C-A> ggVG
-" no sound or flash
-set vb t_vb=
-
-" set background
-se t_Co=256
-set background=dark
-
-" Access colors present in 256 colorspace"
-let base16colorspace=256
-colorscheme base16-default
-
-" add scrolling for html,tex and txt types
-au FileType html,tex,text,org noremap <buffer> j gj
-au FileType html,tex,text,org noremap <buffer> k gk
-au FileType html,tex,text,org noremap <buffer> 0 g0
-au FileType html,tex,text,org noremap <buffer> $ g$
-
-" do not split words at the end of the screen
-set linebreak
-
-" Map <C-s><C-s> or <C-g>S in surround to <C-k>
-imap <C-k> <C-g>S
-
-"" Change directory to home at startup
-"" NerdTREE sees C:\ as initial directory
-"autocmd VimEnter * cd ~
-
-"Resize the windows with Alt key
-map <silent><A-Left>  <C-w><
-map <silent><A-Right> <C-w>>
-map <silent><A-Up>    <C-w>+
-map <silent><A-Down>  <C-w>-
-
-" PEEPCODE ADDITIONS ------------------------------------------------
-set showcmd                     " Display incomplete commands.
-set showmode                    " Display the mode you're in.
-set hidden                      " Handle multiple buffers better.
-set smartcase                   " But case-sensitive if expression contains a capital letter.
-set laststatus=2                " Show the status line all the time
-
-" Tab mappings.
-map <leader>tt :tabnew<cr>
-map <leader>te :tabedit
-map <leader>tc :tabclose<cr>
-map <leader>to :tabonly<cr>
-map <leader>tn :tabnext<cr>
-map <leader>tp :tabprevious<cr>
-map <leader>tf :tabfirst<cr>
-map <leader>tl :tablast<cr>
-map <leader>tm :tabmove
-
-" Shift text right and re-select
-vmap > >gv
-" Shift text left and re-select
-vmap < <gv
-" PEEPCODE ADDITIONS ------------------------------------------------
-
-"  SPF-13 ADDITIONS ------------------------------------------------
-" VIM UI
-set backspace=indent,eol,start  " backspace for dummies
-set showmatch                   " show matching brackets/parenthesis
-set incsearch                   " find as you type search
-set hlsearch                    " highlight search terms
-set winminheight=0              " windows can be 0 line high
-set ignorecase                  " case insensitive search
-set smartcase                   " case sensitive when uc present
-set wildmenu                    " show list instead of just completing
-set wildmode=list:longest,full  " command <Tab> completion, list matches, then longest common part, then all.
-set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap to
-set scrolljump=5                " lines to scroll when cursor leaves screen
-set scrolloff=3                 " minimum lines to keep above and below cursor
-
-" Key (re)Mappings
-let mapleader=','
-
-" Easier moving in tabs and windows
-map <C-J> <C-W>j<C-W>_
-map <C-K> <C-W>k<C-W>_
-map <C-L> <C-W>l<C-W>_
-map <C-H> <C-W>h<C-W>_
-
-" Plugins
-"map <leader>e :NERDTreeFind<CR>:NERDTreeMirror<CR>
-"map <leader>e :NERDTreeFind<CR>:NERDTreeToggle<CR>
-map <leader>e :NERDTreeFind<CR>
-"  SPF-13 ADDITIONS ------------------------------------------------
-
-set encoding=utf-8
-set fileencoding=utf-8
-
-" Bubble single line
-nmap <C-S-up> [e
-nmap <C-S-down> ]e
-
-" Bubble multiple lines
-vmap <C-S-up> [egv
-vmap <C-S-down> ]egv
-
-"Easy ESC
-inoremap kj <ESC>
-
-" Make it so that a curly brace automatically inserts an indented line
-"inoremap {<CR> {<CR>}<Esc>O<BS><Tab>}
-
-" Switches on spell checking
-autocmd FileType txt,tex setlocal spell spelllang=en_us
-
-" Empty space at the bottom of gVim windows
-set guiheadroom=0
-
-" Press Space to turn off highlighting and clear any message already displayed.
-nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
-" === C, C++ FORMATTING ===
+"================================================================================
+" clang formatter settings
+"================================================================================
 let g:clang_format#style_options = {
 			\ "AccessModifierOffset" : -4,
 			\ "AllowShortIfStatementsOnASingleLine" : "true",
@@ -270,23 +257,28 @@ augroup ClangFormatSettings
 	autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
 augroup END
 
-" === ULTISNIPS PACKAGE SETTINGS ===
+"================================================================================
+" ultisnips settings
+"================================================================================
 " Track the engine.
 let g:UltiSnipsSnippetDirectories=["bundle/vim-snippets/UltiSnips","UltiSnips"]
 let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
-" === YOUCOMPLETEME PACKAGE SETTINGS ===
+"================================================================================
+" youcompleteme settings
+"================================================================================
 autocmd FileType c,cpp,objc map gd :YcmCompleter GoTo<CR>
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-"Do not ask when starting vim
-let g:ycm_confirm_extra_conf = 0
+
+let g:ycm_confirm_extra_conf = 0                 | " Do not ask when starting vim
 nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>
 nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>
 
-"let g:ycm_semantic_triggers = {'haskell' : ['.']}
-
+"================================================================================
+" line number toggle
+"================================================================================
 " Relative line numbers
 function! DisableRelative()
 	set norelativenumber
@@ -299,23 +291,38 @@ function! NumberToggle()
 		set relativenumber
 	endif
 endfunc
-"nnoremap <C-l> :call NumberToggle()<CR>
 :au FocusLost * :call DisableRelative()
 :au FocusGained * :set relativenumber
 autocmd InsertEnter * :call DisableRelative()
 autocmd InsertLeave * :set relativenumber
 
-" === disable fold at startup
-autocmd BufWinEnter * silent! :%foldopen!
-
-" === clear whitespace when saving
-autocmd BufWritePre * :call RemoveTrailingWhitespace()
-
-" === vimfiler options ===
+"================================================================================
+" vimfiler
+"================================================================================
 let g:vimfiler_as_default_explorer = 1
 
-" vim-vmath key maps
-vmap <expr>  ++  VMATH_YankAndAnalyse()
-nmap         ++  vip++
+"================================================================================
+" vim-better-whitespace
+"================================================================================
+let g:better_whitespace_filetypes_blacklist = ['unite']
 
-set modeline
+"================================================================================
+" unite settings & mappings
+"================================================================================
+call unite#filters#matcher_default#use(['matcher_fuzzy']) | " always use fuzzy match
+
+" emulates ctrl-p file search
+nnoremap <space>p :Unite file_rec/async<cr>
+
+" emulates ack.vim
+nnoremap <space>/ :Unite grep:.<cr>
+
+nnoremap <space>f :Unite file<cr>
+
+" yank history like yankring
+let g:unite_source_history_yank_enable = 1
+nnoremap <space>y :Unite history/yank<cr>
+
+" buffer switching like LustyJuggler
+nnoremap <space>s :Unite -quick-match buffer<cr>
+
