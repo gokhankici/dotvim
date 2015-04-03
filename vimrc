@@ -24,7 +24,6 @@ Plugin 'rbonvall/vim-textobj-latex'                  | "text objects for latex
 Plugin 'Lokaltog/vim-easymotion'                     | "Vim motions on speed!
 Plugin 'mileszs/ack.vim'                             | "Vim plugin for the Perl module / CLI script 'ack'
 Plugin 'nelstrom/vim-visual-star-search'             | "Start a * or # search from a visual block
-Plugin 'ntpeters/vim-better-whitespace'              | "Better whitespace highlighting for Vim
 Plugin 'operator-user'                               | "Define your own operator easily
 Plugin 'recover.vim'                                 | "diff between the recovered and opened file
 Plugin 'rhysd/vim-clang-format'                      | "vim plugin for clang-format
@@ -51,10 +50,13 @@ Plugin 'godlygeek/tabular'                           | "insanely useful text ali
 Plugin 'airblade/vim-gitgutter'                      | "shows a git diff in the gutter
 Plugin 'moll/vim-bbye'                               | "adds the Bdelete comment
 Plugin 'justinmk/vim-sneak'                          | "the missing motion for vim
+Plugin 'hewes/unite-gtags'                           | "execute 'global' command and show in unite
+Plugin 'gtags.vim'                                   | "integrates GNU GLOBAL into vim
 
 if expand('$USER') != 'safedispatch'
-		Plugin 'taglist.vim'                         | "source code browser
-		Plugin 'Valloric/YouCompleteMe'              | "auto-completion plugin for C & Python
+	Plugin 'taglist.vim'                             | "source code browser
+	Plugin 'ntpeters/vim-better-whitespace'          | "Better whitespace highlighting for Vim
+	Plugin 'Valloric/YouCompleteMe'                  | "auto-completion plugin for C & Python
 endif
 
 "haskell
@@ -138,7 +140,9 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufWinEnter * silent! :%foldopen!
 
 " clear whitespace when saving
-autocmd BufWritePre * :call RemoveTrailingWhitespace()
+if expand("$USER") != 'safedispatch'
+	autocmd BufWritePre * :call RemoveTrailingWhitespace()
+endif
 
 "================================================================================
 " key mappings
@@ -187,7 +191,7 @@ vnoremap <C-S-down> ]egv
 inoremap kj <ESC>
 
 " Press Space to turn off highlighting and clear any message already displayed.
-nnoremap <silent> <Space><Space> :nohlsearch<Bar>:echo<CR>
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 " start NERDTree
 nnoremap <leader>e :NERDTreeFind<CR>
@@ -199,7 +203,13 @@ nnoremap         ++  vip++
 "================================================================================
 " airline
 "================================================================================
-let g:airline#extensions#whitespace#mixed_indent_algo = 1
+if expand("$USER") == 'safedispatch'
+	let g:airline#extensions#whitespace#mixed_indent_algo = 0
+	let g:airline#extensions#whitespace#enabled           = 0
+else
+	let g:airline#extensions#whitespace#mixed_indent_algo = 1
+endif
+
 let g:airline_powerline_fonts = 1
 
 "================================================================================
@@ -222,7 +232,7 @@ if executable('ag')
 	" ag is fast enough that CtrlP doesn't need to cache
 	let g:ctrlp_use_caching = 0
 
-	autocmd VimEnter * nmap <leader>f :CtrlP<CR>
+	"autocmd VimEnter * nmap <leader>f :CtrlP<CR>
 
 	" bind \ (backward slash) to grep shortcut
 	command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
@@ -233,7 +243,7 @@ if executable('ag')
 	nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 else
 	"Map this function at runtime since other way didn't worked
-	autocmd VimEnter * nmap <leader>f :FufFile<CR>
+	"autocmd VimEnter * nmap <leader>f :FufFile<CR>
 endif
 
 "================================================================================
@@ -304,25 +314,39 @@ let g:vimfiler_as_default_explorer = 1
 "================================================================================
 " vim-better-whitespace
 "================================================================================
-let g:better_whitespace_filetypes_blacklist = ['unite']
+if expand('$USER') != 'safedispatch'
+	let g:better_whitespace_filetypes_blacklist = ['unite']
+endif
 
 "================================================================================
 " unite settings & mappings
 "================================================================================
 call unite#filters#matcher_default#use(['matcher_fuzzy']) | " always use fuzzy match
 
-" emulates ctrl-p file search
-nnoremap <space>p :Unite file_rec/async<cr>
-
-" emulates ack.vim
-nnoremap <space>/ :Unite grep:.<cr>
-
-nnoremap <space>f :Unite file<cr>
+nnoremap <leader>f :Unite -start-insert file<cr>
 
 " yank history like yankring
 let g:unite_source_history_yank_enable = 1
-nnoremap <space>y :Unite history/yank<cr>
+nnoremap <leader>y :Unite history/yank<cr>
 
-" buffer switching like LustyJuggler
-nnoremap <space>s :Unite -quick-match buffer<cr>
+"================================================================================
+" GNU GLOBAL settings
+"================================================================================
+set csprg=gtags-cscope
+"cscope add /foo/bar/GTAGS
 
+nnoremap <leader>gg :execute 'Unite gtags/def:'.expand('<cword>')<CR>
+nnoremap <leader>gc :execute 'Unite gtags/context'<CR>
+nnoremap <leader>gr :execute 'Unite gtags/ref'<CR>
+nnoremap <leader>ge :execute 'Unite gtags/grep'<CR>
+vnoremap <leader>gg <ESC>:execute 'Unite gtags/def:'.GetVisualSelection()<CR>
+
+"================================================================================
+" syntastic
+"================================================================================
+if expand('$USER') != 'safedispatch'
+	let g:syntastic_mode_map = {
+				\ 'mode': 'passive',
+				\ 'active_filetypes': [],
+				\ 'passive_filetypes': [] }
+endif
