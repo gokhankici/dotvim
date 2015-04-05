@@ -7,6 +7,17 @@ if has('win32') || has('win64')
 	set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
 endif
 
+function IsRemoteUser()
+	let l:username = expand('$USER')
+	if l:username == "safedispatch"
+		return 1
+	elseif l:username == "rkici"
+		return 1
+	else
+		return 0
+	endif
+endfunction
+
 " Vundle setup
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -53,7 +64,7 @@ Plugin 'justinmk/vim-sneak'                          | "the missing motion for v
 Plugin 'hewes/unite-gtags'                           | "execute 'global' command and show in unite
 Plugin 'gtags.vim'                                   | "integrates GNU GLOBAL into vim
 
-if expand('$USER') != 'safedispatch'
+if ! IsRemoteUser()
 	Plugin 'taglist.vim'                             | "source code browser
 	Plugin 'ntpeters/vim-better-whitespace'          | "Better whitespace highlighting for Vim
 	Plugin 'Valloric/YouCompleteMe'                  | "auto-completion plugin for C & Python
@@ -140,7 +151,7 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufWinEnter * silent! :%foldopen!
 
 " clear whitespace when saving
-if expand("$USER") != 'safedispatch'
+if ! IsRemoteUser()
 	autocmd BufWritePre * :call RemoveTrailingWhitespace()
 endif
 
@@ -203,7 +214,7 @@ nnoremap         ++  vip++
 "================================================================================
 " airline
 "================================================================================
-if expand("$USER") == 'safedispatch'
+if IsRemoteUser()
 	let g:airline#extensions#whitespace#mixed_indent_algo = 0
 	let g:airline#extensions#whitespace#enabled           = 0
 else
@@ -314,7 +325,7 @@ let g:vimfiler_as_default_explorer = 1
 "================================================================================
 " vim-better-whitespace
 "================================================================================
-if expand('$USER') != 'safedispatch'
+if ! IsRemoteUser()
 	let g:better_whitespace_filetypes_blacklist = ['unite']
 endif
 
@@ -344,7 +355,7 @@ vnoremap <leader>gg <ESC>:execute 'Unite gtags/def:'.GetVisualSelection()<CR>
 "================================================================================
 " syntastic
 "================================================================================
-if expand('$USER') != 'safedispatch'
+if IsRemoteUser()
 	let g:syntastic_mode_map = {
 				\ 'mode': 'passive',
 				\ 'active_filetypes': [],
