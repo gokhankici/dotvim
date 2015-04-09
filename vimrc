@@ -9,9 +9,12 @@ endif
 
 function IsRemoteUser()
 	let l:username = expand('$USER')
+	let l:hostname = expand('$HOSTNAME')
 	if l:username == "safedispatch"
 		return 1
 	elseif l:username == "rkici"
+		return 1
+	elseif l:hostname == "chromebuild"
 		return 1
 	else
 		return 0
