@@ -92,6 +92,8 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'sjl/badwolf'
 
+Plugin 'Superbil/llvm.vim'
+
 filetype plugin indent on
 
 "================================================================================

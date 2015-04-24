@@ -177,6 +177,7 @@ start_in_tmux ()
 alias t='TERM=screen-256color tmux'
 alias ta='TERM=screen-256color tmux attach -t'
 alias tl='tmux list-sessions'
+alias tmux-takeover='tmux detach-client -a -s'
 
 alias wee='start_in_tmux weechat'
 alias m='start_in_tmux mps'
