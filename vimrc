@@ -224,9 +224,8 @@ if IsRemoteUser()
 	let g:airline#extensions#whitespace#enabled           = 0
 else
 	let g:airline#extensions#whitespace#mixed_indent_algo = 1
+	let g:airline_powerline_fonts = 1
 endif
-
-let g:airline_powerline_fonts = 1
 
 "================================================================================
 " ctrlp

@@ -218,3 +218,8 @@ wd ()
 alias sem='cd /home/gokhan/Dropbox/UCSD\ Academic/Quarter\ 2\ -\ Winter\ 2015'
 
 alias topdf='pandoc -V geometry:margin=1in --variable fontsize=12pt'
+
+alias up='cd ..'
+alias upp='cd ../..'
+alias uppp='cd ../../..'
+

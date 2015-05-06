@@ -1,0 +1,12 @@
+[user]
+	name  = Rami Gökhan Kıcı
+	email = gokhankici@gmail.com
+[alias]
+	s = status
+	l = log
+	d = diff
+    set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
+[push]
+	default = current
+[pull]
+	default = current
