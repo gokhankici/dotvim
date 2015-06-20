@@ -136,6 +136,8 @@ export PATH="/usr/local/texlive/2014/bin/x86_64-linux:\
 $HOME/.cabal/bin:\
 $HOME/libs/z3/bin:\
 $HOME/Documents/230hw4/.cabal-sandbox/bin:\
+$HOME/libs/llvm3.7/llvm-build/Release+Asserts/bin:\
+$HOME/libs/node-v0.12.3/install/bin:\
 $PATH"
 
 export INFOPATH="$INFOPATH:/usr/local/texlive/2014/texmf-dist/doc/info"
@@ -222,4 +224,11 @@ alias topdf='pandoc -V geometry:margin=1in --variable fontsize=12pt'
 alias up='cd ..'
 alias upp='cd ../..'
 alias uppp='cd ../../..'
+
+alias setclip='xclip -selection c'
+alias getclip='xclip -selection clipboard -o'
+
+setclip_nl() {
+  head -c -1 | setclip
+}
 

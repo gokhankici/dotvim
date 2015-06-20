@@ -342,7 +342,7 @@ nnoremap <leader>f :Unite -start-insert file<cr>
 
 " yank history like yankring
 let g:unite_source_history_yank_enable = 1
-nnoremap <leader>y :Unite history/yank<cr>
+nnoremap <leader>p :Unite history/yank<cr>
 
 "================================================================================
 " GNU GLOBAL settings
