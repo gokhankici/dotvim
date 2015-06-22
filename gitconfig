@@ -6,6 +6,9 @@
 	l = log
 	d = diff
     set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	type = cat-file -t
+	dump = cat-file -p
 [push]
 	default = current
 [pull]
