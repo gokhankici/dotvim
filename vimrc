@@ -42,7 +42,7 @@ Plugin 'operator-user'                               | "Define your own operator
 Plugin 'recover.vim'                                 | "diff between the recovered and opened file
 Plugin 'rhysd/vim-clang-format'                      | "vim plugin for clang-format
 Plugin 'scrooloose/nerdcommenter'                    | "comment easily !
-Plugin 'scrooloose/nerdtree'                         | "awesome, extensible tree explorer plugin
+"Plugin 'scrooloose/nerdtree'                         | "awesome, extensible tree explorer plugin
 Plugin 'terryma/vim-multiple-cursors'                | "sublime like multiple cursors
 Plugin 'tpope/vim-abolish'                           | "easily search for, substitute, and abbreviate multiple variants of a word
 Plugin 'tpope/vim-fugitive'                          | "git wrapper so awesome, it should be illegal
@@ -92,7 +92,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'sjl/badwolf'
 
-Plugin 'Superbil/llvm.vim'
+"Plugin 'Superbil/llvm.vim'
 
 filetype plugin indent on
 
@@ -210,7 +210,9 @@ inoremap kj <ESC>
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 " start NERDTree
-nnoremap <leader>e :NERDTreeFind<CR>
+"nnoremap <leader>e :NERDTreeFind<CR>
+nnoremap <leader>e :VimFiler<CR>
+let g:vimfiler_as_default_explorer = 1
 
 " vim-vmath key maps
 vnoremap <expr>  ++  VMATH_YankAndAnalyse()
