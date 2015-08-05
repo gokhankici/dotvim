@@ -142,7 +142,10 @@ $PATH"
 
 export INFOPATH="$INFOPATH:/usr/local/texlive/2014/texmf-dist/doc/info"
 export MANPATH="$MANPATH:/usr/local/texlive/2014/texmf-dist/doc/man"
-export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+
+export LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu:\
+/usr/local/lib:\
+$LD_LIBRARY_PATH"
 
 TLMGR_DIR=$(dirname $(which tlmgr))
 
@@ -229,6 +232,9 @@ alias setclip='xclip -selection c'
 alias getclip='xclip -selection clipboard -o'
 
 setclip_nl() {
-  head -c -1 | setclip
+	head -c -1 | setclip
 }
 
+irc () {
+	ssh -t goto "TERM=screen-256color tmux attach -t irc"
+}

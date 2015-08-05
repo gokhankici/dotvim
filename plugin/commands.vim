@@ -1,10 +1,10 @@
 "compile with g++
-command GPP !g++ %:t -o %:t:r
-command Crun !%:t:r
+command! GPP !g++ %:t -o %:t:r
+command! Crun !%:t:r
 
 
 " My function to delete all buffers and close vim
-function DeleteAllAndClose(ignore)
+function! DeleteAllAndClose(ignore)
 	if(a:ignore)
 		bufdo bd!
 	else
@@ -12,8 +12,8 @@ function DeleteAllAndClose(ignore)
 	endif
 	qa
 endfunction
-command -nargs=? QA call DeleteAllAndClose(0)
-command -nargs=? QAI call DeleteAllAndClose(1)
+command! -nargs=? QA call DeleteAllAndClose(0)
+command! -nargs=? QAI call DeleteAllAndClose(1)
 
 
 " User defined function to remove trailing whitespace
@@ -21,7 +21,7 @@ function! RemoveTrailingWhitespace()
 	%s/\s\+$//e
 	noh
 endfunction
-command RT call RemoveTrailingWhitespace()
+command! RT call RemoveTrailingWhitespace()
 
 
 " === copy file name
@@ -29,7 +29,7 @@ function! CopyFileName()
 	let @+=expand("%:p")
 endfunction
 noremap <silent> <F4> :let @+=expand("%:p")<CR>
-command CopyFileName :call CopyFileName()
+command! CopyFileName :call CopyFileName()
 
 
 " Use python to create a calculator
@@ -92,3 +92,6 @@ map <F9> :e %:p:h<CR>
 
 " Search the word under in the current directory
 map <F8> :Ack <cword><CR>
+
+command! -range ToHex :<line1>,<line2>s/\d\+/\=printf("0x%X", submatch(0))
+

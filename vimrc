@@ -43,34 +43,34 @@ Plugin 'recover.vim'                                 | "diff between the recover
 Plugin 'rhysd/vim-clang-format'                      | "vim plugin for clang-format
 Plugin 'scrooloose/nerdcommenter'                    | "comment easily !
 "Plugin 'scrooloose/nerdtree'                         | "awesome, extensible tree explorer plugin
-Plugin 'terryma/vim-multiple-cursors'                | "sublime like multiple cursors
+"Plugin 'terryma/vim-multiple-cursors'                | "sublime like multiple cursors
 Plugin 'tpope/vim-abolish'                           | "easily search for, substitute, and abbreviate multiple variants of a word
-Plugin 'tpope/vim-fugitive'                          | "git wrapper so awesome, it should be illegal
+"Plugin 'tpope/vim-fugitive'                          | "git wrapper so awesome, it should be illegal
 Plugin 'tpope/vim-repeat'                            | "enable repeating supported plugin maps with '.'
 Plugin 'tpope/vim-surround'                          | "quoting/parenthesizing made simple
 Plugin 'tpope/vim-unimpaired'                        | "pairs of handy bracket mappings
-Plugin 'tpope/vim-vinegar'                           | "combine with netrw to create a delicious salad dressing
+"Plugin 'tpope/vim-vinegar'                           | "combine with netrw to create a delicious salad dressing
 Plugin 'xolox/vim-misc'                              | "Miscellaneous auto-load Vim scripts
-Plugin 'xolox/vim-shell'                             | "fullscreen, open URL, background command execution
+"Plugin 'xolox/vim-shell'                             | "fullscreen, open URL, background command execution
 Plugin 'bling/vim-airline'                           | "lean & mean status/tabline for vim that's light as air
 Plugin 'honza/vim-snippets'                          | "snipMate & UltiSnip Snippets
 Plugin 'noerrmsg.vim'                                | "disable error messages that YCM generates
 Plugin 'Shougo/vimfiler.vim'                         | "Powerful file explorer implemented by Vim script
 Plugin 'Shougo/unite.vim'                            | "Unite and create user interfaces
 Plugin 'SirVer/ultisnips'                            | "ultimate snippet solution for vim !
-Plugin 'jceb/vim-orgmode'                            | "org-mode clone
-Plugin 'nixon/vim-vmath'                             | "Calculates the sum, average, min, and max inside visual
+"Plugin 'jceb/vim-orgmode'                            | "org-mode clone
+"Plugin 'nixon/vim-vmath'                             | "Calculates the sum, average, min, and max inside visual
 Plugin 'godlygeek/tabular'                           | "insanely useful text alignment
 Plugin 'airblade/vim-gitgutter'                      | "shows a git diff in the gutter
-Plugin 'moll/vim-bbye'                               | "adds the Bdelete comment
-Plugin 'justinmk/vim-sneak'                          | "the missing motion for vim
-Plugin 'hewes/unite-gtags'                           | "execute 'global' command and show in unite
-Plugin 'gtags.vim'                                   | "integrates GNU GLOBAL into vim
+Plugin 'moll/vim-bbye'                               | "adds the Bdelete command
+"Plugin 'justinmk/vim-sneak'                          | "the missing motion for vim
+"Plugin 'hewes/unite-gtags'                           | "execute 'global' command and show in unite
+"Plugin 'gtags.vim'                                   | "integrates GNU GLOBAL into vim
 
 if ! IsRemoteUser()
-	Plugin 'taglist.vim'                             | "source code browser
+	"Plugin 'taglist.vim'                             | "source code browser
 	Plugin 'ntpeters/vim-better-whitespace'          | "Better whitespace highlighting for Vim
-	Plugin 'Valloric/YouCompleteMe'                  | "auto-completion plugin for C & Python
+	"Plugin 'Valloric/YouCompleteMe'                  | "auto-completion plugin for C & Python
 endif
 
 "haskell
@@ -87,8 +87,8 @@ Plugin 'Twinside/vim-hoogle'                         | "Vim plugin used to query
 
 "Colorschemes
 Plugin 'chriskempson/base16-vim'
-Plugin 'shawncplus/skittles_berry'
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'shawncplus/skittles_berry'
+"Plugin 'altercation/vim-colors-solarized'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'sjl/badwolf'
 
