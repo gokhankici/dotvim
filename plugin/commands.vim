@@ -73,7 +73,7 @@ function! MyMake(file)
 	let l:mf = system("find_up '" . a:file ."' makefile | xargs -I {} dirname '{}'")
 	let l:mf = Chomp(ReplaceSpace(l:mf))
 	if len(l:mf)
-		exec "make --no-print-directory -C " . l:mf
+		exec '! make --no-print-directory -C ' . l:mf
 		redraw
 	else
 		echo "No makefile found"

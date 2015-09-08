@@ -1,3 +1,2 @@
 setlocal omnifunc=necoghc#omnifunc
-
-set fo+=ro
+setlocal fo+=ro

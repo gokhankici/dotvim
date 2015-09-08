@@ -131,13 +131,15 @@ alias e='emacsclient --nw'
 #export PIN_HOME="/home/gokhan/Library/pin-2.13-62141-gcc.4.4.7-linux"
 #export PIN_ROOT="/home/gokhan/Library/pin-2.13-62141-gcc.4.4.7-linux"
 
+export GOPATH="$HOME/gogogo"
+
 export PATH="/usr/local/texlive/2014/bin/x86_64-linux:\
-.cabal-sandbox/bin:\
-$HOME/.cabal/bin:\
+/usr/local/go/bin:\
+$HOME/.local/bin:\
 $HOME/libs/z3/bin:\
-$HOME/Documents/230hw4/.cabal-sandbox/bin:\
 $HOME/libs/llvm3.7/llvm-build/Release+Asserts/bin:\
 $HOME/libs/node-v0.12.3/install/bin:\
+$GOPATH/bin:\
 $PATH"
 
 export INFOPATH="$INFOPATH:/usr/local/texlive/2014/texmf-dist/doc/info"
@@ -238,3 +240,13 @@ setclip_nl() {
 irc () {
 	ssh -t goto "TERM=screen-256color tmux attach -t irc"
 }
+
+setgov ()
+{
+    echo "$1" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+}
+
+alias open='xdg-open'
+
+# OPAM configuration
+. /home/gokhan/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
