@@ -7,7 +7,7 @@ if has('win32') || has('win64')
 	set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
 endif
 
-function IsRemoteUser()
+function! IsRemoteUser()
 	let l:username = expand('$USER')
 	let l:hostname = hostname()
 	if l:username == "safedispatch"
@@ -19,7 +19,7 @@ function IsRemoteUser()
 	else
 		return 0
 	endif
-endfunction
+endfunc
 
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 execute "set rtp+=" . g:opamshare . "/ocp-indent/vim"
@@ -37,7 +37,6 @@ Plugin 'AutoClose'                                   | "autoclose chars
 Plugin 'edsono/vim-matchit'                          | "extended % matching for HTML, LaTeX, etc.
 Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex' | "latex mode
 
-" misc
 Plugin 'kien/ctrlp.vim'                  | "Fuzzy file, buffer, mru, tag, etc finder
 Plugin 'kana/vim-textobj-user'           | "user defined text objects
 Plugin 'rbonvall/vim-textobj-latex'      | "text objects for latex
@@ -73,6 +72,7 @@ Plugin 'moll/vim-bbye'                   | "adds the Bdelete command
 "Plugin 'justinmk/vim-sneak'             | "the missing motion for vim
 "Plugin 'hewes/unite-gtags'              | "execute 'global' command and show in unite
 "Plugin 'gtags.vim'                      | "integrates GNU GLOBAL into vim
+Plugin 'neilagabriel/vim-geeknote'       | "integrates geeknote (cmd interface for Evernote)
 
 if ! IsRemoteUser()
 	"Plugin 'taglist.vim'                   | "source code browser
@@ -104,6 +104,9 @@ Plugin 'sjl/badwolf'
 
 " ocaml
 Plugin 'def-lkb/ocp-indent-vim' | "better indentation for OCaml files
+
+" scala
+Plugin 'derekwyatt/vim-scala'
 
 filetype plugin indent on
 
@@ -177,16 +180,16 @@ endif
 " remap leader key
 let mapleader=','
 
-" Tab shortcuts
-nnoremap <leader>tt :tabnew<cr>
-nnoremap <leader>te :tabedit
-nnoremap <leader>tc :tabclose<cr>
-nnoremap <leader>to :tabonly<cr>
-nnoremap <leader>tn :tabnext<cr>
-nnoremap <leader>tp :tabprevious<cr>
-nnoremap <leader>tf :tabfirst<cr>
-nnoremap <leader>tl :tablast<cr>
-nnoremap <leader>tm :tabmove
+"" Tab shortcuts
+"nnoremap <leader>tt :tabnew<cr>
+"nnoremap <leader>te :tabedit
+"nnoremap <leader>tc :tabclose<cr>
+"nnoremap <leader>to :tabonly<cr>
+"nnoremap <leader>tn :tabnext<cr>
+"nnoremap <leader>tp :tabprevious<cr>
+"nnoremap <leader>tf :tabfirst<cr>
+"nnoremap <leader>tl :tablast<cr>
+"nnoremap <leader>tm :tabmove
 
 nnoremap <C-A> ggVG
 
@@ -222,7 +225,7 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 " start NERDTree
 "nnoremap <leader>e :NERDTreeFind<CR>
-nnoremap <leader>e :VimFiler<CR>
+nnoremap <leader>e :VimFilerBufferDir<CR>
 let g:vimfiler_as_default_explorer = 1
 
 " vim-vmath key maps
@@ -263,7 +266,7 @@ if executable('ag')
 	"autocmd VimEnter * nmap <leader>f :CtrlP<CR>
 
 	" bind \ (backward slash) to grep shortcut
-	command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+	command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 
 	nnoremap \ :Ag<SPACE>
 
@@ -378,3 +381,13 @@ if IsRemoteUser()
 				\ 'active_filetypes': [],
 				\ 'passive_filetypes': [] }
 endif
+
+"send to tmux
+vnoremap <leader>t :Twrite<CR>
+nnoremap <leader>t :% Twrite<CR>
+
+function! TillHereToTmux()
+	let l:curline = line(".")
+	exec '1,'.l:curline.'Twrite'
+endfunction
+nnoremap <silent> <leader>T :call TillHereToTmux()<CR>

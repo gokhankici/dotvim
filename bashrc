@@ -140,6 +140,7 @@ $HOME/libs/z3/bin:\
 $HOME/libs/llvm3.7/llvm-build/Release+Asserts/bin:\
 $HOME/libs/node-v0.12.3/install/bin:\
 $GOPATH/bin:\
+$HOME/libs/scala-2.11.7/bin:\
 $PATH"
 
 export INFOPATH="$INFOPATH:/usr/local/texlive/2014/texmf-dist/doc/info"
