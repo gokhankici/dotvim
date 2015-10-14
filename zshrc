@@ -1,14 +1,18 @@
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=/home/gokhan/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="amuse"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -20,13 +24,13 @@ ZSH_THEME="robbyrussell"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -45,64 +49,78 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-
-source $ZSH/oh-my-zsh.sh
+plugins=(gitfast)
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="\
+/home/gokhan/.opam/system/bin:\
+/usr/local/texlive/2014/bin/x86_64-linux:\
+/usr/local/go/bin:\
+$HOME/.local/bin:\
+$HOME/libs/z3/bin:\
+$HOME/libs/llvm3.7/llvm-build/Release+Asserts/bin:\
+$HOME/libs/node-v0.12.3/install/bin:\
+$HOME/gogogo/bin:\
+$HOME/libs/scala-2.11.7/bin:\
+$HOME/bin:\
+$HOME/work/spin/bin:\
+/usr/local/sbin:\
+/usr/local/bin:\
+/usr/sbin:\
+/usr/bin:\
+/sbin:\
+/bin:\
+/usr/games:\
+/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+source $ZSH/oh-my-zsh.sh
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+# ##########################################################################
+# ############################## MY ADDITIONS ##############################
+# ##########################################################################
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# ##################################################
+# ENV
+# ##################################################
+export EDITOR='vim'
+export GOPATH="$HOME/gogogo"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+# ##################################################
+# ALIASES
+# ##################################################
+alias tlmgr="cd $(dirname $(which tlmgr)) && sudo ./tlmgr -gui"
+alias t='TERM=screen-256color tmux'
+alias ta='TERM=screen-256color tmux attach -t'
+alias tl='TERM=screen-256color tmux list-sessions'
+alias tmux-takeover='TERM=screen-256color tmux detach-client -a -s'
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias sem='cd /home/gokhan/Dropbox/UCSD\ Academic/Quarter\ 2\ -\ Winter\ 2015'
 
-# ...............................................................................
-# ... MY ADDITIONS ..............................................................
-# ...............................................................................
+alias setclip='xclip -selection c'
+alias getclip='xclip -selection clipboard -o'
+alias setclip_nl='head -c -1 | setclip'
 
-kill_emacs ()
-{
-	# finds the pid of the emacs daemon process and kills it
-	# kill the first one since the second one is the `grep` process
-	ps aux | grep "emacs --daemon" | grep -v 'grep' | awk '{print $2}' | xargs kill
-}
+alias open='xdg-open'
 
-alias e='emacsclient --nw'
-
-export PIN_HOME="/home/gokhan/Library/pin-2.13-62141-gcc.4.4.7-linux"
-export PIN_ROOT="/home/gokhan/Library/pin-2.13-62141-gcc.4.4.7-linux"
-export PATH="$PATH:~/bin:/usr/local/texlive/2013/bin/x86_64-linux:$PIN_HOME"
-export INFOPATH="$INFOPATH:/usr/local/texlive/2013/texmf-dist/doc/info"
-export MANPATH="$MANPATH:/usr/local/texlive/2013/texmf-dist/doc/man"
-
-alias cd..="cd .."
-
+# ##################################################
 # Base16 Shell
+# ##################################################
 BASE16_SCHEME="default"
 BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
 [[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
 
+# ##################################################
+# FUNCTIONS
+# ##################################################
+start_in_tmux () {
+	if $(tmux list-sessions | grep $1) ; then
+		TERM=screen-256color tmux attach -t $1
+	else
+		TERM=screen-256color tmux new -s $1 $1
+	fi
+}
 
+# OPAM configuration
+. /home/gokhan/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
