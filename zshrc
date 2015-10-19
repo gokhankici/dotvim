@@ -81,6 +81,8 @@ source $ZSH/oh-my-zsh.sh
 # ############################## MY ADDITIONS ##############################
 # ##########################################################################
 
+export TERM=xterm-256color
+
 # ##################################################
 # ENV
 # ##################################################
@@ -104,6 +106,8 @@ alias setclip_nl='head -c -1 | setclip'
 
 alias open='xdg-open'
 
+alias e='emacsclient -nw'
+
 # ##################################################
 # Base16 Shell
 # ##################################################
@@ -120,6 +124,10 @@ start_in_tmux () {
 	else
 		TERM=screen-256color tmux new -s $1 $1
 	fi
+}
+
+irc () {
+	ssh -t goto "TERM=screen-256color /home/rkici/local/bin/tmux attach -t rcirc"
 }
 
 # OPAM configuration
