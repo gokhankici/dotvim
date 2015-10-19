@@ -54,7 +54,8 @@ plugins=(gitfast)
 # User configuration
 
 export PATH="\
-/home/gokhan/.opam/system/bin:\
+$HOME/local/bin:\
+$HOME/.opam/system/bin:\
 /usr/local/texlive/2014/bin/x86_64-linux:\
 /usr/local/go/bin:\
 $HOME/.local/bin:\

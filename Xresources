@@ -33,3 +33,17 @@ xterm*colorBD: rgb:fc/fc/fc
 
 xterm*dynamicColors: true
 xterm*utf8: 2
+
+rofi.modi             : run,window,ssh
+rofi.font             : DejaVu Sans Mono 14
+rofi.fg               : #505050
+rofi.bg               : #000000
+rofi.hlfg             : #ffb964
+rofi.hlbg             : #000000
+rofi.opacity          : 85
+rofi.kb-mode-next     : Shift+Right,Control+Tab,Control+l
+rofi.kb-mode-previous : Shift+Left,Control+Shift+Tab,Control+h
+rofi.kb-row-up        : Up,Control+p,Shift+Tab,Control+k
+rofi.kb-row-down      : Down,Control+n,Control+j
+rofi.kb-accept-entry  : Control+m,Return,KP_Enter
+
