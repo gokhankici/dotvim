@@ -4,6 +4,30 @@
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
 #
+# -----------------------------------------------------------
+# NOTES
+# -----------------------------------------------------------
+# + Don't install any notification daemon, just use xfce
+# + To create the ".config/gtk-3.0/settings.ini" file, you
+#   can use lxappearance
+# + Use compton for get rid of tearing
+# + Just use light-locker for locking the screen
+# + For GUI ssh-agent:
+#   1. Make sure gnome-keyring-daemon is running:
+#      > ps aux | grep keyring
+#      ... /usr/bin/gnome-keyring-daemon --daemonize --login
+#   2. Create another xsession file "/usr/share/xsessions/myi3.desktop"
+#      [Desktop Entry]
+#      Name=my i3
+#      X-LightDM-DesktopName=my i3
+#      DesktopNames=my i3
+#      Comment=improved dynamic tiling window manager
+#      Exec=/etc/X11/Xsession
+#   3. Create "~/.xsession"
+#      #!/usr/bin/env bash
+#      export $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
+#      exec i3
+# -----------------------------------------------------------
 
 # i3 config file (v4)
 #
@@ -86,6 +110,7 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 #bindsym $mod+e layout toggle split
 bindsym $mod+t layout toggle split
+bindsym $mod+Shift+s sticky toggle
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -181,14 +206,14 @@ bar {
         position top
         font pango:DejaVu Sans Mono 9
         status_command i3status
-        tray_output primary
+        tray_output LVDS1
 }
 
 # autostart applications
 
-exec --no-startup-id compton -b
 exec --no-startup-id xrandr --output VGA1 --auto --right-of LVDS1
-exec_restart --no-startup-id xrandr --output LVDS1 --primary
+exec --no-startup-id xrandr --output LVDS1 --primary
+exec --no-startup-id compton -b
 exec --no-startup-id xset r rate 250 20
 exec --no-startup-id xfsettingsd
 exec --no-startup-id nm-applet
