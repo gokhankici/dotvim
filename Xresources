@@ -46,4 +46,6 @@ rofi.kb-mode-previous : Shift+Left,Control+Shift+Tab,Control+h
 rofi.kb-row-up        : Up,Control+p,Shift+Tab,Control+k
 rofi.kb-row-down      : Down,Control+n,Control+j
 rofi.kb-accept-entry  : Control+m,Return,KP_Enter
+rofi.fuzzy            : true
+rofi.levenshtein-sort : false
 

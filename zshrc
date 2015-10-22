@@ -107,7 +107,7 @@ alias setclip_nl='head -c -1 | setclip'
 
 alias open='xdg-open'
 
-alias e='emacsclient -nw'
+alias e='emacsclient -t -a ""'
 
 # ##################################################
 # Base16 Shell

@@ -84,10 +84,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+#bindsym $mod+Shift+h move left
+#bindsym $mod+Shift+j move down
+#bindsym $mod+Shift+k move up
+#bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -161,6 +161,8 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 bindsym $alt_key+Ctrl+Left  workspace prev_on_output
 bindsym $alt_key+Ctrl+Right workspace next_on_output
+bindsym $mod+Shift+h workspace prev_on_output
+bindsym $mod+Shift+l workspace next_on_output
 
 bindsym $alt_key+Shift+Ctrl+Left  move container to workspace prev_on_output, workspace prev_on_output
 bindsym $alt_key+Shift+Ctrl+Right move container to workspace next_on_output, workspace next_on_output
@@ -220,7 +222,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id light-locker --lock-on-suspend
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id emacs --daemon
+exec --no-startup-id dropbox start
 
 # MY SHORTCUTS
 
@@ -255,8 +257,9 @@ bindsym $mod+u exec ~/bin/cycle_layout.sh
 
 # frequently used
 
-bindsym $mod+f exec firefox
-bindsym $mod+e exec "emacsclient -c"
+bindsym $mod+c exec google-chrome
+bindsym $mod+e exec "emacsclient -c -a ''"
+bindsym $mod+f exec "xfce4-terminal -e 'zsh -c /home/gokhan/bin/_ranger.sh'"
 
 # APPLICATION -> WORKSPACE
 
