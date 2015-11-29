@@ -145,7 +145,7 @@ set wildmode=list:longest,full | " command <Tab> completion, list matches, then 
 set winminheight=0             | " windows can be 0 line high
 
 let base16colorspace=256       | " Access colors present in 256 colorspace
-colorscheme base16-default
+"colorscheme base16-default
 
 au FileType html,tex,text,org noremap <buffer> j gj
 au FileType html,tex,text,org noremap <buffer> k gk
