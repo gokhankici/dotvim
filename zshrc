@@ -135,7 +135,7 @@ irc () {
 }
 
 # OPAM configuration
-. /home/gokhan/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+. $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 # #################################################################
 # BOOKMARK SUPPORT
