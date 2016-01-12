@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/gokhan/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -55,16 +55,19 @@ plugins=(gitfast)
 
 # User configuration
 
+export SCALA_HOME=$HOME/local/share/scala
+
 export PATH="\
 $HOME/local/bin:\
 $HOME/.opam/system/bin:\
 /usr/local/texlive/2014/bin/x86_64-linux:\
+$HOME/local/texlive/2015/bin/x86_64-linux:\
 /usr/local/go/bin:\
 $HOME/.local/bin:\
 $HOME/libs/llvm3.7/llvm-build/Release+Asserts/bin:\
 $HOME/libs/node-v0.12.3/install/bin:\
 $HOME/gogogo/bin:\
-$HOME/libs/scala-2.11.7/bin:\
+$SCALA_HOME/bin:\
 $HOME/bin:\
 $HOME/work/spin/bin:\
 /usr/local/sbin:\
