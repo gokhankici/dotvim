@@ -26,6 +26,8 @@ HYPHEN_INSENSITIVE="true"
 # Uncomment the following line to disable auto-setting terminal title.
 DISABLE_AUTO_TITLE="true"
 
+AUTO_CD="true"
+
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
 
@@ -59,7 +61,6 @@ $HOME/.opam/system/bin:\
 /usr/local/texlive/2014/bin/x86_64-linux:\
 /usr/local/go/bin:\
 $HOME/.local/bin:\
-$HOME/libs/z3/bin:\
 $HOME/libs/llvm3.7/llvm-build/Release+Asserts/bin:\
 $HOME/libs/node-v0.12.3/install/bin:\
 $HOME/gogogo/bin:\
@@ -87,7 +88,7 @@ export TERM=xterm-256color
 # ##################################################
 # ENV
 # ##################################################
-export EDITOR='vim'
+export EDITOR="$HOME/bin/edit"
 export GOPATH="$HOME/gogogo"
 
 # ##################################################
@@ -98,6 +99,8 @@ alias t='TERM=screen-256color tmux'
 alias ta='TERM=screen-256color tmux attach -t'
 alias tl='TERM=screen-256color tmux list-sessions'
 alias tmux-takeover='TERM=screen-256color tmux detach-client -a -s'
+alias si='stack install'
+alias sc='stack clean'
 
 alias sem='cd /home/gokhan/Dropbox/UCSD\ Academic/Quarter\ 2\ -\ Winter\ 2015'
 
@@ -133,3 +136,73 @@ irc () {
 
 # OPAM configuration
 . /home/gokhan/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+
+# ######################################################################
+# ######################################################################
+# ######################################################################
+
+# Handle bookmarks. This uses the static named directories feature of
+# zsh. Such directories are declared with `hash -d
+# name=directory`. Both prompt expansion and completion know how to
+# handle them. We populate the hash with directories.
+#
+# With autocd, you can just type `~-bookmark`. Since this can be
+# cumbersome to type, you can also type `@@` and this will be turned
+# into `~-` by ZLE.
+
+MARKPATH=$ZSH/run/marks
+
+# Add some static entries
+hash -d log=/var/log
+hash -d doc=/usr/share/doc
+
+# Populate the hash
+for link ($MARKPATH/*(N@)) {
+	hash -d -- -${link:t}=${link:A}
+}
+
+vbe-insert-bookmark() {
+	emulate -L zsh
+	LBUFFER=${LBUFFER}"~-"
+}
+zle -N vbe-insert-bookmark
+bindkey '@@' vbe-insert-bookmark
+
+# Manage bookmarks
+bookmark() {
+	[[ -d $MARKPATH ]] || mkdir -p $MARKPATH
+	if (( $# == 0 )); then
+		# When no arguments are provided, just display existing
+		# bookmarks
+		for link in $MARKPATH/*(N@); do
+			local markname="$fg[green]${link:t}$reset_color"
+			local markpath="$fg[blue]${link:A}$reset_color"
+			printf "%-30s -> %s\n" $markname $markpath
+		done
+	else
+		# Otherwise, we may want to add a bookmark or delete an
+		# existing one.
+		local -a delete
+		zparseopts -D d=delete
+		if (( $+delete[1] && $# == 1 )); then
+			# With `-d`, we delete an existing bookmark
+			command rm $MARKPATH/$1
+		else
+			# Otherwise, add a bookmark to the current
+			# directory. The first argument is the bookmark
+			# name. `.` is special and means the bookmark should
+			# be named after the current directory.
+			local name=$1
+			[[ $name == "." ]] && name=${PWD:t}
+			ln -s $PWD $MARKPATH/$name
+		fi
+	fi
+}
+
+# ######################################################################
+# ######################################################################
+# ######################################################################
+
+# z3 installation:
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/local/lib"
+export PYTHONPATH="$PYTHONPATH:/home/gokhan/local/lib/python2.7/dist-packages"
