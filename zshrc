@@ -58,18 +58,9 @@ plugins=(gitfast)
 export SCALA_HOME=$HOME/local/share/scala
 
 export PATH="\
-$HOME/local/bin:\
 $HOME/.opam/system/bin:\
-/usr/local/texlive/2014/bin/x86_64-linux:\
-$HOME/local/texlive/2015/bin/x86_64-linux:\
-/usr/local/go/bin:\
 $HOME/.local/bin:\
-$HOME/libs/llvm3.7/llvm-build/Release+Asserts/bin:\
-$HOME/libs/node-v0.12.3/install/bin:\
-$HOME/gogogo/bin:\
-$SCALA_HOME/bin:\
 $HOME/bin:\
-$HOME/work/spin/bin:\
 /usr/local/sbin:\
 /usr/local/bin:\
 /usr/sbin:\
@@ -97,7 +88,7 @@ export GOPATH="$HOME/gogogo"
 # ##################################################
 # ALIASES
 # ##################################################
-alias tlmgr="cd $(dirname $(which tlmgr)) && sudo ./tlmgr -gui"
+#alias tlmgr="cd $(dirname $(which tlmgr)) && sudo ./tlmgr -gui"
 alias t='TERM=screen-256color tmux'
 alias ta='TERM=screen-256color tmux attach -t'
 alias tl='TERM=screen-256color tmux list-sessions'

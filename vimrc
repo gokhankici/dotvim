@@ -55,7 +55,7 @@ Plugin 'tpope/vim-unimpaired'            | "pairs of handy bracket mappings
 Plugin 'xolox/vim-misc'                  | "Miscellaneous auto-load Vim scripts
 Plugin 'bling/vim-airline'               | "lean & mean status/tabline for vim that's light as air
 Plugin 'honza/vim-snippets'              | "snipMate & UltiSnip Snippets
-Plugin 'noerrmsg.vim'                    | "disable error messages that YCM generates
+"Plugin 'noerrmsg.vim'                    | "disable error messages that YCM generates
 Plugin 'Shougo/vimfiler.vim'             | "Powerful file explorer implemented by Vim script
 Plugin 'Shougo/unite.vim'                | "Unite and create user interfaces
 Plugin 'SirVer/ultisnips'                | "ultimate snippet solution for vim !
