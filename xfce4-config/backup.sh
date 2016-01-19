@@ -28,7 +28,7 @@ if [[ $1 == "store" ]]; then
         local BACKUP=$BACKUP_DIR/$configs[$conf]
         local CONF=$XFCE_CONF_DIR/$conf
 
-        if [[ -f $CONF ]]; then
+        if [[ -f $CONF && ! -h $CONF ]]; then
             cp $CONF $BACKUP
             echo "copied "$(basename $CONF)
         fi
@@ -41,16 +41,16 @@ elif [[ $1 == "load" ]]; then
         local CURR_DIR=$(dirname $CONF)
 
         if [[ -d $CURR_DIR ]]; then
-            if [[ -f $CONF ]]; then
+            if [[ -f $CONF && ! -h $CONF ]]; then
                 cp $CONF $CONF.old
-                rm $CONF
                 echo "backed up $CONF to $CONF.old"
             fi
+            rm -f $CONF
         else
             mkdir -p $CURR_DIR
         fi
 
-        ln -s $BACKUP $CONF
+        cp $BACKUP $CONF
     done
 
 else
