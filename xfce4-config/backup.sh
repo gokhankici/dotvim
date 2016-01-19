@@ -13,6 +13,11 @@ configs=( terminal/terminalrc                                     terminalrc \
           xfconf/xfce-perchannel-xml/xsettings.xml                xsettings.xml \
         )
 
+if [[ ! -d $XFCE_CONF_DIR ]]; then
+    echo "xfce configuration directory does not exist!"
+    exit 1
+fi
+
 if [[ $# != 1 ]]; then
     echo "usage: backup.sh (store|load)"
     exit 1
@@ -22,15 +27,32 @@ if [[ $1 == "store" ]]; then
     for conf in "${(@k)configs}"; do
         local BACKUP=$BACKUP_DIR/$configs[$conf]
         local CONF=$XFCE_CONF_DIR/$conf
-        cp $CONF $BACKUP
+
+        if [[ -f $CONF ]]; then
+            cp $CONF $BACKUP
+            echo "copied "$(basename $CONF)
+        fi
     done
+
 elif [[ $1 == "load" ]]; then
     for conf in "${(@k)configs}"; do
         local BACKUP=$BACKUP_DIR/$configs[$conf]
         local CONF=$XFCE_CONF_DIR/$conf
-        cp $CONF $CONF.old
-        cp $BACKUP $CONF
+        local CURR_DIR=$(dirname $CONF)
+
+        if [[ -d $CURR_DIR ]]; then
+            if [[ -f $CONF ]]; then
+                cp $CONF $CONF.old
+                rm $CONF
+                echo "backed up $CONF to $CONF.old"
+            fi
+        else
+            mkdir -p $CURR_DIR
+        fi
+
+        ln -s $BACKUP $CONF
     done
+
 else
     echo "invalid argument: $1"
     echo "usage: backup.sh (store|load)"

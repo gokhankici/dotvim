@@ -31,12 +31,12 @@
       <property name="XF86Mail" type="string" value="exo-open --launch MailReader"/>
       <property name="XF86Display" type="string" value="xfce4-display-settings --minimal"/>
       <property name="&lt;Super&gt;p" type="string" value="xfce4-display-settings --minimal"/>
-      <property name="&lt;Primary&gt;Escape" type="string" value="xfdesktop --menu"/>
       <property name="override" type="bool" value="true"/>
       <property name="&lt;Super&gt;e" type="string" value="emacs"/>
       <property name="&lt;Super&gt;w" type="string" value="exo-open --launch WebBrowser"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;t" type="string" value="xfce4-terminal"/>
       <property name="&lt;Super&gt;f" type="string" value="exo-open --launch FileManager"/>
+      <property name="&lt;Primary&gt;Escape" type="string" value="xfce4-popup-whiskermenu"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
@@ -105,13 +105,11 @@
       <property name="&lt;Alt&gt;&lt;Shift&gt;Tab" type="string" value="cycle_reverse_windows_key"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;KP_7" type="string" value="move_window_workspace_7_key"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;Right" type="string" value="right_workspace_key"/>
-      <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;Right" type="string" value="move_window_right_key"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;d" type="string" value="show_desktop_key"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;Up" type="string" value="up_workspace_key"/>
       <property name="&lt;Primary&gt;F7" type="string" value="workspace_7_key"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;Home" type="string" value="move_window_prev_workspace_key"/>
       <property name="&lt;Alt&gt;F4" type="string" value="close_window_key"/>
-      <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;Left" type="string" value="move_window_left_key"/>
       <property name="&lt;Alt&gt;F6" type="string" value="stick_window_key"/>
       <property name="&lt;Alt&gt;F10" type="string" value="maximize_window_key"/>
       <property name="&lt;Alt&gt;F12" type="string" value="above_key"/>
@@ -148,6 +146,10 @@
       <property name="&lt;Primary&gt;&lt;Alt&gt;KP_4" type="string" value="move_window_workspace_4_key"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;KP_5" type="string" value="move_window_workspace_5_key"/>
       <property name="override" type="bool" value="true"/>
+      <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;Left" type="string" value="move_window_left_workspace_key"/>
+      <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;Right" type="string" value="move_window_right_workspace_key"/>
+      <property name="&lt;Super&gt;Left" type="string" value="tile_left_key"/>
+      <property name="&lt;Super&gt;Right" type="string" value="tile_right_key"/>
     </property>
   </property>
   <property name="providers" type="array">

@@ -19,6 +19,6 @@ MiscHighlightUrls=TRUE
 ScrollingBar=TERMINAL_SCROLLBAR_NONE
 ScrollingLines=9999
 ColorPalette=#000000;#cc0000;#4e9a06;#c4a000;#3465a4;#75507b;#06989a;#d3d7cf;#555753;#ef2929;#8ae234;#fce94f;#739fcf;#ad7fa8;#34e2e2;#eeeeec
-ColorForeground=#f0a3f0a3f0a3
-ColorBackground=#0f5c0f5c0f5c
+ColorForeground=#e666e666e666
+ColorBackground=#199a199a199a
 
