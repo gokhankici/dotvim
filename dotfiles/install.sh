@@ -17,9 +17,9 @@ files=( bashrc           $HOME/.bashrc \
         Xresources       $HOME/.Xresources \
         zshrc            $HOME/.zshrc \
         fonts_local.conf $HOME/.config/fontconfig/fonts.conf \
+        compton.conf     $HOME/.config/compton.conf
       )
 
-#compton.conf
 #i3_config
 #i3status.conf
 
