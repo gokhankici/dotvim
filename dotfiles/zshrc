@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="amuse"
+ZSH_THEME="my-amuse"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -102,6 +102,8 @@ alias setclip='xclip -selection c'
 alias getclip='xclip -selection clipboard -o'
 alias setclip_nl='head -c -1 | setclip'
 
+alias copy_cd='pwd | head -c -1 | setclip'
+
 alias open='xdg-open'
 
 alias e='emacsclient -t -a ""'
@@ -129,7 +131,8 @@ irc () {
 }
 
 # OPAM configuration
-. /home/gokhan/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+. $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+export OCAMLLIB="/home/rami/.opam/4.01.0/lib/ocaml"
 
 # ######################################################################
 # ######################################################################
@@ -198,5 +201,10 @@ bookmark() {
 # ######################################################################
 
 # z3 installation:
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/local/lib"
+export LD_LIBRARY_PATH="$HOME/work/DOrder/external/z3/lib:$LD_LIBRARY_PATH:$HOME/.local/lib"
 export PYTHONPATH="$PYTHONPATH:/home/gokhan/local/lib/python2.7/dist-packages"
+
+
+# zsh-completions
+plugins+=(zsh-completions)
+autoload -U compinit && compinit

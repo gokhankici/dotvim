@@ -13,7 +13,7 @@ files=( bashrc           $HOME/.bashrc \
         screenrc         $HOME/.screenrc \
         tmux.conf        $HOME/.tmux.conf \
         vimrc            $HOME/.vimrc \
-        Xmodmap          $HOME/Xmodmap \
+        Xmodmap          $HOME/.Xmodmap \
         Xresources       $HOME/.Xresources \
         zshrc            $HOME/.zshrc \
         fonts_local.conf $HOME/.config/fontconfig/fonts.conf \
