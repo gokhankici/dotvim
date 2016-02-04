@@ -1,0 +1,18 @@
+[Added Associations]
+x-scheme-handler/http=exo-web-browser.desktop
+x-scheme-handler/https=exo-web-browser.desktop
+text/plain=mousepad.desktop;
+application/x-shellscript=mousepad.desktop;
+application/pdf=evince.desktop;
+x-scheme-handler/mailto=exo-mail-reader.desktop
+video/mp4=vlc.desktop;
+text/x-c++src=mousepad.desktop;
+text/x-chdr=mousepad.desktop;
+image/png=ristretto.desktop;
+text/x-tex=mousepad.desktop;
+text/x-makefile=mousepad.desktop;
+text/x-log=emacs.desktop;
+
+[Default Applications]
+application/pdf=evince.desktop
+text/x-chdr=mousepad.desktop

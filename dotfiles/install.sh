@@ -17,13 +17,18 @@ files=( bashrc           $HOME/.bashrc \
         Xresources       $HOME/.Xresources \
         zshrc            $HOME/.zshrc \
         fonts_local.conf $HOME/.config/fontconfig/fonts.conf \
-        compton.conf     $HOME/.config/compton.conf
+        compton.conf     $HOME/.config/compton.conf \
+        mimeapps.list    $HOME/.config/mimeapps.list
       )
 
 #i3_config
 #i3status.conf
 
 echo "creating symbolic links for the dotfiles..."
+
+file_date() {
+    stat --format=%Y $1
+}
 
 for f in "${(@k)files}"; do
     local SOURCE=$THIS_DIR/$f
@@ -35,6 +40,12 @@ for f in "${(@k)files}"; do
     else
         if [[ -f $TARGET && ! -h $TARGET ]]; then
             cp $TARGET $TARGET.old
+
+            if [[ $(file_date $TARGET) -gt $(file_date $SOURCE) ]]; then
+                echo "Target $TARGET is newer, copying it to $SOURCE"
+                cp $TARGET $SOURCE
+            fi
+
             echo "backed up $TARGET to $TARGET.old"
             rm -f $TARGET
         fi
