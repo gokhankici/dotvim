@@ -41,7 +41,8 @@ for f in "${(@k)files}"; do
         if [[ -f $TARGET && ! -h $TARGET ]]; then
             cp $TARGET $TARGET.old
 
-            if [[ $(file_date $TARGET) -gt $(file_date $SOURCE) ]]; then
+            if [[ ! -a $SOURCE ||
+                  $(file_date $TARGET) -gt $(file_date $SOURCE) ]]; then
                 echo "Target $TARGET is newer, copying it to $SOURCE"
                 cp $TARGET $SOURCE
             fi
