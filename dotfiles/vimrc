@@ -71,17 +71,17 @@ if ! IsRemoteUser()
 endif
 
 "haskell
-Plugin 'wlangstroth/vim-haskell'  | "vim configuration for haskell
-Plugin 'Shougo/neocomplcache.vim' | "Ultimate auto-completion system for Vim
-Plugin 'eagletmt/ghcmod-vim'      | "type, check & lint, and expanding
-Plugin 'neco-ghc'                 | "completion plugin for Haskell, using ghc-mod
-Plugin 'scrooloose/syntastic'     | "syntax checking plugin
-Plugin 'Shougo/vimproc.vim'       | "Interactive command execution in Vim.
-Plugin 'travitch/hasksyn'         | "highlight and indent Haskell source code
-Plugin 'kana/vim-textobj-indent'  | "select similarly indented lines
-Plugin 'bitc/vim-hdevtools'       | "persistent bg server for Haskell devtools
-Plugin 'Twinside/vim-hoogle'      | "Vim plugin used to query hoogle, the haskell search engine
-Plugin 'jpalardy/vim-slime'
+"Plugin 'wlangstroth/vim-haskell'  | "vim configuration for haskell
+"Plugin 'Shougo/neocomplcache.vim' | "Ultimate auto-completion system for Vim
+"Plugin 'eagletmt/ghcmod-vim'      | "type, check & lint, and expanding
+"Plugin 'neco-ghc'                 | "completion plugin for Haskell, using ghc-mod
+"Plugin 'scrooloose/syntastic'     | "syntax checking plugin
+"Plugin 'Shougo/vimproc.vim'       | "Interactive command execution in Vim.
+"Plugin 'travitch/hasksyn'         | "highlight and indent Haskell source code
+"Plugin 'kana/vim-textobj-indent'  | "select similarly indented lines
+"Plugin 'bitc/vim-hdevtools'       | "persistent bg server for Haskell devtools
+"Plugin 'Twinside/vim-hoogle'      | "Vim plugin used to query hoogle, the haskell search engine
+"Plugin 'jpalardy/vim-slime'
 
 "Colorschemes
 Plugin 'chriskempson/base16-vim'
