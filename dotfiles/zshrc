@@ -107,7 +107,19 @@ alias copy_cd='pwd | head -c -1 | setclip'
 
 alias open='xdg-open'
 
-alias e='emacsclient -t -a ""'
+e() {
+    if [[ $# -eq 1 ]]; then
+        local F=$1:A
+
+        if [[ -d $F ]]; then
+            emacsclient -t -a "" -e "(dired \"$F\")"
+        else
+            emacsclient -t -a "" -e "(find-file \"$F\")"
+        fi
+    else
+        emacsclient -t -a "" $@
+    fi
+}
 
 # ##################################################
 # Base16 Shell
