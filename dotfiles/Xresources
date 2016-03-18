@@ -1,39 +1,56 @@
-xterm*faceName: terminus:pixelsize=16
-xterm*loginShell: true
-xterm*vt100*geometry: 80x40
-xterm*saveLines: 2000
-xterm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48,35:48
-xterm*termName: xterm-256color
-xterm*eightBitInput: false
+! --[ Font Rendering ]-------------------------------------
+Xft.dpi:       96
+Xft.antialias: 1
+Xft.rgba:      rgb
+Xft.autohint:  0
+Xft.lcdfilter: lcddefault
+Xft.hinting:   1
+Xft.hintstyle: hintfull
 
-*.foreground:   #98d1ce
-*.background:   #0a0f14
-*.cursorColor:  #98d1ce
 
-*.color0:       #0a0f14
-*.color8:       #10151b
-*.color1:       #c33027
-*.color9:       #d26939
-*.color2:       #26a98b
-*.color10:      #081f2d
-*.color3:       #edb54b
-*.color11:      #245361
-*.color4:       #195465
-*.color12:      #093748
-*.color5:       #4e5165
-*.color13:      #888ba5
-*.color6:       #33859d
-*.color14:      #599caa
-*.color7:       #98d1ce
-*.color15:      #d3ebe9
 
-xterm*boldMode: false
-xterm*colorBDMode: true
-xterm*colorBD: rgb:fc/fc/fc
+! --[ Colors ]-------------------------------------
+*.foreground:  #e6e6e6
+*.background:  #1a1a1a
+*.cursorColor: #00aa00
 
-xterm*dynamicColors: true
-xterm*utf8: 2
+*.color0:  #000000
+*.color1:  #cc0000
+*.color2:  #4e9a06
+*.color3:  #c4a000
+*.color4:  #3465a4
+*.color5:  #75507b
+*.color6:  #06989a
+*.color7:  #d3d7cf
+*.color8:  #555753
+*.color9:  #ef2929
+*.color10: #8ae234
+*.color11: #fce94f
+*.color12: #739fcf
+*.color13: #ad7fa8
+*.color14: #34e2e2
+*.color15: #eeeeec
 
+
+
+! --[ Urxvt settings ]-------------------------------------
+URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+URxvt.url-select.launcher:  google-chrome-stable
+URxvt.url-select.underline: true
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
+
+! --[ URxvt - General ]-------------------------------------
+URxvt.font:        xft:Cousine for Powerline:style=Regular:pixelsize=13
+URxvt.boldFont:    xft:Cousine for Powerline:style=Bold:pixelsize=13
+URxvt.letterSpace: -2
+URxvt.saveLines:   9999
+URxvt*scrollBar:   false
+
+
+
+! --[ Rofi ]-------------------------------------
 rofi.modi             : run,window,ssh
 rofi.font             : DejaVu Sans Mono 14
 rofi.fg               : #505050
@@ -49,3 +66,20 @@ rofi.kb-accept-entry  : Control+m,Return,KP_Enter
 rofi.fuzzy            : true
 rofi.levenshtein-sort : false
 
+
+
+! --[ Xterm ]-------------------------------------
+xterm*faceName: terminus:pixelsize=16
+xterm*loginShell: true
+xterm*vt100*geometry: 80x40
+xterm*saveLines: 2000
+xterm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48,35:48
+xterm*termName: xterm-256color
+xterm*eightBitInput: false
+
+xterm*boldMode: false
+xterm*colorBDMode: true
+xterm*colorBD: rgb:fc/fc/fc
+
+xterm*dynamicColors: true
+xterm*utf8: 2
