@@ -34,12 +34,34 @@ Xft.hintstyle: hintfull
 
 
 ! --[ Urxvt settings ]-------------------------------------
-URxvt.perl-ext-common:      default,url-select,keyboard-select
+URxvt.perl-ext-common:      default,url-select,keyboard-select,clipboard,font-size
 URxvt.url-select.launcher:  google-chrome-stable
 URxvt.url-select.underline: true
+
+! clipboard
+! update clipboard whenever primary gets updated
+URxvt.clipboard.autocopy:   true
+URxvt.keysym.M-c:           perl:clipboard:copy
+URxvt.keysym.M-v:           perl:clipboard:paste
+URxvt.keysym.M-C-v:         perl:clipboard:paste_escaped
+
 URxvt.keysym.M-u:           perl:url-select:select_next
 URxvt.keysym.M-Escape:      perl:keyboard-select:activate
 URxvt.keysym.M-s:           perl:keyboard-select:search
+
+URxvt.urgentOnBell:         false
+
+! `font-size` plugin
+URxvt.keysym.C-minus: perl:font-size:decrease
+URxvt.keysym.C-equal: perl:font-size:increase
+! The default font increase step size is 1. This is for portability across all
+! fonts (some fonts do not support particular font sizes). Because changing
+! font size only really makes sense for anti-aliased fonts (Terminus is
+! bitmapped), and because anti-aliased fonts support any size, it makes sense
+! to just use a size step of 4 for faster transitions between font size
+! changes.
+URxvt.font-size.step: 4
+
 
 ! --[ URxvt - General ]-------------------------------------
 URxvt.font:        xft:Cousine for Powerline:style=Regular:pixelsize=13
