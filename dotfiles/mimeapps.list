@@ -1,9 +1,9 @@
 [Added Associations]
 x-scheme-handler/http=exo-web-browser.desktop
 x-scheme-handler/https=exo-web-browser.desktop
-text/plain=mousepad.desktop;
+text/plain=libreoffice-writer.desktop;mousepad.desktop;
 application/x-shellscript=mousepad.desktop;
-application/pdf=evince.desktop;
+application/pdf=okularApplication_pdf.desktop;evince.desktop;kde4-okularApplication_pdf.desktop;
 x-scheme-handler/mailto=exo-mail-reader.desktop
 video/mp4=vlc.desktop;
 text/x-c++src=mousepad.desktop;
@@ -12,7 +12,15 @@ image/png=ristretto.desktop;
 text/x-tex=mousepad.desktop;
 text/x-makefile=mousepad.desktop;
 text/x-log=emacs.desktop;
+application/octet-stream=mousepad.desktop;
+text/html=google-chrome.desktop;gvim.desktop;
+text/css=mousepad.desktop;
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop;calibre-ebook-viewer.desktop;
+text/x-csrc=mousepad.desktop;
+application/zip=org.gnome.FileRoller.desktop;
+text/x-literate-haskell=mousepad.desktop;
+application/x-compressed-tar=org.gnome.FileRoller.desktop;
 
 [Default Applications]
-application/pdf=evince.desktop
+application/pdf=kde4-okularApplication_pdf.desktop
 text/x-chdr=mousepad.desktop
