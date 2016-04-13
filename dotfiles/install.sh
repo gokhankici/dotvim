@@ -41,11 +41,11 @@ for f in "${(@k)files}"; do
         if [[ -f $TARGET && ! -h $TARGET ]]; then
             cp $TARGET $TARGET.old
 
-            if [[ ! -a $SOURCE ||
-                  $(file_date $TARGET) -gt $(file_date $SOURCE) ]]; then
-                echo "Target $TARGET is newer, copying it to $SOURCE"
-                cp $TARGET $SOURCE
-            fi
+            #if [[ ! -a $SOURCE ||
+                  #$(file_date $TARGET) -gt $(file_date $SOURCE) ]]; then
+                #echo "Target $TARGET is newer, copying it to $SOURCE"
+                #cp $TARGET $SOURCE
+            #fi
 
             echo "backed up $TARGET to $TARGET.old"
             rm -f $TARGET
