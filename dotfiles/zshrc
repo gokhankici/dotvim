@@ -51,54 +51,42 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(gitfast)
+plugins=(gitfast zsh-completions)
 
-# User configuration
-
-export SCALA_HOME=$HOME/local/share/scala
-
-export PATH="\
-$HOME/.opam/system/bin:\
-$HOME/.local/bin:\
-$HOME/bin:\
-/usr/local/sbin:\
-/usr/local/bin:\
-/usr/sbin:\
-/usr/bin:\
-/sbin:\
-/bin:\
-/usr/games:\
-/usr/local/games"
-# export MANPATH="/usr/local/man:$MANPATH"
+autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
 
-# ##########################################################################
-# ############################## MY ADDITIONS ##############################
-# ##########################################################################
+# ##################################################
+# #################  MY ADDITIONS  #################
+# ##################################################
 
-# export TERM=screen-256color
+export PATH="\
+$PATH:\
+$HOME/.local/bin:\
+$HOME/bin"
+
 export TERM=xterm-256color
 
 # ##################################################
 # ENV
 # ##################################################
+
 export EDITOR="$HOME/bin/edit"
-export GOPATH="$HOME/gogogo"
 
 # ##################################################
 # ALIASES
 # ##################################################
+
 #alias tlmgr="cd $(dirname $(which tlmgr)) && sudo ./tlmgr -gui"
-alias t='TERM=screen-256color tmux'
-alias ta='TERM=screen-256color tmux attach -t'
-alias tl='TERM=screen-256color tmux list-sessions'
-alias tmux-takeover='TERM=screen-256color tmux detach-client -a -s'
+alias t="TERM=$TERM tmux"
+alias ta="TERM=$TERM tmux attach -t"
+alias tl="TERM=$TERM tmux list-sessions"
+alias tmux-takeover="TERM=$TERM tmux detach-client -a -s"
+
 alias si='stack install'
 alias sc='stack clean'
 alias sb='stack build'
-
-alias sem='cd /home/gokhan/Dropbox/UCSD\ Academic/Quarter\ 2\ -\ Winter\ 2015'
 
 alias setclip='xclip -selection c'
 alias getclip='xclip -selection clipboard -o'
@@ -107,6 +95,10 @@ alias setclip_nl='head -c -1 | setclip'
 alias copy_cd='pwd | head -c -1 | setclip'
 
 alias open='xdg-open'
+
+# ##################################################
+# FUNCTIONS
+# ##################################################
 
 e() {
     if [[ $# -eq 1 ]]; then
@@ -123,34 +115,8 @@ e() {
 }
 
 # ##################################################
-# Base16 Shell
 # ##################################################
-BASE16_SCHEME="default"
-BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
-[[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
-
 # ##################################################
-# FUNCTIONS
-# ##################################################
-start_in_tmux () {
-	if $(tmux list-sessions | grep $1) ; then
-		TERM=screen-256color tmux attach -t $1
-	else
-		TERM=screen-256color tmux new -s $1 $1
-	fi
-}
-
-irc () {
-	ssh -t goto "TERM=screen-256color /home/rkici/local/bin/tmux attach -t rcirc"
-}
-
-## OPAM configuration
-#. $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
-#export OCAMLLIB="/home/rami/.opam/4.01.0/lib/ocaml"
-
-# ######################################################################
-# ######################################################################
-# ######################################################################
 
 # Handle bookmarks. This uses the static named directories feature of
 # zsh. Such directories are declared with `hash -d
@@ -210,15 +176,3 @@ bookmark() {
 	fi
 }
 
-# ######################################################################
-# ######################################################################
-# ######################################################################
-
-# z3 installation:
-export LD_LIBRARY_PATH="$HOME/work/DOrder/external/z3/lib:$LD_LIBRARY_PATH:$HOME/.local/lib"
-export PYTHONPATH="$PYTHONPATH:/home/gokhan/local/lib/python2.7/dist-packages"
-
-
-# zsh-completions
-plugins+=(zsh-completions)
-autoload -U compinit && compinit
