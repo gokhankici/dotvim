@@ -64,9 +64,17 @@ source $ZSH/oh-my-zsh.sh
 export PATH="\
 $PATH:\
 $HOME/.local/bin:\
-$HOME/bin"
+$HOME/bin:\
+$HOME/libs/node/bin:\
+/data/Mathematica/10.4/bin\
+"
 
 export TERM=xterm-256color
+
+export PKG_CONFIG_PATH="\
+$PKG_CONFIG_PATH:\
+$HOME/.local/lib/pkgconfig\
+"
 
 # ##################################################
 # ENV
@@ -95,6 +103,8 @@ alias setclip_nl='head -c -1 | setclip'
 alias copy_cd='pwd | head -c -1 | setclip'
 
 alias open='xdg-open'
+
+alias vim='nvim'
 
 # ##################################################
 # FUNCTIONS
@@ -175,4 +185,6 @@ bookmark() {
 		fi
 	fi
 }
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

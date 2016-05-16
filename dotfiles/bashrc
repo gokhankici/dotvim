@@ -251,3 +251,5 @@ alias open='xdg-open'
 
 # OPAM configuration
 . /home/gokhan/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
